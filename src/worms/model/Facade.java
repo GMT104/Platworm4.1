@@ -3,6 +3,9 @@ package worms.model;
 import java.util.Collection;
 import java.util.Random;
 
+import worms.gui.game.IActionHandler;
+import worms.model.programs.ParseOutcome;
+
 public class Facade implements IFacade {
 
 	@Override
@@ -24,8 +27,9 @@ public class Facade implements IFacade {
 	}
 
 	@Override
-	public void addNewWorm(World world) {
+	public void addNewWorm(World world, Program program) {
 		try {
+			// TODO program
 			world.addWorm();
 		} catch (NullPointerException exc) {
 			throw new ModelException("Null is invalid object!");
@@ -76,7 +80,8 @@ public class Facade implements IFacade {
 
 	@Override
 	public Worm createWorm(World world, double x, double y, double direction,
-			double radius, String name) {
+			double radius, String name, Program program) {
+		// TODO program
 		return new Worm(x, y, direction, radius, name, true, world);
 	}
 
@@ -485,6 +490,25 @@ public class Facade implements IFacade {
 		} catch (NullPointerException exc) {
 			throw new ModelException("Null is invalid object!");
 		}
+	}
+
+	@Override
+	public ParseOutcome<?> parseProgram(String programText,
+			IActionHandler handler) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasProgram(Worm worm) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isWellFormed(Program program) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 
