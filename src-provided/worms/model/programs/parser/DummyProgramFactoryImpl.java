@@ -22,7 +22,7 @@ public class DummyProgramFactoryImpl
 
   @Override
   public DummyExpression createDoubleLiteral(int line, int column, double d) {
-    return (null);
+    return null;
   }
 
   @Override
