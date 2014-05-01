@@ -6,7 +6,7 @@ import java.util.Random;
 import worms.gui.game.IActionHandler;
 import worms.model.programs.ParseOutcome;
 import worms.model.programs.ProgramParser;
-import worms.model.programs.parser.DummyProgramFactoryImpl;
+import worms.model.programs.parser.ProgramFactoryImpl;
 
 public class Facade implements IFacade {
 
@@ -495,11 +495,14 @@ public class Facade implements IFacade {
 	}
 
 	@Override
+	//TODO commentaar
 	public ParseOutcome<?> parseProgram(String programText,
 			IActionHandler handler) {
-		ProgramParser lolly = new ProgramParser(new DummyProgramFactoryImpl());
-		lolly.parse(programText);
-		return new Succes(lolly.getGlobals(),lolly.getStatement());
+		ProgramParser parser = new ProgramParser(new ProgramFactoryImpl());
+		parser.parse(programText);
+		if (parser.getErrors().size()!=0)
+			return ParseOutcome.failure(parser.getErrors());
+		return ParseOutcome.success(new Program(parser.getGlobals(),parser.getStatement()));
 	}
 
 	@Override
