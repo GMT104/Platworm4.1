@@ -535,7 +535,8 @@ public class World implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected List<GameObject> getGameObjects(){
+	//TODO mag niet public zijn
+	public List<GameObject> getGameObjects(){
 		return this.gameObjects;
 	}
 	
@@ -561,7 +562,8 @@ public class World implements Cloneable {
 	 * 			| 	if gameObject instanceof Worm
 	 * 			|		result.contains(gameObject) 
 	 */
-	protected List<Worm> getAllWorms(){
+	//TODO mag niet public zijn
+	public List<Worm> getAllWorms(){
 		List<Worm> worms = new ArrayList<Worm>();
 		List<GameObject> objects = getGameObjects();
 		for(int counter = 0; counter < (objects.size()); counter = counter +1){
@@ -580,7 +582,8 @@ public class World implements Cloneable {
 	 * 			| if gameObject instanceof Food
 	 * 			|		result.contains(gameObject)
 	 */
-	protected List<Food> getAllFood(){
+	//TODO mag niet public zijn
+	public List<Food> getAllFood(){
 		List<Food> food = new ArrayList<Food>();
 		List<GameObject> objects = getGameObjects();
 		for(int counter = 0; counter < (objects.size()); counter = counter +1){
