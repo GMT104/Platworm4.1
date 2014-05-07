@@ -231,27 +231,27 @@ public class ProgramFactoryImpl
 
   @Override
   public Statement createSequence(int line, int column, List<Statement> statements) {
-    return SequenceOfStatements(statements);
+    return new SequenceOfStatements(statements);
   }
 
   @Override
   public Statement createPrint(int line, int column, Expression e) {
-    return PrintStatement(e);
+    return new PrintStatement(e);
   }
 
   @Override
   public Type createDoubleType() {
-    return MyDoubleType();
+    return new MyDoubleType();
   }
 
   @Override
   public Type createBooleanType() {
-    return MyBooleanType;
+    return new MyBooleanType;
   }
 
   @Override
   public Type createEntityType() {
-    return EntityType;
+    return new EntityType;
   }
 }
 
