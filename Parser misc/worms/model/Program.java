@@ -20,7 +20,7 @@ public class Program {
 	
 	
 	public void run(){
-		mainStatement.execute(null);
+		mainStatement.execute(null,null);
 	}
 	
 }

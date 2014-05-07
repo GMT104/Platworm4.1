@@ -1,5 +1,8 @@
 package worms.model.programs.parser;
 
+import worms.gui.game.IActionHandler;
+import worms.model.Worm;
+
 public class TurnStatement extends Statement {
 
 	public TurnStatement(Expression angle) {
@@ -7,9 +10,10 @@ public class TurnStatement extends Statement {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(Worm activeWorm, IActionHandler handler) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 
 }
