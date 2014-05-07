@@ -5,14 +5,15 @@ import worms.model.Worm;
 
 public class FireStatement extends Statement {
 
+	private Expression yieldExpression;
+
 	public FireStatement(Expression yield) {
-		// TODO Auto-generated constructor stub
+		this.yieldExpression = yield;
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+		handler.fire(activeWorm, (int) this.yieldExpression.getValue().value());
 	}
 
 	

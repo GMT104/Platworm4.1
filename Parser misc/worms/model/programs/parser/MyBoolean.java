@@ -8,7 +8,9 @@ public class MyBoolean extends MyObject {
 		value = b;
 	}
 	
-	public boolean getValue() {
+	@Override
+	public Object value() {
+		//TODO moet boolean returnen
 		return value;
 	}
 
