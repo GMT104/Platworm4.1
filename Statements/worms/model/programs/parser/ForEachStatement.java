@@ -9,6 +9,11 @@ import worms.model.programs.ProgramFactory.ForeachType;
 	// Ik heb dit geschreven als voorbeeld zodat je begrijpt wat ik bedoel.
 public  class ForEachStatement extends Statement{	
 		private ForeachType type;
+		public ForEachStatement(
+				worms.model.programs.ProgramFactory.ForeachType type2,
+				String variableName, Statement body) {
+			// TODO Auto-generated constructor stub
+		}
 		public void execute() {
 			if (this.type == ForeachType.WORM)
 				for(Worm worm: getWorld().getAllWorms()){
