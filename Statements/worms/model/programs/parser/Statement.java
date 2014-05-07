@@ -15,38 +15,15 @@ public  abstract class Statement {
 	private final List<Statement> subStatements = new ArrayList<Statement>();
 	private World world;
 	public abstract void execute();
+	public List<Statement> getSubStatements() {
+		return subStatements;
+	}
+	public World getWorld() {
+		return world;
+	}
+	public void setWorld(World world) {
+		this.world = world;
+	}
 	
-	
-	//Ik dacht zo met anonymous classes te werken voor alle gevallen van statements, geen idee of dat werkt of wenselijk is
-	// Ik heb dit geschreven als voorbeeld zodat je begrijpt wat ik bedoel.
-	Statement forEachStatement = new Statement() {
-		private ForeachType type;
-		
-		public void execute() {
-			if (this.type == ForeachType.WORM)
-				for(Worm worm: world.getAllWorms()){
-					// assign worm to the given name 
-					for(Statement subStatement: subStatements){
-						subStatement.execute();
-					}
-				}
-			else if (this.type == ForeachType.FOOD)
-				for(Food food: world.getAllFood()){
-					// assign food to the given name
-					for(Statement subStatement: subStatements){
-						subStatement.execute();
-					}
-				}
-			else
-				for(GameObject gameObject: world.getGameObjects()){
-					// assign gameObject to the given name
-					for(Statement subStatement: subStatements){
-						subStatement.execute();
-					}
-				}
-			
-		}
-			
-		};
-
 }
+	

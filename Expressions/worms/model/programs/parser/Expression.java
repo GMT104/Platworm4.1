@@ -1,9 +1,6 @@
 package worms.model.programs.parser;
 
-public class Expression {
+public abstract class Expression {
 	
-	public Object getValue(){
-		return null;
-		//get Value of operation(subExpression) OR return value
-	}
+	public abstract MyObject getValue();
 }

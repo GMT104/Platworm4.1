@@ -11,89 +11,89 @@ public class ProgramFactoryImpl
 
   @Override
   public Expression createDoubleLiteral(int line, int column, double d) {
-    return null;
+    return new DoubleLiteralExpression(d);
   }
 
   @Override
   public Expression createBooleanLiteral(int line, int column, boolean b) {
-    return (null);
+    return new BooleanLiteralExpression(b);
   }
 
   @Override
   public Expression createAnd(int line, int column, Expression e1,
     Expression e2) {
-    return (null);
+    return new BooleanAndExpression(e1,e2);
   }
 
   @Override
   public Expression createOr(int line, int column, Expression e1,
     Expression e2) {
-    return (null);
+    return new BooleanOrExpression(e1,e2);
   }
 
   @Override
   public Expression createNot(int line, int column, Expression e) {
-    return (null);
+    return new BooleanNotExpression(e);
   }
 
   @Override
   public Expression createNull(int line, int column) {
-    return (null);
+    return new NullExpression();
   }
 
   @Override
   public Expression createSelf(int line, int column) {
-    return (null);
+    return new SelfExpression();
   }
 
   @Override
   public Expression createGetX(int line, int column, Expression e) {
-    return (null);
+    return GetXExpression(e);
   }
 
   @Override
   public Expression createGetY(int line, int column, Expression e) {
-    return (null);
+    return new GetYExpression(e);
   }
 
   @Override
   public Expression createGetRadius(int line, int column, Expression e) {
-    return (null);
+    return new GetRadiusExpression(e);
   }
 
   @Override
   public Expression createGetDir(int line, int column, Expression e) {
-    return (null);
+    return new GetDirectionExpression(e);
   }
 
   @Override
   public Expression createGetAP(int line, int column, Expression e) {
-    return (null);
+    return new GetActionPointsExpression(e);
   }
 
   @Override
   public Expression createGetMaxAP(int line, int column, Expression e) {
-    return (null);
+    return new GetMaxActionPointsExpression(e);
   }
 
   @Override
   public Expression createGetHP(int line, int column, Expression e) {
-    return (null);
+    return new GetHitPointsExpression(e);
   }
 
   @Override
   public Expression createGetMaxHP(int line, int column, Expression e) {
-    return (null);
+    return new GetMaxHitPointsExpression(e);
   }
 
   @Override
   public Expression createSameTeam(int line, int column, Expression e) {
-    return (null);
+    return new GetSameTeamExpression(e);
   }
 
   @Override
   public Expression createSearchObj(int line, int column, Expression e) {
-    return (null);
+    return new SearchObjectExpression(e);
   }
 
   @Override
