@@ -48,7 +48,7 @@ public class ProgramFactoryImpl
 
   @Override
   public Expression createGetX(int line, int column, Expression e) {
-    return GetXExpression(e);
+    return new GetXExpression(e);
   }
 
   @Override
