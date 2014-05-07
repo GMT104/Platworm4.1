@@ -1,5 +1,8 @@
 package worms.model.programs.parser;
 
+import worms.gui.game.IActionHandler;
+import worms.model.Worm;
+
 public class IfStatement extends Statement {
 
 	public IfStatement(Expression condition, Statement then, Statement otherwise) {
@@ -7,9 +10,11 @@ public class IfStatement extends Statement {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(Worm activeWorm, IActionHandler handler) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+
 
 }

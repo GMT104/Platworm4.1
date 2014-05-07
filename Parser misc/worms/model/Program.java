@@ -2,6 +2,7 @@ package worms.model;
 
 import java.util.Map;
 
+import worms.gui.game.IActionHandler;
 import worms.model.programs.parser.Statement;
 
 public class Program {
@@ -12,14 +13,14 @@ public class Program {
 	private Map globals;
 	private Statement mainStatement;
 
-	public Program(Map globals, Object statement) {
+	public Program(IActionHandler handler, Map globals, Object statement) {
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 	}
 	
 	
 	public void run(){
-		mainStatement.execute();
+		mainStatement.execute(null);
 	}
 	
 }

@@ -1,5 +1,6 @@
 package worms.model.programs.parser;
 
+import worms.gui.game.IActionHandler;
 import worms.model.Food;
 import worms.model.GameObject;
 import worms.model.Worm;
@@ -14,26 +15,26 @@ public  class ForEachStatement extends Statement{
 				String variableName, Statement body) {
 			// TODO Auto-generated constructor stub
 		}
-		public void execute() {
+		public void execute(Worm activeWorm,IActionHandler handler) {
 			if (this.type == ForeachType.WORM)
 				for(Worm worm: getWorld().getAllWorms()){
 					//TODO assign worm to the given name 
 					for(Statement subStatement: getSubStatements()){
-						subStatement.execute();
+						subStatement.execute(worm, handler);
 					}
 				}
 			else if (this.type == ForeachType.FOOD)
 				for(Food food: getWorld().getAllFood()){
 					//TODO assign food to the given name
 					for(Statement subStatement: getSubStatements()){
-						subStatement.execute();
+						subStatement.execute(activeWorm, handler);
 					}
 				}
 			else
 				for(GameObject gameObject: getWorld().getGameObjects()){
 					//TODO assign gameObject to the given name
 					for(Statement subStatement: getSubStatements()){
-						subStatement.execute();
+						subStatement.execute(activeWorm, handler);
 					}
 				}
 			

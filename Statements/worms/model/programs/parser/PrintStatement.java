@@ -1,5 +1,8 @@
 package worms.model.programs.parser;
 
+import worms.gui.game.IActionHandler;
+import worms.model.Worm;
+
 public class PrintStatement extends Statement {
 
 	public PrintStatement(Expression e) {
@@ -7,9 +10,9 @@ public class PrintStatement extends Statement {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(Worm activeWorm, IActionHandler handler) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
