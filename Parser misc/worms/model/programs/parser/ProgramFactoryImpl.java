@@ -246,12 +246,12 @@ public class ProgramFactoryImpl
 
   @Override
   public Type createBooleanType() {
-    return new MyBooleanType;
+    return new MyBooleanType();
   }
 
   @Override
   public Type createEntityType() {
-    return new EntityType;
+    return new EntityType();
   }
 }
 
