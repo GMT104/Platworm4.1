@@ -98,19 +98,19 @@ public class ProgramFactoryImpl
 
   @Override
   public Expression createIsWorm(int line, int column, Expression e) {
-    return (null);
+    return IsWormExpression(e);
   }
 
   @Override
   public Expression createIsFood(int line, int column, Expression e) {
-    return (null);
+    return IsFoodExpression(e);
   }
 
 //  public E IsTerrain(int line, int column, E e);
 
   @Override
   public Expression createVariableAccess(int line, int column, String name) {
-    return (null);
+    return ;
   }
 
   @Override
