@@ -98,159 +98,160 @@ public class ProgramFactoryImpl
 
   @Override
   public Expression createIsWorm(int line, int column, Expression e) {
-    return IsWormExpression(e);
+    return new IsWormExpression(e);
   }
 
   @Override
   public Expression createIsFood(int line, int column, Expression e) {
-    return IsFoodExpression(e);
+    return new IsFoodExpression(e);
   }
 
 //  public E IsTerrain(int line, int column, E e);
 
   @Override
   public Expression createVariableAccess(int line, int column, String name) {
-    return ;
+    return new VariableExpression(name);
   }
 
   @Override
   public Expression createLessThan(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleLessThanExpression(e1,e2);
   }
 
   @Override
   public Expression createGreaterThan(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleGreaterThanExpression(e1,e2);
   }
 
   @Override
   public Expression createLessThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleLessThanOrEqualToExpression(e1,e2);
   }
 
   @Override
   public Expression createGreaterThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleGreaterThanOrEqualToExpression(e1,e2);
   }
 
   @Override
   public Expression createEquality(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return  new EqualityExpression(e1,e2);
   }
 
   @Override
   public Expression createInequality(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new InequalityExpression(e1,e2);
   }
 
   @Override
   public Expression createAdd(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleAdditionExpression(e1,e2);
   }
 
   @Override
   public Expression createSubtraction(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleSubtractionExpression(e1,e2);
   }
 
   @Override
   public Expression createMul(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleMultiplyExpression(e1,e2);
+    		
   }
 
   @Override
   public Expression createDivision(int line, int column, Expression e1, Expression e2) {
-    return (null);
+    return new DoubleDivisionExpression(e1,e2);
   }
 
   @Override
   public Expression createSqrt(int line, int column, Expression e) {
-    return (null);
+    return new DoubleSqrtExpression(e);
   }
 
   @Override
   public Expression createSin(int line, int column, Expression e) {
-    return (null);
+    return new DoubleSinusExpression(e);
   }
 
   @Override
   public Expression createCos(int line, int column, Expression e) {
-    return (null);
+    return new DoubleCosinusExpression(e);
   }
 
   @Override
   public Statement createTurn(int line, int column, Expression angle) {
-    return (null);
+    return new TurnStatement(angle);
   }
 
   @Override
   public Statement createMove(int line, int column) {
-    return (null);
+    return new MoveStatement();
   }
 
   @Override
   public Statement createJump(int line, int column) {
-    return (null);
+    return new JumpStatement();
   }
 
   @Override
   public Statement createToggleWeap(int line, int column) {
-    return (null);
+    return new ToggleWeaponStatement();
   }
 
   @Override
   public Statement createFire(int line, int column, Expression yield) {
-    return (null);
+    return new FireStatement(yield);
   }
 
   @Override
   public Statement createAssignment(int line, int column, String variable, Expression rhs) {
-    return (null);
+    return new AssignStatement(variable,rhs);
   }
 
   @Override
   public Statement createIf(int line, int column, Expression condition, Statement then, Statement otherwise) {
-    return (null);
+    return new IfStatement(condition,then,otherwise);
   }
 
   @Override
   public Statement createWhile(int line, int column, Expression condition, Statement body) {
-    return (null);
+    return new WhileStatement(condition,body);
   }
 
   @Override
   public Statement createForeach(int line, int column, ForeachType type, String variableName, Statement body) {
-    return (null);
+    return new ForEachStatement(type,variableName,body);
   }
 
   @Override
   public Statement createSkip(int line, int column) {
-    return (null);
+    return new SkipStatement();
   }
 
   @Override
   public Statement createSequence(int line, int column, List<Statement> statements) {
-    return (null);
+    return SequenceOfStatements(statements);
   }
 
   @Override
   public Statement createPrint(int line, int column, Expression e) {
-    return (null);
+    return PrintStatement(e);
   }
 
   @Override
   public Type createDoubleType() {
-    return (null);
+    return MyDoubleType();
   }
 
   @Override
   public Type createBooleanType() {
-    return (null);
+    return MyBooleanType;
   }
 
   @Override
   public Type createEntityType() {
-    return (null);
+    return EntityType;
   }
 }
 
