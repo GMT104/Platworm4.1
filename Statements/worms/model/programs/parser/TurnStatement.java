@@ -5,14 +5,15 @@ import worms.model.Worm;
 
 public class TurnStatement extends Statement {
 
+	private Expression angle;
+	
 	public TurnStatement(Expression angle) {
-		// TODO Auto-generated constructor stub
+		this.angle = angle;
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+		handler.turn(activeWorm, (double) angle.getValue().value());
 	}
 
 

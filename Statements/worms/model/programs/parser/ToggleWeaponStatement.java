@@ -7,8 +7,7 @@ public class ToggleWeaponStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+		handler.toggleWeapon(activeWorm);
 	}
 
 }
