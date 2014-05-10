@@ -7,15 +7,17 @@ import worms.model.Worm;
 
 public class SequenceOfStatements extends Statement {
 
+	private List<Statement> sequenceOfStatements;
+	
 	public SequenceOfStatements(List<Statement> statements) {
-		// TODO Auto-generated constructor stub
+		this.sequenceOfStatements = statements;
 
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+		this.sequenceOfStatements.get(0).execute(activeWorm, handler);
+		this.sequenceOfStatements.get(1).execute(activeWorm, handler);
 	}
 
 }

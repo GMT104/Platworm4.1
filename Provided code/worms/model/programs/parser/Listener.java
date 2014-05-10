@@ -35,8 +35,8 @@ public class Listener {
 			line = reader.readLine();
 		}
 
-		ProgramFactoryImpl factory = new ProgramFactoryImpl();
-		ProgramParser<Expression, Statement, Type> parser = new ProgramParser<Expression, Statement, Type>(
+		DummyProgramFactoryImpl factory = new DummyProgramFactoryImpl();
+		ProgramParser<DummyExpression, DummyStatement, DummyType> parser = new ProgramParser<DummyExpression, DummyStatement, DummyType>(
 				factory);
 		parser.parse(builder.toString());
 		

@@ -5,14 +5,15 @@ import worms.model.Worm;
 
 public class PrintStatement extends Statement {
 
+	private Expression expression;
+	
 	public PrintStatement(Expression e) {
-		// TODO Auto-generated constructor stub
+		this.expression = e;
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+			System.out.println(expression.getValue().value());
 	}
 
 }
