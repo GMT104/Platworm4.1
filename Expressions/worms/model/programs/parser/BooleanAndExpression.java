@@ -2,14 +2,18 @@ package worms.model.programs.parser;
 
 public class BooleanAndExpression extends Expression {
 
+	
+	private Expression leftExpression;
+	private Expression rightExpression;
+	
 	public BooleanAndExpression(Expression e1, Expression e2) {
-		// TODO Auto-generated constructor stub
+		this.leftExpression = e1;
+		this.rightExpression = e2;
 	}
 
 	@Override
-	public MyObject getValue() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean getValue() {
+		return this.leftExpression.getValue() && this.rightExpression.getValue();
 	}
 
 }
