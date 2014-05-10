@@ -1,15 +1,14 @@
 package worms.model.programs.parser;
 
-public class BooleanNotExpression extends Expression {
+public class BooleanNotExpression extends UnaryExpression {
 
 	public BooleanNotExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override
-	public MyObject getValue() {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getValue() {
+		return (! (Boolean)getExpression().getValue());
 	}
 
 }

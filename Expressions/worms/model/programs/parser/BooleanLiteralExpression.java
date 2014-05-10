@@ -2,14 +2,14 @@ package worms.model.programs.parser;
 
 public class BooleanLiteralExpression extends Expression {
 
-	private MyBoolean value;
+	private Boolean value;
 	
 	public BooleanLiteralExpression(boolean b) {
-		value = new MyBoolean(b);
+		value = b;
 	}
 	
 	@Override
-	public MyObject getValue() {
+	public Boolean getValue() {
 		return value;
 	}
 

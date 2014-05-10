@@ -1,15 +1,14 @@
 package worms.model.programs.parser;
 
-public class DoubleCosinusExpression extends Expression {
+public class DoubleCosinusExpression extends UnaryExpression {
 
 	public DoubleCosinusExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override
-	public MyObject getValue() {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue() {
+		return Math.cos((Double) getExpression().getValue());
 	}
 
 }
