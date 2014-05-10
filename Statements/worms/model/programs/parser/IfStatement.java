@@ -18,7 +18,7 @@ public class IfStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		if ((boolean) this.condition.getValue().value())
+		if ((boolean) this.condition.getValue())
 			this.then.execute(activeWorm, handler);
 		else
 			this.otherwise.execute(activeWorm, handler);

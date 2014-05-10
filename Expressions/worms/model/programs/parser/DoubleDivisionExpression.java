@@ -1,15 +1,14 @@
 package worms.model.programs.parser;
 
-public class DoubleDivisionExpression extends Expression {
+public class DoubleDivisionExpression extends BinaryExpression {
 
 	public DoubleDivisionExpression(Expression e1, Expression e2) {
-		// TODO Auto-generated constructor stub
+		super(e1,e2);
 	}
 
 	@Override
-	public MyObject getValue() {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue() {
+		return ((Double) getLeftExpression().getValue())/((Double) getRightExpression().getValue());
 	}
 
 }

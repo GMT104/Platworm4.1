@@ -2,14 +2,9 @@ package worms.model.programs.parser;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import worms.gui.game.IActionHandler;
-import worms.model.Food;
-import worms.model.GameObject;
 import worms.model.World;
 import worms.model.Worm;
-import worms.model.programs.ProgramFactory.ForeachType;
 
 public  abstract class Statement {
 

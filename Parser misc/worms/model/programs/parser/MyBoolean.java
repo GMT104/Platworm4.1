@@ -9,7 +9,7 @@ public class MyBoolean extends MyObject {
 	}
 	
 	@Override
-	public boolean value() {
+	public Boolean value() {
 		return value;
 	}
 

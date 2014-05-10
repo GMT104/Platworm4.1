@@ -1,7 +1,5 @@
 package worms.model.programs.parser;
 
-import java.util.concurrent.locks.Condition;
-
 import worms.gui.game.IActionHandler;
 import worms.model.Worm;
 
@@ -17,7 +15,7 @@ public class WhileStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		while ((boolean) condition.getValue().value()){
+		while ((boolean) condition.getValue()){
 			this.bodyStatement.execute(activeWorm,handler);
 		}
 	}

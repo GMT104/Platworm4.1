@@ -253,5 +253,12 @@ public class ProgramFactoryImpl
   public Type createEntityType() {
     return new EntityType();
   }
+
+@Override
+public Expression createVariableAccess(int line, int column, String name,
+		Type type) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
 

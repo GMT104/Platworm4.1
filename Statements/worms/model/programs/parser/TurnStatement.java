@@ -13,7 +13,7 @@ public class TurnStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		handler.turn(activeWorm, (double) angle.getValue().value());
+		handler.turn(activeWorm, (double) angle.getValue());
 	}
 
 
