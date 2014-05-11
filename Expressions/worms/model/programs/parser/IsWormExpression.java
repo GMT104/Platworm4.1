@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class IsWormExpression extends Expression {
+public class IsWormExpression extends UnaryExpression {
 
 	public IsWormExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

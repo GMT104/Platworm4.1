@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetMaxHitPointsExpression extends Expression {
+public class GetMaxHitPointsExpression extends UnaryExpression {
 
 	public GetMaxHitPointsExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

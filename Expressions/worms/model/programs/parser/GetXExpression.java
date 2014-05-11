@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetXExpression extends Expression {
+public class GetXExpression extends UnaryExpression {
 
 	public GetXExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

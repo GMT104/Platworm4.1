@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class IsFoodExpression extends Expression {
+public class IsFoodExpression extends UnaryExpression {
 
 	public IsFoodExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

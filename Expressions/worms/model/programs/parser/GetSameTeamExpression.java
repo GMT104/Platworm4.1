@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetSameTeamExpression extends Expression {
+public class GetSameTeamExpression extends UnaryExpression {
 
 	public GetSameTeamExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

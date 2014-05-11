@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetDirectionExpression extends Expression {
+public class GetDirectionExpression extends UnaryExpression {
 
 	public GetDirectionExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

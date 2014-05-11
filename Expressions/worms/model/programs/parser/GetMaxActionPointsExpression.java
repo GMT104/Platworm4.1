@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetMaxActionPointsExpression extends Expression {
+public class GetMaxActionPointsExpression extends UnaryExpression {
 
 	public GetMaxActionPointsExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

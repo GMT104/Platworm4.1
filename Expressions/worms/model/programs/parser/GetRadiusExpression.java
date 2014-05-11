@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class GetRadiusExpression extends Expression {
+public class GetRadiusExpression extends UnaryExpression {
 
 	public GetRadiusExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

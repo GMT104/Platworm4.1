@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class DoubleSinusExpression extends Expression {
+public class DoubleSinusExpression extends UnaryExpression {
 
 	public DoubleSinusExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override

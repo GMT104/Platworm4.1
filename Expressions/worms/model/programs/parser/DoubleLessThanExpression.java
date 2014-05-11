@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class DoubleLessThanExpression extends Expression {
+public class DoubleLessThanExpression extends BinaryExpression {
 
 	public DoubleLessThanExpression(Expression e1, Expression e2) {
-		// TODO Auto-generated constructor stub
+		super(e1,e2);
 	}
 
 	@Override

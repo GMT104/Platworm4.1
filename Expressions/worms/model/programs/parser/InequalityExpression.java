@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class InequalityExpression extends Expression {
+public class InequalityExpression extends BinaryExpression {
 
 	public InequalityExpression(Expression e1, Expression e2) {
-		// TODO Auto-generated constructor stub
+		super(e1,e2);
 	}
 
 	@Override

@@ -1,9 +1,9 @@
 package worms.model.programs.parser;
 
-public class SearchObjectExpression extends Expression {
+public class SearchObjectExpression extends UnaryExpression {
 
 	public SearchObjectExpression(Expression e) {
-		// TODO Auto-generated constructor stub
+		super(e);
 	}
 
 	@Override
