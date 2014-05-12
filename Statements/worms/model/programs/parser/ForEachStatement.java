@@ -22,17 +22,17 @@ public  class ForEachStatement extends Statement{
 		
 		public void execute(Worm activeWorm,IActionHandler handler) {
 			if (this.type == ForeachType.WORM)
-				for(Worm worm: getWorld().getAllWorms()){
+				for(Worm worm: activeWorm.getWorld().getAllWorms()){
 					activeWorm.getProgram().changeVariable(variableName, worm);
 					body.execute(activeWorm, handler);
 				}
 			else if (this.type == ForeachType.FOOD)
-				for(Food food: getWorld().getAllFood()){
+				for(Food food: activeWorm.getWorld().getAllFood()){
 					activeWorm.getProgram().changeVariable(variableName, food);
 					body.execute(activeWorm, handler);
 				}
 			else
-				for(GameObject gameObject: getWorld().getGameObjects()){
+				for(GameObject gameObject: activeWorm.getWorld().getGameObjects()){
 					activeWorm.getProgram().changeVariable(variableName, gameObject);
 					body.execute(activeWorm, handler);
 				}

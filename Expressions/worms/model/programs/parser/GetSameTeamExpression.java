@@ -10,7 +10,7 @@ public class GetSameTeamExpression extends UnaryExpression {
 
 	@Override
 	public Boolean getValue(Worm activeWorm) {
-		return ((Worm) this.getExpression().getValue(activeWorm)).getTeam().equals(activeWorm.getTeam());
+		return ((Worm) this.getExpression().getValue(activeWorm)).getTeam()==(activeWorm.getTeam());
 	}
 
 }

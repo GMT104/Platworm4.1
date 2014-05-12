@@ -16,8 +16,9 @@ public class SequenceOfStatements extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		this.sequenceOfStatements.get(0).execute(activeWorm, handler);
-		this.sequenceOfStatements.get(1).execute(activeWorm, handler);
+		for(Statement subStatement: this.sequenceOfStatements){
+			subStatement.execute(activeWorm, handler);
+		}
 	}
 
 }

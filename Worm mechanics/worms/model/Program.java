@@ -21,8 +21,13 @@ public class Program {
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
-		for (String global: this.globals.keySet()) {
-			this.variables.put(global, null);
+		for (String variableName: this.globals.keySet()) {
+			if (globals.get(variableName) instanceof MyDoubleType)
+				this.variables.put(variableName, 0.0);
+			else if (globals.get(variableName) instanceof MyBooleanType)
+				this.variables.put(variableName, false);
+			else
+				this.variables.put(variableName, null);
 		}
 	}
 	

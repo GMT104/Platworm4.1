@@ -94,7 +94,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected World getWorld(){
+	//TODO
+	public World getWorld(){
 		return this.world;
 	}
 	

@@ -411,11 +411,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public void jump(Worm worm, double timeStep) {
-		try {
 			worm.jump(timeStep);
-		} catch (NullPointerException exc) {
-			throw new ModelException("Null is invalid object!");
-		}
 	}
 
 	@Override
@@ -467,11 +463,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public void startGame(World world) {
-		try {
-			world.startGame();
-		} catch (NullPointerException exc) {
-			throw new ModelException("Null is invalid object!");
-		}
+		world.startGame();
 	}
 
 	@Override

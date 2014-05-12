@@ -444,7 +444,7 @@ public class World implements Cloneable {
 	 * 			| result == 0.02*radius
 	 */
 	protected double getStep(double radius) {
-		return 0.02*radius;
+		return 0.05*radius;
 	}
 	
 	
@@ -941,8 +941,15 @@ public class World implements Cloneable {
 	 */
 	protected void startGame(){
 		this.status = true;
-		//if (getActiveWorm().hasProgram())
-		//	getActiveWorm().getProgram().run();
+		tryRunProgramOfActiveWorm();
+	}
+
+
+
+	//TODO
+	private void tryRunProgramOfActiveWorm() {
+		if (getActiveWorm().hasProgram())
+			getActiveWorm().getProgram().run();
 	}
 	
 	
@@ -1188,8 +1195,10 @@ public class World implements Cloneable {
 	 */
 	@Raw
 	private void setIndexOfActiveWorm(int indexToBeSet) {
+		int previousIndex = getIndexOfActiveWorm();
 		this.indexOfActiveWorm = indexToBeSet;
-		
+		if (getIndexOfActiveWorm() != previousIndex)
+			tryRunProgramOfActiveWorm();
 	}
 	
 	
