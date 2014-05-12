@@ -426,7 +426,8 @@ public class World implements Cloneable {
 	 * 			|result == !((x-radius) < 0 || (x+radius) > this.getWidth() 
 	 * 			|		|| (y-radius) < 0 || (y + radius) > this.getHeight())
 	 */
-	protected boolean isInWorld(double x, double y, double radius) {
+	//TODO
+	public boolean isInWorld(double x, double y, double radius) {
 		return !((x-radius) < 0 || (x+radius) > getWidth() || (y-radius) < 0 || (y + radius) > getHeight());
 	}
 
@@ -443,7 +444,8 @@ public class World implements Cloneable {
 	 * @return	The step size
 	 * 			| result == 0.02*radius
 	 */
-	protected double getStep(double radius) {
+	//TODO
+	public double getStep(double radius) {
 		return 0.05*radius;
 	}
 	

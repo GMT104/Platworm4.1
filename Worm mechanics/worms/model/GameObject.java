@@ -381,7 +381,8 @@ public abstract class GameObject implements Cloneable {
 	 * 			| result == overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 	 *			|			gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius())
 	 */
-	protected boolean overlapsGameObject(GameObject gameObject) {
+	//TODO
+	public boolean overlapsGameObject(GameObject gameObject) {
 		return overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 						gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius());
 	}
@@ -407,7 +408,8 @@ public abstract class GameObject implements Cloneable {
 	 * 			distance between the two centres.
 	 * 			| result == ((radius1 + radius2) > SquareRoot((x2 - x1)² + (y2 - y1)²))
 	 */
-	protected static boolean overlaps(double x1, double y1, double radius1, double x2, double y2, double radius2) {
+	//TODO
+	public static boolean overlaps(double x1, double y1, double radius1, double x2, double y2, double radius2) {
 		double distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 		return (distance < radius1 + radius2);
 	}
