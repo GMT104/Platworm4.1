@@ -1,9 +1,9 @@
 package worms.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import worms.gui.game.IActionHandler;
-import worms.model.programs.parser.Statement;
 import worms.model.programs.parser.*;
 
 public class Program {
@@ -12,7 +12,7 @@ public class Program {
 	//het programma in het midden verder uit te voeren
 	
 	private Map<String, Type> globals;
-	private Map<String, Object> variables;
+	private Map<String, Object> variables = new HashMap<String, Object>();
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;
