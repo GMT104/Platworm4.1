@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class BooleanLiteralExpression extends Expression {
 
 	private Boolean value;
@@ -9,7 +11,7 @@ public class BooleanLiteralExpression extends Expression {
 	}
 	
 	@Override
-	public Boolean getValue() {
+	public Boolean getValue(Worm activeWorm) {
 		return value;
 	}
 

@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class BooleanNotExpression extends UnaryExpression {
 
 	public BooleanNotExpression(Expression e) {
@@ -7,8 +9,8 @@ public class BooleanNotExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Boolean getValue() {
-		return (! (Boolean)getExpression().getValue());
+	public Boolean getValue(Worm activeWorm) {
+		return (! (Boolean)getExpression().getValue(activeWorm));
 	}
 
 }

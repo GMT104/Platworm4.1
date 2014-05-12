@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class DoubleGreaterThanOrEqualToExpression extends BinaryExpression {
 
 	public DoubleGreaterThanOrEqualToExpression(Expression e1, Expression e2) {
@@ -7,7 +9,7 @@ public class DoubleGreaterThanOrEqualToExpression extends BinaryExpression {
 	}
 
 	@Override
-	public MyObject getValue() {
+	public MyObject getValue(Worm activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class BooleanOrExpression extends BinaryExpression {
 
 
@@ -9,8 +11,8 @@ public class BooleanOrExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Boolean getValue() {
-		return ((Boolean) getLeftExpression().getValue() || (Boolean) getRightExpression().getValue());
+	public Boolean getValue(Worm activeWorm) {
+		return ((Boolean) getLeftExpression().getValue(activeWorm) || (Boolean) getRightExpression().getValue(activeWorm));
 	}
 
 }

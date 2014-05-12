@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public abstract class BinaryExpression extends Expression {
 
 	
@@ -12,7 +14,7 @@ public abstract class BinaryExpression extends Expression {
 	}
 		
 	@Override
-	public abstract Object getValue();
+	public abstract Object getValue(Worm activeWorm);
 
 	public Expression getLeftExpression() {
 		return leftExpression;

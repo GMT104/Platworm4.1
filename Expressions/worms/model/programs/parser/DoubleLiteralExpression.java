@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class DoubleLiteralExpression extends Expression {
 
 	public DoubleLiteralExpression(double d) {
@@ -7,7 +9,7 @@ public class DoubleLiteralExpression extends Expression {
 	}
 
 	@Override
-	public MyObject getValue() {
+	public MyObject getValue(Worm activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

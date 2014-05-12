@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class DoubleMultiplyExpression extends BinaryExpression {
 
 	public DoubleMultiplyExpression(Expression e1, Expression e2) {
@@ -7,7 +9,7 @@ public class DoubleMultiplyExpression extends BinaryExpression {
 	}
 
 	@Override
-	public MyObject getValue() {
+	public MyObject getValue(Worm activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}
