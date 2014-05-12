@@ -505,13 +505,13 @@ public class Facade implements IFacade {
 
 	@Override
 	public boolean hasProgram(Worm worm) {
-		return worm.getProgram() != null;
+		return worm.hasProgram();
 	}
 
 	@Override
 	public boolean isWellFormed(Program program) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 

@@ -1,5 +1,6 @@
 package worms.model;
 
+import java.awt.Desktop.Action;
 import java.util.*;
 
 import be.kuleuven.cs.som.annotate.*;
@@ -393,7 +394,7 @@ public class World implements Cloneable {
 		double step = getStep(radius);
 		if (! isInWorld(x, y, radius))
 			return false;
-		for(double distance=0.999*radius; distance>0;distance = distance -step){
+		for(double distance=0.999999999*radius; distance>0;distance = distance -step){
 			for(double angle=0; angle<=2*Math.PI; angle= angle + step/distance){
 				if (!(isPassableLocation(x+Math.sin(angle)*distance,y+Math.cos(angle)*distance))){
 					return false;
@@ -940,6 +941,8 @@ public class World implements Cloneable {
 	 */
 	protected void startGame(){
 		this.status = true;
+		//if (getActiveWorm().hasProgram())
+		//	getActiveWorm().getProgram().run();
 	}
 	
 	

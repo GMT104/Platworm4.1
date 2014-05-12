@@ -1302,6 +1302,13 @@ public class Worm extends MovableObject{
 	public void setProgram(Program program) {
 		this.program = program;
 	}
+
+
+
+//TODO
+	public boolean hasProgram() {
+		return this.getProgram() != null;
+	}
 	
 }
 	
