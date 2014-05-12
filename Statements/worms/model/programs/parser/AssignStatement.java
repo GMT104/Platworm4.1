@@ -5,14 +5,17 @@ import worms.model.Worm;
 
 public class AssignStatement extends Statement {
 
+	private String variable;
+	private Expression rhs;
+	
 	public AssignStatement(String variable, Expression rhs) {
-		// TODO Auto-generated constructor stub
+		this.variable = variable;
+		this.rhs = rhs;
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+		activeWorm.getProgram().
 	}
 
 
