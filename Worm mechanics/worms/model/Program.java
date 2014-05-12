@@ -12,7 +12,7 @@ public class Program {
 	//het programma in het midden verder uit te voeren
 	
 	private Map<String, Type> globals;
-	private Map<String, Expression> variables;
+	private Map<String, Object> variables;
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;
@@ -26,6 +26,17 @@ public class Program {
 		}
 	}
 	
+	public void setWorm(Worm worm) {
+		this.activeWorm = worm;
+	}
+	
+	public void changeVariable(String key, Object variable) {
+		variables.put(key, variable);
+	}
+	
+	public Object getVariable(String key) {
+		return this.variables.get(key);
+	}
 	
 	public void run(){
 		mainStatement.execute(activeWorm, handler);
