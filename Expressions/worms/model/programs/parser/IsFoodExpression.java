@@ -1,5 +1,6 @@
 package worms.model.programs.parser;
 
+import worms.model.Food;
 import worms.model.Worm;
 
 public class IsFoodExpression extends UnaryExpression {
@@ -9,9 +10,8 @@ public class IsFoodExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getValue(Worm activeWorm) {
+		return this.getExpression().getValue(activeWorm) instanceof Food;
 	}
 
 }

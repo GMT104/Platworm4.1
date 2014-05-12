@@ -299,7 +299,8 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	protected int getActionPoints(){
+	//TODO public
+	public int getActionPoints(){
 		return this.actionPoints;
 	}
 	
@@ -308,7 +309,8 @@ public class Worm extends MovableObject{
 	 * Returns the maximum number of action points that this
 	 * worm can have.
 	 */
-	protected int getMaximumActionPoints(){
+	//TODO public
+	public int getMaximumActionPoints(){
 		return (int) (Math.round(this.getMass()));
 	}
 	
@@ -355,7 +357,8 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	protected int getHitPoints() {
+	//TODO public
+	public int getHitPoints() {
 		return this.hitPoints;
 	}
 	
@@ -394,7 +397,8 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the maximum number of hit points this worm can have.
 	 */
-	protected int getMaximumHitPoints() {
+	//TODO public
+	public int getMaximumHitPoints() {
 		return (int) Math.round(this.getMass());
 	}
 	
@@ -481,7 +485,8 @@ public class Worm extends MovableObject{
 	 * Returns the team of this worm.
 	 * If the worm has not joined a team, null is returned.
 	 */
-	protected Team getTeam() {
+	//TODO public
+	public Team getTeam() {
 		return this.team;
 	}
 	

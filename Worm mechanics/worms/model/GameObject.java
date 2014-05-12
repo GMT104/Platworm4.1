@@ -153,7 +153,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected double getCoordinateX(){
+	//TODO public
+	public double getCoordinateX(){
 		return this.coordinateX;
 	}
 	
@@ -163,7 +164,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected double getCoordinateY(){
+	//TODO public
+	public double getCoordinateY(){
 		return this.coordinateY;
 	}
 	
@@ -303,7 +305,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected double getRadius(){
+	//TODO public
+	public double getRadius(){
 		return this.radius;
 	}
 

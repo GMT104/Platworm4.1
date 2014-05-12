@@ -9,9 +9,8 @@ public class InequalityExpression extends BinaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getValue(Worm activeWorm) {
+		return ! this.getLeftExpression().getValue(activeWorm).equals(this.getRightExpression().getValue(activeWorm));
 	}
 
 }

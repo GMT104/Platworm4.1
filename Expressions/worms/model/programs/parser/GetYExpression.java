@@ -1,6 +1,7 @@
 package worms.model.programs.parser;
 
 import worms.model.Worm;
+import worms.model.GameObject;
 
 public class GetYExpression extends UnaryExpression {
 
@@ -9,9 +10,8 @@ public class GetYExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return ((GameObject) this.getExpression().getValue(activeWorm)).getCoordinateY();
 	}
 
 }
