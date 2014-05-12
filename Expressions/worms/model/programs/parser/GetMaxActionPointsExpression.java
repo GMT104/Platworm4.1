@@ -9,9 +9,8 @@ public class GetMaxActionPointsExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return (double) ((Worm) this.getExpression().getValue(activeWorm)).getMaximumActionPoints();
 	}
 
 }

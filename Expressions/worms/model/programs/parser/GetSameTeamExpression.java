@@ -9,9 +9,8 @@ public class GetSameTeamExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getValue(Worm activeWorm) {
+		return ((Worm) this.getExpression().getValue(activeWorm)).getTeam().equals(activeWorm.getTeam());
 	}
 
 }
