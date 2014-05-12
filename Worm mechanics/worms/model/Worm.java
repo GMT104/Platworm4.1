@@ -78,6 +78,7 @@ public class Worm extends MovableObject{
 	 * The number of the current weapon of this worm.
 	 */
 	private int currentWeaponNumber = 0;
+	private Program program;
 	
 	
 	
@@ -138,7 +139,7 @@ public class Worm extends MovableObject{
 	 */
 	@Raw
 	protected Worm(double coordinateX, double coordinateY, double direction, double radius, 
-			String name, boolean isActive, World world) 
+			String name, boolean isActive, World world,Program program) 
 			throws ModelException {
 		super(coordinateX, coordinateY, isActive, radius, world, direction);
 		if (this.getStatus()){
@@ -146,6 +147,8 @@ public class Worm extends MovableObject{
 			this.setHitPoints(this.getMaximumHitPoints());
 			this.setName(name);
 			this.setProjectile();
+			this.setProgram(program);
+			this.program.setWorm(this);
 		}
 	}	
 	
@@ -1278,6 +1281,20 @@ public class Worm extends MovableObject{
 			cloned.setTeam(this.getTeam().clone());
 		cloned.setProjectile();
 		return cloned;
+	}
+
+
+
+	//TODO
+	public Program getProgram() {
+		return program;
+	}
+
+
+
+	//TODO
+	public void setProgram(Program program) {
+		this.program = program;
 	}
 	
 }
