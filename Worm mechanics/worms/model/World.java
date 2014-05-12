@@ -389,7 +389,8 @@ public class World implements Cloneable {
 	 *			|	result == true
 	 */
 	protected boolean isPassableArea(double x, double y, double radius){
-		double step = 0.5*Math.min(getHeight()/(1.0*getHeightInPixels()), getWidth()/(1.0*getWidthInPixels()));
+		//double step = 0.5*Math.min(getHeight()/(1.0*getHeightInPixels()), getWidth()/(1.0*getWidthInPixels()));
+		double step = getStep(radius);
 		if (! isInWorld(x, y, radius))
 			return false;
 		for(double distance=0.999*radius; distance>0;distance = distance -step){
@@ -703,7 +704,10 @@ public class World implements Cloneable {
 	 * @return	The active worm.
 	 * 			|result == this.getAllWorms().get(getIndexOfActiveWorm())
 	 */
+	//TODO commentaar
 	protected Worm getActiveWorm(){
+		if (this.getAllWorms().isEmpty())
+			return null;
 		return this.getAllWorms().get(getIndexOfActiveWorm());
 	}
 	

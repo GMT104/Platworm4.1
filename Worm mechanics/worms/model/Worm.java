@@ -148,7 +148,8 @@ public class Worm extends MovableObject{
 			this.setName(name);
 			this.setProjectile();
 			this.setProgram(program);
-			this.program.setWorm(this);
+			if (program != null)
+					this.program.setWorm(this);
 		}
 	}	
 	
