@@ -245,7 +245,7 @@ public abstract class Projectile extends MovableObject {
 	 */
 	@Raw
 	@Override
-	protected double getRadius() {
+	public double getRadius() {
 		return getRadius(this.getMass());
 	}
 	

@@ -1012,14 +1012,15 @@ public class World implements Cloneable {
 	 * 			The game has already started.
 	 * 			| getStatus()
 	 */
-	protected void addWorm(){
+	//TODO
+	protected void addWorm(Program program){
 		if (getStatus())
 			throw new ModelException("Cannot place worms once game has started!");
 		double radius = 0.3;
 		try {
 		double[] position = getRandomAdjacentLocation(radius);
 		Worm worm = new Worm(position[0],position[1],random.nextDouble()*Math.PI*2.0,radius,
-							this.getRandomName(),true,this);
+							this.getRandomName(),true,this,program);
 		this.addAsGameObject(worm);
 		
 		int random = getRandom().nextInt(this.getNumberOfTeams()+1);

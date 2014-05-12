@@ -6,7 +6,7 @@ import java.util.Random;
 import worms.gui.game.IActionHandler;
 import worms.model.programs.ParseOutcome;
 import worms.model.programs.ProgramParser;
-import worms.model.programs.parser.ProgramFactoryImpl;
+import worms.model.programs.parser.*;
 
 public class Facade implements IFacade {
 
@@ -31,8 +31,7 @@ public class Facade implements IFacade {
 	@Override
 	public void addNewWorm(World world, Program program) {
 		try {
-			// TODO program
-			world.addWorm();
+			world.addWorm(program);
 		} catch (NullPointerException exc) {
 			throw new ModelException("Null is invalid object!");
 		}
@@ -83,8 +82,7 @@ public class Facade implements IFacade {
 	@Override
 	public Worm createWorm(World world, double x, double y, double direction,
 			double radius, String name, Program program) {
-		// TODO program
-		return new Worm(x, y, direction, radius, name, true, world);
+		return new Worm(x, y, direction, radius, name, true, world,program);
 	}
 
 	@Override
@@ -498,7 +496,7 @@ public class Facade implements IFacade {
 	//TODO commentaar
 	public ParseOutcome<?> parseProgram(String programText,
 			IActionHandler handler) {
-		ProgramParser parser = new ProgramParser(new ProgramFactoryImpl());
+		ProgramParser<Expression,Statement,Type> parser = new ProgramParser<>(new ProgramFactoryImpl());
 		parser.parse(programText);
 		if (parser.getErrors().size()!=0)
 			return ParseOutcome.failure(parser.getErrors());
@@ -507,8 +505,7 @@ public class Facade implements IFacade {
 
 	@Override
 	public boolean hasProgram(Worm worm) {
-		// TODO Auto-generated method stub
-		return false;
+		return worm.getProgram() != null;
 	}
 
 	@Override
