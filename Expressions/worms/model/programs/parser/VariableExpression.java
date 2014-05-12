@@ -4,14 +4,15 @@ import worms.model.Worm;
 
 public class VariableExpression extends Expression {
 
+	private String variableName;
+	
 	public VariableExpression(String name) {
-		// TODO Auto-generated constructor stub
+		this.variableName = name;
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object getValue(Worm activeWorm) {
+		return activeWorm.
 	}
 
 }
