@@ -7,7 +7,7 @@ public class VariableExpression extends Expression {
 	}
 
 	@Override
-	public MyObject getValue() {
+	public MyObject getValue(activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

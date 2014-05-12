@@ -7,7 +7,7 @@ public class SearchObjectExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue() {
+	public MyObject getValue(Worm activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

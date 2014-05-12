@@ -13,7 +13,7 @@ public abstract class UnaryExpression extends Expression {
 	
 	
 	@Override
-	public abstract Object getValue();
+	public abstract Object getValue(Worm activeWorm);
 
 
 
