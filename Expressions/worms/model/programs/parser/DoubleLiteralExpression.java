@@ -4,14 +4,15 @@ import worms.model.Worm;
 
 public class DoubleLiteralExpression extends Expression {
 
+	private double d;
+
 	public DoubleLiteralExpression(double d) {
-		// TODO Auto-generated constructor stub
+		this.d = d;
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return this.d;
 	}
 
 }

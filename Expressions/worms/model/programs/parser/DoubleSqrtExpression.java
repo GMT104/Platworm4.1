@@ -9,9 +9,8 @@ public class DoubleSqrtExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return Math.sqrt(((Double) getExpression().getValue(activeWorm)));
 	}
 
 }

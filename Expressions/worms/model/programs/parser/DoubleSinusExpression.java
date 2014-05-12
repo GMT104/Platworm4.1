@@ -9,9 +9,8 @@ public class DoubleSinusExpression extends UnaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return Math.sin((Double) getExpression().getValue(activeWorm));
 	}
 
 }

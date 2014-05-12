@@ -9,9 +9,8 @@ public class DoubleSubtractionExpression extends BinaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double getValue(Worm activeWorm) {
+		return ((Double) getLeftExpression().getValue(activeWorm))-((Double) getRightExpression().getValue(activeWorm));
 	}
 
 }

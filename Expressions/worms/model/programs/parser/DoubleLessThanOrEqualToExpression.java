@@ -9,9 +9,8 @@ public class DoubleLessThanOrEqualToExpression extends BinaryExpression {
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean getValue(Worm activeWorm) {
+		return ((Double) getLeftExpression().getValue(activeWorm))<=((Double) getRightExpression().getValue(activeWorm));
 	}
 
 }
