@@ -13,7 +13,7 @@ public class FireStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		handler.fire(activeWorm, (int) this.yieldExpression.getValue(activeWorm));
+		handler.fire(activeWorm, (int) ((double) this.yieldExpression.getValue(activeWorm)));
 	}
 
 	
