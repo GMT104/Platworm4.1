@@ -10,7 +10,7 @@ public class GetActionPointsExpression extends UnaryExpression {
 
 	@Override
 	public Double getValue(Worm activeWorm) {
-		return activeWorm.getActionPoints();
+		return (double) ((Worm) getExpression().getValue(activeWorm)).getActionPoints();
 	}
 
 }

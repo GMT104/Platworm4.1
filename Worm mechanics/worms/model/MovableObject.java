@@ -80,7 +80,7 @@ public abstract class MovableObject extends GameObject {
 	 */
 	@Basic
 	@Raw
-	protected double getDirection() {
+	public double getDirection() {
 		return this.direction;
 	}
 	
