@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class VariableExpression extends Expression {
 
 	public VariableExpression(String name) {
@@ -7,7 +9,7 @@ public class VariableExpression extends Expression {
 	}
 
 	@Override
-	public MyObject getValue(activeWorm) {
+	public MyObject getValue(Worm activeWorm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

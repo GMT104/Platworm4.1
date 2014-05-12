@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class GetMaxActionPointsExpression extends UnaryExpression {
 
 	public GetMaxActionPointsExpression(Expression e) {

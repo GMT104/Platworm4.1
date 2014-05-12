@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class DoubleSinusExpression extends UnaryExpression {
 
 	public DoubleSinusExpression(Expression e) {

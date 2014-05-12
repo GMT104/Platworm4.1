@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class GetYExpression extends UnaryExpression {
 
 	public GetYExpression(Expression e) {

@@ -1,5 +1,7 @@
 package worms.model.programs.parser;
 
+import worms.model.Worm;
+
 public class IsFoodExpression extends UnaryExpression {
 
 	public IsFoodExpression(Expression e) {
