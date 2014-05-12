@@ -232,7 +232,8 @@ public class Worm extends MovableObject{
 	@Basic
 	@Raw
 	@Immutable
-	protected static double getMinimumRadius() {
+	//TODO
+	public static double getMinimumRadius() {
 		return minimumRadius;
 	}
 	
