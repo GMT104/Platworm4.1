@@ -15,7 +15,7 @@ public class AssignStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		activeWorm.getProgram().
+		activeWorm.getProgram().changeVariable(variable, rhs.getValue(activeWorm));
 	}
 
 

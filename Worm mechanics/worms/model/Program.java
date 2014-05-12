@@ -30,6 +30,14 @@ public class Program {
 		this.activeWorm = worm;
 	}
 	
+	public void addVariable(String key, Object variable) {
+		this.variables.put(key, variable);
+	}
+	
+	public void removeVariable(String key) {
+		this.variables.remove(key);
+	}
+	
 	public void changeVariable(String key, Object variable) {
 		variables.put(key, variable);
 	}
