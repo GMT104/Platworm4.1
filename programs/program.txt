@@ -3,12 +3,13 @@ bool b := true;
 entity w;
 
 while(b) {
-  w := searchobj(0);
-  if (isworm(w)) {
+  w := searchobj(d);
+  if (isworm(w) && ! sameteam(w)) {
     fire 100;
+  } if (isfood(w)) {
+  	move;
   } else {
     turn d;
     d := d + 0.01;
   }
 }
-
