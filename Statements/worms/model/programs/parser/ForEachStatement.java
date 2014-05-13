@@ -7,7 +7,7 @@ import worms.model.Worm;
 import worms.model.programs.ProgramFactory.ForeachType;
 
 
-public  class ForEachStatement extends Statement{	
+public  class ForEachStatement extends StatementWithBody{	
 	
 		private ForeachType type;
 		private String variableName;
@@ -15,26 +15,26 @@ public  class ForEachStatement extends Statement{
 		
 		public ForEachStatement(ForeachType type,
 				String variableName, Statement body) {
+			super(body);
 			this.variableName = variableName;
 			this.type = type;
-			this.body = body;
 		}
 		
 		public void execute(Worm activeWorm,IActionHandler handler) {
 			if (this.type == ForeachType.WORM)
 				for(Worm worm: activeWorm.getWorld().getAllWorms()){
 					activeWorm.getProgram().changeVariable(variableName, worm);
-					body.execute(activeWorm, handler);
+					getBodyStatement().execute(activeWorm, handler);
 				}
 			else if (this.type == ForeachType.FOOD)
 				for(Food food: activeWorm.getWorld().getAllFood()){
 					activeWorm.getProgram().changeVariable(variableName, food);
-					body.execute(activeWorm, handler);
+					getBodyStatement().execute(activeWorm, handler);
 				}
 			else
 				for(GameObject gameObject: activeWorm.getWorld().getGameObjects()){
 					activeWorm.getProgram().changeVariable(variableName, gameObject);
-					body.execute(activeWorm, handler);
+					getBodyStatement().execute(activeWorm, handler);
 				}
 			activeWorm.getProgram().removeVariable(variableName);
 		}

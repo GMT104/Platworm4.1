@@ -2,6 +2,8 @@ package worms.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import worms.gui.game.IActionHandler;
 import worms.model.programs.parser.*;
@@ -52,7 +54,21 @@ public class Program {
 	}
 	
 	public void run(){
+		System.out.println("running now");
 		mainStatement.execute(activeWorm, handler);
+		this.activeWorm.getWorld().nextTurn();
+	}
+
+	public boolean isWellFormed() {
+		Set<Statement> set = this.mainStatement.getAllSubstatements();
+		for(Statement subStatement: set){
+			Set<Statement> subSet = subStatement.getAllSubstatements();
+			for(Statement subSubStatement: subSet){
+				if ((subStatement instanceof ForEachStatement) && (subSubStatement instanceof ActionStatement))
+					return false;
+			}
+		}
+		return true;
 	}
 	
 }

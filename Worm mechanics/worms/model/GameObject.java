@@ -84,6 +84,7 @@ public abstract class GameObject implements Cloneable {
 		this.setWorld(world);
 		this.setRadius(radius);
 		this.setCoordinates(coordinateX, coordinateY);
+		this.getWorld().addAsGameObject(this);
 	}
 	
 	

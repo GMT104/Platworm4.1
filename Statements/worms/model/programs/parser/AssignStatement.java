@@ -1,5 +1,9 @@
 package worms.model.programs.parser;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 import worms.gui.game.IActionHandler;
 import worms.model.Worm;
 
@@ -16,6 +20,13 @@ public class AssignStatement extends Statement {
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
 		activeWorm.getProgram().changeVariable(variable, rhs.getValue(activeWorm));
+	}
+
+	@Override
+	public Set<Statement> getAllSubstatements() {
+		Set<Statement> set = new HashSet<Statement>();
+		set.add(this);
+		return set;
 	}
 
 

@@ -1,5 +1,9 @@
 package worms.model.programs.parser;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 import worms.gui.game.IActionHandler;
 import worms.model.Worm;
 
@@ -22,6 +26,19 @@ public class IfStatement extends Statement {
 			this.then.execute(activeWorm, handler);
 		else
 			this.otherwise.execute(activeWorm, handler);
+	}
+
+	@Override
+	public Set<Statement> getAllSubstatements() {
+		Set<Statement> set = new HashSet<Statement>();
+		set.add(this);
+		for(Statement subStatement: then.getAllSubstatements()){
+			set.add(subStatement);
+		}
+		for(Statement subStatement: otherwise.getAllSubstatements()){
+			set.add(subStatement);
+		}
+		return set;
 	}
 
 

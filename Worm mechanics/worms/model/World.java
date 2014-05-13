@@ -1,6 +1,5 @@
 package worms.model;
 
-import java.awt.Desktop.Action;
 import java.util.*;
 
 import be.kuleuven.cs.som.annotate.*;
@@ -949,7 +948,7 @@ public class World implements Cloneable {
 
 
 	//TODO
-	private void tryRunProgramOfActiveWorm() {
+	public void tryRunProgramOfActiveWorm() {
 		if (getActiveWorm().hasProgram())
 			getActiveWorm().getProgram().run();
 	}
@@ -1037,8 +1036,6 @@ public class World implements Cloneable {
 		double[] position = getRandomAdjacentLocation(radius);
 		Worm worm = new Worm(position[0],position[1],random.nextDouble()*Math.PI*2.0,radius,
 							this.getRandomName(),true,this,program);
-		this.addAsGameObject(worm);
-		
 		int random = getRandom().nextInt(this.getNumberOfTeams()+1);
 		if (! (random == this.getNumberOfTeams()))
 			worm.joinTeam(this.getTeamAt(random));
@@ -1068,8 +1065,7 @@ public class World implements Cloneable {
 			throw new ModelException("Cannot place worms once game has started!");
 		try {
 		double[] position = getRandomAdjacentLocation(0.20);
-		Food food = new  Food(position[0],position[1],true,this);
-		this.addAsGameObject(food);
+		new  Food(position[0],position[1],true,this);
 		}
 		catch(ModelException modelException){
 		}

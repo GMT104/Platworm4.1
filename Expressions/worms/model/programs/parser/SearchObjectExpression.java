@@ -20,7 +20,6 @@ public class SearchObjectExpression extends UnaryExpression {
 		List<GameObject> objects = world.getGameObjects();
 		
 		objects.remove(activeWorm);
-		
 		while(world.isInWorld(x, y, step)) {
 			for(GameObject object: objects) { 
 				if (GameObject.overlaps(object.getCoordinateX(), object.getCoordinateY(), object.getRadius(), 
@@ -31,7 +30,6 @@ public class SearchObjectExpression extends UnaryExpression {
 			x = x + step*Math.cos(direction);
 			y = y + step*Math.sin(direction);
 		}
-		
 		return null;
 	}
 
