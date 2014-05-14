@@ -1,0 +1,40 @@
+package worms.model;
+
+import worms.gui.game.IActionHandler;
+import worms.model.programs.ProgramFactory.ForeachType;
+import worms.model.programs.parser.Statement;
+import worms.model.programs.parser.StatementWithBody;
+
+
+public  class ForEachStatement extends StatementWithBody{	
+	
+		private ForeachType type;
+		private String variableName;
+		
+		public ForEachStatement(ForeachType type,
+				String variableName, Statement body) {
+			super(body);
+			this.variableName = variableName;
+			this.type = type;
+		}
+		
+		public void execute(Worm activeWorm,IActionHandler handler) {
+			if (this.type == ForeachType.WORM)
+				for(Worm worm: activeWorm.getWorld().getAllWorms()){
+					activeWorm.getProgram().changeVariable(variableName, worm);
+					getBodyStatement().execute(activeWorm, handler);
+				}
+			else if (this.type == ForeachType.FOOD)
+				for(Food food: activeWorm.getWorld().getAllFood()){
+					activeWorm.getProgram().changeVariable(variableName, food);
+					getBodyStatement().execute(activeWorm, handler);
+				}
+			else
+				for(GameObject gameObject: activeWorm.getWorld().getGameObjectsClone()){
+					activeWorm.getProgram().changeVariable(variableName, gameObject);
+					getBodyStatement().execute(activeWorm, handler);
+				}
+			activeWorm.getProgram().removeVariable(variableName);
+		}
+
+}
