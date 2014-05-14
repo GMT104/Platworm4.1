@@ -1,8 +1,5 @@
 package worms.model.programs.parser;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 import worms.gui.game.IActionHandler;
 import worms.model.Worm;
 

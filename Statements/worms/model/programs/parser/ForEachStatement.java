@@ -11,7 +11,6 @@ public  class ForEachStatement extends StatementWithBody{
 	
 		private ForeachType type;
 		private String variableName;
-		private Statement body;
 		
 		public ForEachStatement(ForeachType type,
 				String variableName, Statement body) {
