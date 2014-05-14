@@ -31,7 +31,7 @@ public  class ForEachStatement extends StatementWithBody{
 					getBodyStatement().execute(activeWorm, handler);
 				}
 			else
-				for(GameObject gameObject: activeWorm.getWorld().getGameObjects()){
+				for(GameObject gameObject: activeWorm.getWorld().getGameObjectsClone()){
 					activeWorm.getProgram().changeVariable(variableName, gameObject);
 					getBodyStatement().execute(activeWorm, handler);
 				}

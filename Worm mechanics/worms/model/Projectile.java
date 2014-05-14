@@ -442,7 +442,7 @@ public abstract class Projectile extends MovableObject {
 	 * 
 	 * @effect	The new x and y coordinates are assigned to this projectile. The end position of the jump 
 	 * 			is calculated by getting the step at the last position of the jump.
-	 * 			| position = this.getJumpStep(this.getJumpRealTimeInAir(10^-5))
+	 * 			| position = this.getJumpStep(this.getJumpRealTimeInAir(10^-6))
 	 * 			| this.setCoordinates(position[0], position[1])
 	 * @effect	If a worm is hit, it will lose the amount of hit points specific to this projectile.
 	 * 			| if (this.getWorld().projectileOverlapsWorm(this))
@@ -458,7 +458,7 @@ public abstract class Projectile extends MovableObject {
 		if (! this.canJump()) 
 			throw new ModelException("Cannot jump!");
 
-		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -5)));
+		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -6)));
 		this.setCoordinates(position[0], position[1]);
 		
 		Worm target = this.getWorld().getWormThatOverlaps(this);

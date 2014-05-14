@@ -539,8 +539,20 @@ public class World implements Cloneable {
 	@Basic
 	@Raw
 	//TODO mag niet public zijn
-	public List<GameObject> getGameObjects(){
+	protected List<GameObject> getGameObjects(){
 		return this.gameObjects;
+	}
+	
+	
+	@Basic
+	@Raw
+	//TODO mag niet public zijn
+	public List<GameObject> getGameObjectsClone(){
+		List<GameObject> list = new ArrayList<>();
+		for(GameObject gameObject:getGameObjects()){
+			list.add(gameObject);
+		}
+		return list;
 	}
 	
 
@@ -948,7 +960,7 @@ public class World implements Cloneable {
 
 
 	//TODO
-	public void tryRunProgramOfActiveWorm() {
+	protected void tryRunProgramOfActiveWorm() {
 		if (getActiveWorm().hasProgram())
 			getActiveWorm().getProgram().run();
 	}

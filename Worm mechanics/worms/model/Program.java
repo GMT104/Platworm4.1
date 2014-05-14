@@ -26,18 +26,20 @@ public class Program {
 		initialiseVariables();
 	}
 	
-	public void setWorm(Worm worm) {
+	protected void setWorm(Worm worm) {
 		this.activeWorm = worm;
 	}
 	
-	public void addVariable(String key, Object variable) {
+	protected void addVariable(String key, Object variable) {
 		this.variables.put(key, variable);
 	}
 	
+	//TODO security
 	public void removeVariable(String key) {
 		this.variables.remove(key);
 	}
 	
+	//TODO security
 	public void changeVariable(String key, Object variable) {
 		variables.put(key, variable);
 	}
@@ -46,7 +48,7 @@ public class Program {
 		return this.variables.get(key);
 	}
 	
-	public void run(){
+	protected void run(){
 		try {	
 			mainStatement.run(activeWorm, handler);
 			initialiseVariables();

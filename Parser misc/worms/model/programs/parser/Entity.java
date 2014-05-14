@@ -1,4 +1,5 @@
 package worms.model.programs.parser;
 
-public class MyObject {
+public class Entity extends MyObject {
+
 }
