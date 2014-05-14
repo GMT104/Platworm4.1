@@ -458,7 +458,7 @@ public abstract class Projectile extends MovableObject {
 		if (! this.canJump()) 
 			throw new ModelException("Cannot jump!");
 
-		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -6)));
+		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -5)));
 		this.setCoordinates(position[0], position[1]);
 		
 		Worm target = this.getWorld().getWormThatOverlaps(this);
