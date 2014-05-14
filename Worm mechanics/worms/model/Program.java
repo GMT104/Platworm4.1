@@ -23,14 +23,7 @@ public class Program {
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
-		for (String variableName: this.globals.keySet()) {
-			if (globals.get(variableName) instanceof MyDoubleType)
-				this.variables.put(variableName, 0.0);
-			else if (globals.get(variableName) instanceof MyBooleanType)
-				this.variables.put(variableName, false);
-			else
-				this.variables.put(variableName, null);
-		}
+		initialiseVariables();
 	}
 	
 	public void setWorm(Worm worm) {
@@ -56,11 +49,23 @@ public class Program {
 	public void run(){
 		try {	
 			mainStatement.run(activeWorm, handler);
+			initialiseVariables();
 		} catch (InsufficientActionPointsException exc) {
 			// Worm can't perform the requested action because of a lack of action points.
 			// Move on to the next worm.
 		}
 		this.activeWorm.getWorld().nextTurn();
+	}
+
+	private void initialiseVariables() {
+		for (String variableName: this.globals.keySet()) {
+			if (globals.get(variableName) instanceof MyDoubleType)
+				this.variables.put(variableName, 0.0);
+			else if (globals.get(variableName) instanceof MyBooleanType)
+				this.variables.put(variableName, false);
+			else
+				this.variables.put(variableName, null);
+		}
 	}
 
 	public boolean isWellFormed() {
