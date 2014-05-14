@@ -1,4 +1,4 @@
-package worms.model.programs.parser;
+package worms.model;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package worms.model.programs.parser;
+package worms.model;
 
 public class MyDoubleType extends Type {
 

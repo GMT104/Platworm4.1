@@ -7,8 +7,6 @@ import worms.gui.game.IActionHandler;
 import worms.model.*;
 import worms.model.programs.ParseOutcome;
 import worms.model.programs.ProgramParser;
-import worms.model.programs.parser.ProgramFactoryImpl;
-import worms.model.programs.parser.Type;
 
 public class Facade implements IFacade {
 
