@@ -9,8 +9,9 @@ public class DoubleSubtractionExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return ((Double) getLeftExpression().getValue(activeWorm))-((Double) getRightExpression().getValue(activeWorm));
+	public MyDouble getValue(Worm activeWorm) {
+		return MyDoubleType.subtract((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 
 }

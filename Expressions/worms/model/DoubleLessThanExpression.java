@@ -9,8 +9,8 @@ public class DoubleLessThanExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
-		return ((double) getLeftExpression().getValue(activeWorm))<((double) getRightExpression().getValue(activeWorm));
+	public MyBoolean getValue(Worm activeWorm) {
+		return MyDoubleType.lessThan((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
-
 }

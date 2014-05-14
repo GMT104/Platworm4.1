@@ -9,8 +9,8 @@ public class DoubleCosinusExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return Math.cos((Double) getExpression().getValue(activeWorm));
+	public MyDouble getValue(Worm activeWorm) {
+		return MyDoubleType.cosine((MyDouble) this.getExpression().getValue(activeWorm));
 	}
 
 }

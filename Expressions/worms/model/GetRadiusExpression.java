@@ -9,8 +9,9 @@ public class GetRadiusExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return ((Worm) getExpression().getValue(activeWorm)).getRadius();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((GameObject) this.getExpression().getValue(activeWorm).getValue()).getRadius();
+		return new MyDouble(value);
 	}
 
 }

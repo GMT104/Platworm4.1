@@ -1,17 +1,17 @@
 package worms.model;
 
-import worms.model.Worm;
+import worms.model.*;
 
 public class BooleanLiteralExpression extends Expression {
 
-	private Boolean value;
+	private MyBoolean value;
 	
 	public BooleanLiteralExpression(boolean b) {
-		value = b;
+		value = new MyBoolean(b);
 	}
 	
 	@Override
-	public Boolean getValue(Worm activeWorm) {
+	public MyBoolean getValue(Worm activeWorm) {
 		return value;
 	}
 

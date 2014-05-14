@@ -4,5 +4,5 @@ import worms.model.Worm;
 
 public abstract class Expression {
 	
-	public abstract Object getValue(Worm activeWorm);
+	public abstract MyObject getValue(Worm activeWorm);
 }

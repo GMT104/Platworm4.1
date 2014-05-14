@@ -10,10 +10,13 @@ public class IsFoodExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
+	public MyBoolean getValue(Worm activeWorm) {
+		boolean value;
 		if (this.getExpression() == null)
-			return false;
-		return this.getExpression().getValue(activeWorm) instanceof Food;
+			value = false;
+		else
+			value = this.getExpression().getValue(activeWorm).getValue() instanceof Food;
+		return new MyBoolean(value);
 	}
 
 }

@@ -9,8 +9,9 @@ public class GetMaxHitPointsExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return (double) ((Worm) this.getExpression().getValue(activeWorm)).getMaximumHitPoints();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getMaximumHitPoints();
+		return new MyDouble(value);
 	}
 
 }

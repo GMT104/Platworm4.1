@@ -4,14 +4,14 @@ import worms.model.Worm;
 
 public class DoubleLiteralExpression extends Expression {
 
-	private double d;
+	private MyDouble d;
 
 	public DoubleLiteralExpression(double d) {
-		this.d = d;
+		this.d = new MyDouble(d);
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
+	public MyDouble getValue(Worm activeWorm) {
 		return this.d;
 	}
 

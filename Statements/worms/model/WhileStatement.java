@@ -15,7 +15,7 @@ public class WhileStatement extends StatementWithBody {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		while ((boolean) condition.getValue(activeWorm)){
+		while (((MyBoolean) condition.getValue(activeWorm).getValue()).getValue()){
 			getBodyStatement().execute(activeWorm,handler);
 		}
 	}

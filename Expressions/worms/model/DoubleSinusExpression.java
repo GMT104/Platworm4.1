@@ -9,8 +9,8 @@ public class DoubleSinusExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return Math.sin((Double) getExpression().getValue(activeWorm));
+	public MyDouble getValue(Worm activeWorm) {
+		return MyDoubleType.sine((MyDouble) this.getExpression().getValue(activeWorm));
 	}
 
 }

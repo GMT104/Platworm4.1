@@ -17,7 +17,8 @@ public class FireStatement extends ActionStatement {
 	public void execute(Worm activeWorm, IActionHandler handler) {
 		if (activeWorm.getProjectile().getCostActionPoints() > activeWorm.getActionPoints())
 			throw new InsufficientActionPointsException("cannot fire");
-		handler.fire(activeWorm, (int) ((double) this.yieldExpression.getValue(activeWorm)));
+		int yield = ((MyDouble) this.yieldExpression.getValue(activeWorm)).getValueAsInteger();
+		handler.fire(activeWorm, yield);
 	}
 	
 

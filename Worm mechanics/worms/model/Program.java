@@ -14,7 +14,7 @@ public class Program {
 	//het programma in het midden verder uit te voeren
 	
 	private Map<String, Type> globals;
-	private Map<String, Object> variables = new HashMap<String, Object>();
+	private Map<String, MyObject> variables = new HashMap<String, MyObject>();
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;
@@ -30,7 +30,7 @@ public class Program {
 		this.activeWorm = worm;
 	}
 	
-	protected void addVariable(String key, Object variable) {
+	protected void addVariable(String key, MyObject variable) {
 		this.variables.put(key, variable);
 	}
 	
@@ -40,11 +40,11 @@ public class Program {
 	}
 	
 	//TODO security
-	public void changeVariable(String key, Object variable) {
+	public void changeVariable(String key, MyObject variable) {
 		variables.put(key, variable);
 	}
 	
-	public Object getVariable(String key) {
+	public MyObject getVariable(String key) {
 		return this.variables.get(key);
 	}
 	
@@ -62,11 +62,11 @@ public class Program {
 	private void initialiseVariables() {
 		for (String variableName: this.globals.keySet()) {
 			if (globals.get(variableName) instanceof MyDoubleType)
-				this.variables.put(variableName, 0.0);
+				this.variables.put(variableName, new MyDouble(0.0));
 			else if (globals.get(variableName) instanceof MyBooleanType)
-				this.variables.put(variableName, false);
+				this.variables.put(variableName, new MyBoolean(false));
 			else
-				this.variables.put(variableName, null);
+				this.variables.put(variableName, new Entity(null));
 		}
 	}
 

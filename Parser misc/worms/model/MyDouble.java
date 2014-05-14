@@ -8,7 +8,7 @@ public class MyDouble extends MyObject {
 		this.value = value;
 	}
 	
-	public double getValue() {
+	public Double getValue() {
 		return value;
 	}
 

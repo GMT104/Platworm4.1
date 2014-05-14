@@ -9,8 +9,8 @@ public class DoubleSqrtExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return Math.sqrt(((Double) getExpression().getValue(activeWorm)));
+	public MyDouble getValue(Worm activeWorm) {
+		return MyDoubleType.squareRoot((MyDouble) this.getExpression().getValue(activeWorm));
 	}
 
 }

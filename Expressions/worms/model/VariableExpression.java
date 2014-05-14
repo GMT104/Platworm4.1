@@ -11,7 +11,7 @@ public class VariableExpression extends Expression {
 	}
 
 	@Override
-	public Object getValue(Worm activeWorm) {
+	public MyObject getValue(Worm activeWorm) {
 		return activeWorm.getProgram().getVariable(variableName);
 	}
 }

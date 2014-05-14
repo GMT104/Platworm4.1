@@ -12,10 +12,10 @@ public class SearchObjectExpression extends UnaryExpression {
 	}
 
 	@Override
-	public GameObject getValue(Worm activeWorm) {
+	public Entity getValue(Worm activeWorm) {
 
 		World world = activeWorm.getWorld();
-		double direction = activeWorm.getDirection()+ (double) this.getExpression().getValue(activeWorm);
+		double direction = activeWorm.getDirection()+ ((MyDouble) this.getExpression().getValue(activeWorm)).getValue();
 		double step = world.getStep(activeWorm.getRadius());
 		double x = activeWorm.getCoordinateX();
 		double y = activeWorm.getCoordinateY();
@@ -36,7 +36,7 @@ public class SearchObjectExpression extends UnaryExpression {
 			for(GameObject object: objects) { 
 				if (GameObject.overlaps(object.getCoordinateX(), object.getCoordinateY(), object.getRadius(), 
 						x, y, step)) {
-					return object;
+					return new Entity(object);
 				}
 			}
 			x = x + step*Math.cos(direction);

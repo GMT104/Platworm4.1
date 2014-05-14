@@ -11,8 +11,8 @@ public class BooleanOrExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
-		return ((Boolean) getLeftExpression().getValue(activeWorm) || (Boolean) getRightExpression().getValue(activeWorm));
+	public MyBoolean getValue(Worm activeWorm) {
+		return MyBooleanType.or((MyBoolean) getLeftExpression().getValue(activeWorm), 
+				(MyBoolean) getRightExpression().getValue(activeWorm));
 	}
-
 }

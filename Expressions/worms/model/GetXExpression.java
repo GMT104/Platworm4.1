@@ -10,8 +10,9 @@ public class GetXExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return ((GameObject) this.getExpression().getValue(activeWorm)).getCoordinateX();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((GameObject) this.getExpression().getValue(activeWorm).getValue()).getCoordinateX();
+		return new MyDouble(value);
 	}
 
 }

@@ -1,4 +1,6 @@
 package worms.model;
 
-public class MyObject {
+public abstract class MyObject {
+	
+	public abstract Object getValue();
 }

@@ -15,7 +15,7 @@ public abstract class UnaryExpression extends Expression {
 	
 	
 	@Override
-	public abstract Object getValue(Worm activeWorm);
+	public abstract MyObject getValue(Worm activeWorm);
 
 
 

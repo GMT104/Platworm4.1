@@ -9,8 +9,9 @@ public class GetMaxActionPointsExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return (double) ((Worm) this.getExpression().getValue(activeWorm)).getMaximumActionPoints();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getMaximumActionPoints();
+		return new MyDouble(value);
 	}
 
 }

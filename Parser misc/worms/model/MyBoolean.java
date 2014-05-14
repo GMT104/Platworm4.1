@@ -8,7 +8,7 @@ public class MyBoolean extends MyObject {
 		value = b;
 	}
 	
-	public boolean getValue() {
+	public Boolean getValue() {
 		return value;
 	}
 

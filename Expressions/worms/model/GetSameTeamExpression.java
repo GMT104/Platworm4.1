@@ -9,14 +9,16 @@ public class GetSameTeamExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
+	public MyBoolean getValue(Worm activeWorm) {
+		boolean value;
 		try{
-		return ((Worm) this.getExpression().getValue(activeWorm)).getTeam().equals((activeWorm.getTeam()));
+			value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getTeam() == activeWorm.getTeam();
 		}
 		catch (NullPointerException exc){
-			return false;
+			// If both teams are null, worms are not in the same team.
+			value = false;
 		}
-
+		return new MyBoolean(value);
 	}
 
 }

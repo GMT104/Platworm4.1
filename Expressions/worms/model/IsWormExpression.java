@@ -9,11 +9,13 @@ public class IsWormExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
-		if (this.getExpression() == null) {
-			System.out.println("Expression is null");
-			return false;}	
-		return this.getExpression().getValue(activeWorm) instanceof Worm;
+	public MyBoolean getValue(Worm activeWorm) {
+		boolean value;
+		if (this.getExpression() == null)
+			value = false;
+		else
+			value = this.getExpression().getValue(activeWorm).getValue() instanceof Worm;
+		return new MyBoolean(value);
 	}
 
 }

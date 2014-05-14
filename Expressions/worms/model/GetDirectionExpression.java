@@ -9,8 +9,9 @@ public class GetDirectionExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return ((Worm) getExpression().getValue(activeWorm)).getDirection();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((MovableObject) this.getExpression().getValue(activeWorm).getValue()).getDirection();
+		return new MyDouble(value);
 	}
 
 }

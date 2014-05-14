@@ -22,7 +22,7 @@ public class IfStatement extends Statement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		if ((boolean) this.condition.getValue(activeWorm))
+		if (((MyBoolean) this.condition.getValue(activeWorm).getValue()).getValue())
 			this.then.execute(activeWorm, handler);
 		else
 			this.otherwise.execute(activeWorm, handler);

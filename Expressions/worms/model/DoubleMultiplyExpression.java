@@ -9,8 +9,9 @@ public class DoubleMultiplyExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return ((Double) getLeftExpression().getValue(activeWorm))*((Double) getRightExpression().getValue(activeWorm));
+	public MyDouble getValue(Worm activeWorm) {
+		return MyDoubleType.multiply((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 
 }

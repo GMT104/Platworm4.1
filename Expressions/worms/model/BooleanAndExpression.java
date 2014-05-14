@@ -11,9 +11,9 @@ public class BooleanAndExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Boolean getValue(Worm activeWorm) {
-		return ((Boolean) getLeftExpression().getValue(activeWorm) 
-				&& (Boolean) getRightExpression().getValue(activeWorm));
+	public MyBoolean getValue(Worm activeWorm) {
+		return MyBooleanType.and((MyBoolean) getLeftExpression().getValue(activeWorm), 
+				(MyBoolean) getRightExpression().getValue(activeWorm));
 	}
 
 }

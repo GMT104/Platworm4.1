@@ -9,8 +9,9 @@ public class GetActionPointsExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Double getValue(Worm activeWorm) {
-		return (double) ((Worm) getExpression().getValue(activeWorm)).getActionPoints();
+	public MyDouble getValue(Worm activeWorm) {
+		double value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getActionPoints();
+		return new MyDouble(value);
 	}
 
 }

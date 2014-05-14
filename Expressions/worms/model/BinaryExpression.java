@@ -14,7 +14,7 @@ public abstract class BinaryExpression extends Expression {
 	}
 		
 	@Override
-	public abstract Object getValue(Worm activeWorm);
+	public abstract MyObject getValue(Worm activeWorm);
 
 	public Expression getLeftExpression() {
 		return leftExpression;

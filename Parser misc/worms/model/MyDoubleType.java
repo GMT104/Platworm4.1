@@ -7,7 +7,7 @@ public class MyDoubleType extends Type {
 		return new MyDouble(value);
 	}
 
-	public static MyDouble substract(MyDouble double1, MyDouble double2) {
+	public static MyDouble subtract(MyDouble double1, MyDouble double2) {
 		double value = double1.getValue() - double2.getValue();
 		return new MyDouble(value);
 	}
@@ -47,5 +47,20 @@ public class MyDoubleType extends Type {
 	
 	public static MyBoolean lessThanOrEqualTo(MyDouble double1, MyDouble double2) {
 		return MyBooleanType.or(MyDoubleType.lessThan(double1, double2),MyDoubleType.equalTo(double1, double2));
+	}
+	
+	public static MyDouble cosine(MyDouble doub) {
+		double value = Math.cos(doub.getValue());
+		return new MyDouble(value);
+	}
+	
+	public static MyDouble sine(MyDouble doub) {
+		double value = Math.sin(doub.getValue());
+		return new MyDouble(value);
+	}
+	
+	public static MyDouble squareRoot(MyDouble doub) {
+		double value = Math.sqrt(doub.getValue());
+		return new MyDouble(value);
 	}
 }
