@@ -6,7 +6,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import worms.gui.game.IActionHandler;
-import worms.model.programs.parser.*;
+import worms.model.*;
+import worms.model.programs.parser.MyBooleanType;
+import worms.model.programs.parser.MyDoubleType;
+import worms.model.programs.parser.Type;
 
 public class Program {
 	
