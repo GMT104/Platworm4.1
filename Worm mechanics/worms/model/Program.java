@@ -54,7 +54,12 @@ public class Program {
 	}
 	
 	public void run(){
-		mainStatement.run(activeWorm, handler);
+		try {	
+			mainStatement.run(activeWorm, handler);
+		} catch (InsufficientActionPointsException exc) {
+			// Worm can't perform the requested action because of a lack of action points.
+			// Move on to the next worm.
+		}
 		this.activeWorm.getWorld().nextTurn();
 	}
 
