@@ -16,4 +16,9 @@ public class MyDouble extends MyObject {
 		return (int) Math.round(value);
 	}
 	
+	@Override
+	public String toString() {
+		return getValue().toString();
+	}
+	
 }

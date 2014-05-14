@@ -11,13 +11,10 @@ public class GetSameTeamExpression extends UnaryExpression {
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
 		boolean value;
-		try{
-			value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getTeam() == activeWorm.getTeam();
-		}
-		catch (NullPointerException exc){
-			// If both teams are null, worms are not in the same team.
+		if ((activeWorm.getTeam() == null) || (((Worm) this.getExpression().getValue(activeWorm).getValue()).getTeam() == null))
 			value = false;
-		}
+		else 
+			value = (activeWorm.getTeam() == ((Worm) this.getExpression().getValue(activeWorm).getValue()).getTeam());
 		return new MyBoolean(value);
 	}
 

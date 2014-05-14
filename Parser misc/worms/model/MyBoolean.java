@@ -11,5 +11,10 @@ public class MyBoolean extends MyObject {
 	public Boolean getValue() {
 		return value;
 	}
+	
+	@Override
+	public String toString() {
+		return getValue().toString();
+	}
 
 }

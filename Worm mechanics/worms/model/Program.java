@@ -18,6 +18,7 @@ public class Program {
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;
+	private boolean runtimeError;
 
 	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) {
 		this.globals = globals;
@@ -28,6 +29,14 @@ public class Program {
 	
 	protected void setWorm(Worm worm) {
 		this.activeWorm = worm;
+	}
+	
+	protected boolean runtimeError() {
+		return this.runtimeError;
+	}
+	
+	private void setRuntimeError(boolean error) {
+		this.runtimeError = error;
 	}
 	
 	protected void addVariable(String key, MyObject variable) {
@@ -49,12 +58,17 @@ public class Program {
 	}
 	
 	protected void run(){
-		try {	
-			mainStatement.run(activeWorm, handler);
-			initialiseVariables();
-		} catch (InsufficientActionPointsException exc) {
-			// Worm can't perform the requested action because of a lack of action points.
-			// Move on to the next worm.
+		if (! runtimeError()) {
+			try {	
+				mainStatement.run(activeWorm, handler);
+				initialiseVariables();
+			} catch (Exception exc) {
+				if (exc instanceof InsufficientActionPointsException)
+					this.setRuntimeError(true);
+				// ELSE
+				// 	Worm can't perform the requested action because of a lack of action points.
+				// 	Move on to the next worm.
+			}
 		}
 		this.activeWorm.getWorld().nextTurn();
 	}

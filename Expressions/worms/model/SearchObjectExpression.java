@@ -42,7 +42,7 @@ public class SearchObjectExpression extends UnaryExpression {
 			x = x + step*Math.cos(direction);
 			y = y + step*Math.sin(direction);
 		}
-		return null;
+		return new Entity(null);
 	}
 
 }
