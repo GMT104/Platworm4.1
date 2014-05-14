@@ -29,6 +29,7 @@ public class SearchObjectExpression extends UnaryExpression {
 		}
 		
 		objects.remove(activeWorm);
+		System.out.println("Remaining bjects: "+objects);
 		
 		while(world.isInWorld(x, y, step)) {
 			for(GameObject object: objects) { 
