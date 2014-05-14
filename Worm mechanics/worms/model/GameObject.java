@@ -351,7 +351,7 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	protected boolean getStatus() {
+	public boolean getStatus() {
 		return this.isActive;
 	}
 	

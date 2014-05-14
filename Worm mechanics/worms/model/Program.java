@@ -54,7 +54,7 @@ public class Program {
 	}
 	
 	public void run(){
-		mainStatement.execute(activeWorm, handler);
+		mainStatement.run(activeWorm, handler);
 		this.activeWorm.getWorld().nextTurn();
 	}
 
