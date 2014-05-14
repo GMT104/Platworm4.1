@@ -14,6 +14,8 @@ public class TurnStatement extends ActionStatement {
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
+		if (! activeWorm.canTurn((double) angle.getValue(activeWorm)))
+			throw new InsufficientActionPointsException("cannot fire");
 		handler.turn(activeWorm, (double) angle.getValue(activeWorm));
 	}
 

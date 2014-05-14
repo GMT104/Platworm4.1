@@ -600,7 +600,7 @@ public class Worm extends MovableObject{
 	 * 			| 			(isValidDirection(this.getDirection()+angle)) && 
 	 * 			|			(usedActionPointsTurn(angle) < Integer.MAX_VALUE)
 	 */
-	protected boolean canTurn(double angle){
+	public boolean canTurn(double angle){
 		double usedActionPoints = usedActionPointsTurn(angle);
 		return (usedActionPoints <= this.getActionPoints()) 
 				&& (isValidDirection(this.getDirection()+angle)) && (usedActionPoints <= Integer.MAX_VALUE);
@@ -773,7 +773,7 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the current projectile of this worm.
 	 */
-	protected Projectile getProjectile(){
+	public Projectile getProjectile(){
 		return this.projectile;
 	}
 	
@@ -1067,7 +1067,7 @@ public class Worm extends MovableObject{
 	 *			|else
 	 *			| 	result == false
 	 */
-	protected boolean canMove(){
+	public boolean canMove(){
 		if (!getStatus())
 			return false;
 		for(double steps= 1.0; steps >= 0.1/(getRadius());steps = steps -0.1){

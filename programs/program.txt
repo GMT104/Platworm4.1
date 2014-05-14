@@ -4,7 +4,7 @@ entity w;
 
 while(b) {
   w := searchobj(0);
-  if (isworm(w)) {
+  if ((isworm(w)) && (! (sameteam(w)))) {
     fire 100;
   } else {
     turn d;

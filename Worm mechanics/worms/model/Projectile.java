@@ -329,7 +329,7 @@ public abstract class Projectile extends MovableObject {
 	 */
 	@Basic
 	@Raw
-	protected int getCostActionPoints() {
+	public int getCostActionPoints() {
 		return this.costActionPoints;
 	}
 
