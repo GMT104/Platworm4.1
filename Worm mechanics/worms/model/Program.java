@@ -63,7 +63,7 @@ public class Program {
 				mainStatement.run(activeWorm, handler);
 				initialiseVariables();
 			} catch (Exception exc) {
-				if (exc instanceof InsufficientActionPointsException)
+				if (!(exc instanceof InsufficientActionPointsException))
 					this.setRuntimeError(true);
 				// ELSE
 				// 	Worm can't perform the requested action because of a lack of action points.
