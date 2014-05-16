@@ -63,4 +63,11 @@ public class MyDoubleType extends Type {
 		double value = Math.sqrt(doub.getValue());
 		return new MyDouble(value);
 	}
+
+	@Override
+	public MyDouble createObjectWithDefaultValue() {
+		return new MyDouble(0.0);
+	}
+	
+	//TODO convert to int
 }

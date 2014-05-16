@@ -1,7 +1,5 @@
 package worms.model;
 
-import worms.model.*;
-
 public class BooleanLiteralExpression extends Expression {
 
 	private MyBoolean value;

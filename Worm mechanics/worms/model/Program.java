@@ -3,10 +3,7 @@ package worms.model;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
-
 import worms.gui.game.IActionHandler;
-import worms.model.*;
 
 public class Program {
 	
@@ -43,12 +40,10 @@ public class Program {
 		this.variables.put(key, variable);
 	}
 	
-	//TODO security
 	public void removeVariable(String key) {
 		this.variables.remove(key);
 	}
 	
-	//TODO security
 	public void changeVariable(String key, MyObject variable) {
 		variables.put(key, variable);
 	}
@@ -62,6 +57,8 @@ public class Program {
 			try {	
 				mainStatement.run(activeWorm, handler);
 				initialiseVariables();
+				restartStatements();
+				
 			} catch (Exception exc) {
 				if (!(exc instanceof InsufficientActionPointsException))
 					this.setRuntimeError(true);
@@ -73,14 +70,16 @@ public class Program {
 		this.activeWorm.getWorld().nextTurn();
 	}
 
+	private void restartStatements() {
+		Set<Statement> set = this.mainStatement.getAllSubstatements();
+		for(Statement subStatement: set){
+			subStatement.setHasBeenRunAlready(false);
+		}
+	}
+
 	private void initialiseVariables() {
 		for (String variableName: this.globals.keySet()) {
-			if (globals.get(variableName) instanceof MyDoubleType)
-				this.variables.put(variableName, new MyDouble(0.0));
-			else if (globals.get(variableName) instanceof MyBooleanType)
-				this.variables.put(variableName, new MyBoolean(false));
-			else
-				this.variables.put(variableName, new Entity(null));
+			addVariable(variableName, globals.get(variableName).createObjectWithDefaultValue());
 		}
 	}
 

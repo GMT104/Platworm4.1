@@ -1204,6 +1204,9 @@ public class World implements Cloneable {
 	 * 			new.getIndexOfActiveWorm() == indexToBeSet
 	 */
 	@Raw
+	//TODO Dit is volgens mij niet juist, als de actieve worm een worm dood
+	// zal de index van deze worm verminderen, maar dat betekent niet dat 
+	// tryrunProgram opnieuw uitgevoerd moet worden.
 	private void setIndexOfActiveWorm(int indexToBeSet) {
 		int previousIndex = getIndexOfActiveWorm();
 		this.indexOfActiveWorm = indexToBeSet;

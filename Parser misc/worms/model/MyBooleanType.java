@@ -16,4 +16,9 @@ public class MyBooleanType extends Type {
 		boolean bool = ! bool1.getValue();
 		return new MyBoolean(bool);
 	}
+
+	@Override
+	public MyBoolean createObjectWithDefaultValue() {
+		return new MyBoolean(false);
+	}
 }

@@ -1,5 +1,7 @@
 package worms.model;
 
-public class Type {
+public abstract class Type {
+
+	public abstract MyObject createObjectWithDefaultValue();
 
 }

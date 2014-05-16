@@ -3,8 +3,6 @@ package worms.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import worms.model.*;
-
 public class SearchObjectExpression extends UnaryExpression {
 	
 	public SearchObjectExpression(Expression e) {
