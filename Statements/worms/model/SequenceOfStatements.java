@@ -20,6 +20,7 @@ public class SequenceOfStatements extends Statement {
 		for(Statement subStatement: this.sequenceOfStatements){
 			subStatement.execute(activeWorm, handler);
 		}
+		this.setHasBeenRunAlready(true);
 	}
 
 	@Override

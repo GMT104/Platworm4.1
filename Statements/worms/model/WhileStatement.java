@@ -16,8 +16,12 @@ public class WhileStatement extends StatementWithBody {
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
 		while (((MyBoolean) condition.getValue(activeWorm)).getValue()) {
+			for(Statement subStatement:this.getAllSubstatements()){
+				subStatement.setHasBeenRunAlready(false);
+			}
 			getBodyStatement().execute(activeWorm,handler);
 		}
+		this.setHasBeenRunAlready(true);
 	}
 
 	

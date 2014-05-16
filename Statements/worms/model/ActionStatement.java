@@ -9,7 +9,13 @@ import worms.model.Worm;
 public abstract class ActionStatement extends Statement {
 
 	@Override
-	public abstract void execute(Worm activeWorm, IActionHandler handler);
+	public void execute(Worm activeWorm, IActionHandler handler){
+		this.act(activeWorm, handler);
+		this.setHasBeenRunAlready(true);
+		
+	}
+	
+	public abstract void act(Worm activeWorm, IActionHandler handler);
 
 	
 	@Override

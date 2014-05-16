@@ -8,7 +8,7 @@ import worms.model.Worm;
 public class ToggleWeaponStatement extends ActionStatement {
 
 	@Override
-	public void execute(Worm activeWorm, IActionHandler handler) {
+	public void act(Worm activeWorm, IActionHandler handler) {
 		handler.toggleWeapon(activeWorm);
 	}
 

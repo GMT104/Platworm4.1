@@ -36,6 +36,7 @@ public  class ForEachStatement extends StatementWithBody{
 					getBodyStatement().execute(activeWorm, handler);
 				}
 			activeWorm.getProgram().removeVariable(variableName);
+			this.setHasBeenRunAlready(true);
 		}
 
 }

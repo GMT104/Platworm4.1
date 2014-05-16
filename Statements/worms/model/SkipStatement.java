@@ -7,7 +7,7 @@ import worms.model.Worm;
 public class SkipStatement extends ActionStatement {
 
 	@Override
-	public void execute(Worm activeWorm, IActionHandler handler) {
+	public void act(Worm activeWorm, IActionHandler handler) {
 	}
 
 

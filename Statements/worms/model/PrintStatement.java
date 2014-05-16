@@ -18,6 +18,7 @@ public class PrintStatement extends Statement {
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
 			System.out.println(expression.getValue(activeWorm));
+			this.setHasBeenRunAlready(true);
 	}
 
 	@Override

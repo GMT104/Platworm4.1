@@ -26,6 +26,7 @@ public class IfStatement extends Statement {
 			this.then.execute(activeWorm, handler);
 		else
 			this.otherwise.execute(activeWorm, handler);
+		this.setHasBeenRunAlready(true);
 	}
 
 	@Override
