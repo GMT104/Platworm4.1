@@ -20,7 +20,7 @@ public class Program {
 	private boolean runtimeError;
 
 	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) throws ModelException {
-		if (! typeCheck(statement))
+		if (! typeCheck(statement, globals))
 			throw new ModelException("This program has a type checking error!");
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
@@ -99,7 +99,7 @@ public class Program {
 		return true;
 	}
 	
-	public boolean typeCheck(Object statement) {
+	public boolean typeCheck(Object statement, Map<String, Type> globals) {
 		if (!(statement instanceof Statement))
 			return false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
@@ -107,9 +107,9 @@ public class Program {
 			Set<Statement> subSet = ((Statement) subStatement).getAllSubstatements();
 			for(Statement subSubStatement: subSet) {
 				if (subSubStatement.hasExpressionAsInputToCheck()) {
-					if (! typeCheckExpression(subSubStatement.getInputExpression()))
+					if (! typeCheckExpression(subSubStatement.getInputExpression(), globals))
 						return false;
-					if (! typeCheckStatement(subSubStatement))
+					if (! typeCheckStatement(subSubStatement, globals))
 						return false;
 				}
 			}
@@ -117,21 +117,16 @@ public class Program {
 		return true;
 	}
 	
-	private boolean typeCheckStatement(Statement statement) {
-		System.out.println(statement.getInputExpression());
-		System.out.println("Return: "+(statement.getInputExpression().getReturnType()));
-		System.out.println(statement);
-		System.out.println("Input: "+statement.getInputType());
-		System.out.println((statement.getInputExpression().getReturnType() == statement.getInputType()));
-		return (statement.getInputExpression().getReturnType() == statement.getInputType());
+	private boolean typeCheckStatement(Statement statement, Map<String, Type> globals) {
+		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType());
 	}
 
-	private boolean typeCheckExpression(Expression expr) {
+	private boolean typeCheckExpression(Expression expr, Map<String, Type> globals) {
 		if (expr instanceof UnaryExpression)
-			return (((UnaryExpression) expr).getExpression().getReturnType() == ((UnaryExpression) expr).getInputType());
+			return (((UnaryExpression) expr).getExpression().getReturnType(globals) == ((UnaryExpression) expr).getInputType());
 		else if (expr instanceof BinaryExpression)
-			return ((BinaryExpression) expr).getLeftExpression().getReturnType() == expr.getInputType()
-						&& ((BinaryExpression) expr).getRightExpression().getReturnType() == expr.getInputType();
+			return ((BinaryExpression) expr).getLeftExpression().getReturnType(globals) == expr.getInputType()
+						&& ((BinaryExpression) expr).getRightExpression().getReturnType(globals) == expr.getInputType();
 		return true;
 	}
 	

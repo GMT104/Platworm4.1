@@ -1,5 +1,7 @@
 package worms.model;
 
+import java.util.Map;
+
 import worms.model.Worm;
 
 public class SelfExpression extends Expression {
@@ -15,7 +17,7 @@ public class SelfExpression extends Expression {
 	}
 
 	@Override
-	public Class<? extends Type> getReturnType() {
+	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
 		return EntityType.class;
 	}
 

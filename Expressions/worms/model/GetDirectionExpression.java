@@ -1,5 +1,7 @@
 package worms.model;
 
+import java.util.Map;
+
 import worms.model.Worm;
 
 public class GetDirectionExpression extends UnaryExpression {
@@ -20,7 +22,7 @@ public class GetDirectionExpression extends UnaryExpression {
 	}
 
 	@Override
-	public Class<? extends Type> getReturnType() {
+	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
 		return MyDoubleType.class;
 	}
 

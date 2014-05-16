@@ -1,5 +1,7 @@
 package worms.model;
 
+import java.util.Map;
+
 import worms.model.Worm;
 
 public class DoubleLessThanOrEqualToExpression extends BinaryExpression {
@@ -20,7 +22,7 @@ public class DoubleLessThanOrEqualToExpression extends BinaryExpression {
 	}
 
 	@Override
-	public Class<? extends Type> getReturnType() {
+	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
 		return MyBooleanType.class;
 	}
 
