@@ -20,6 +20,21 @@ public class FireStatement extends ActionStatement {
 		int yield = ((MyDouble) this.yieldExpression.getValue(activeWorm)).getValueAsInteger();
 		handler.fire(activeWorm, yield);
 	}
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return true;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return yieldExpression;
+	}
 	
 
 }

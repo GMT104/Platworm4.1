@@ -13,4 +13,13 @@ public class DoubleSinusExpression extends UnaryExpression {
 		return MyDoubleType.sine((MyDouble) this.getExpression().getValue(activeWorm));
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyDoubleType.class;
+	}
 }

@@ -22,5 +22,19 @@ public class TurnStatement extends ActionStatement {
 	}
 
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return true;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return angle;
+	}
 
 }

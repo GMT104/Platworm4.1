@@ -15,7 +15,8 @@ public class Tester {
 		double ne = Integer.MAX_VALUE+1;
 		int e = (int) ne;
 		System.out.println(e);
-//		
+		
+		
 //		
 //		World world = new World(2, 2, new boolean[][] {	{true, true, true, true},
 //																	{true, true, true, true},

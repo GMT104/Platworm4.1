@@ -13,4 +13,14 @@ public class BooleanNotExpression extends UnaryExpression {
 		return MyBooleanType.not((MyBoolean) this.getExpression().getValue(activeWorm));
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyBooleanType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyBooleanType.class;
+	}
+
 }

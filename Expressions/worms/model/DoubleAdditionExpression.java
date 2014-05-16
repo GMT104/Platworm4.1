@@ -3,7 +3,6 @@ package worms.model;
 import worms.model.Worm;
 
 public class DoubleAdditionExpression extends BinaryExpression {
-
 	
 	public DoubleAdditionExpression(Expression e1, Expression e2) {
 		super(e1, e2);
@@ -13,6 +12,16 @@ public class DoubleAdditionExpression extends BinaryExpression {
 	public MyDouble getValue(Worm activeWorm) {
 		return MyDoubleType.add((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
+	}
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyDoubleType.class;
 	}
 
 }

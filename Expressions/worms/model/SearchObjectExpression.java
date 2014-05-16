@@ -43,4 +43,15 @@ public class SearchObjectExpression extends UnaryExpression {
 		return new Entity(null);
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return EntityType.class;
+	}
+
+
 }

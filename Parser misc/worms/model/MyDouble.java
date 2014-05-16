@@ -13,7 +13,12 @@ public class MyDouble extends MyObject {
 	}
 
 	public int getValueAsInteger() {
-		return (int) Math.round(value);
+		if (Integer.MIN_VALUE < value && value < Integer.MAX_VALUE)
+			return (int) Math.round(value);
+		else if (value > Integer.MAX_VALUE)
+			return Integer.MAX_VALUE;
+		else
+			return Integer.MIN_VALUE;
 	}
 	
 	@Override

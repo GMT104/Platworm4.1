@@ -13,4 +13,14 @@ public class BooleanLiteralExpression extends Expression {
 		return value;
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyBooleanType.class;
+	}
+
 }

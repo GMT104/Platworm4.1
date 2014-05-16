@@ -24,7 +24,21 @@ public class WhileStatement extends StatementWithBody {
 		this.setHasBeenRunAlready(true);
 	}
 
-	
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyBooleanType.class;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return true;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return condition;
+	}
 
 
 }

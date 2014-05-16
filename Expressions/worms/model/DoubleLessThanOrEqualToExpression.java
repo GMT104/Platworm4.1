@@ -13,4 +13,15 @@ public class DoubleLessThanOrEqualToExpression extends BinaryExpression {
 		return MyDoubleType.lessThanOrEqualTo((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyBooleanType.class;
+	}
+
 }

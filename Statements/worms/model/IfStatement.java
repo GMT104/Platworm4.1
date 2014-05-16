@@ -42,6 +42,21 @@ public class IfStatement extends Statement {
 		return set;
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyBooleanType.class;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return true;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return condition;
+	}
+
 
 
 }

@@ -15,4 +15,14 @@ public class BooleanOrExpression extends BinaryExpression {
 		return MyBooleanType.or((MyBoolean) getLeftExpression().getValue(activeWorm), 
 				(MyBoolean) getRightExpression().getValue(activeWorm));
 	}
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyBooleanType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyBooleanType.class;
+	}
 }

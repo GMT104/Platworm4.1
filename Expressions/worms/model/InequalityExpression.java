@@ -13,4 +13,15 @@ public class InequalityExpression extends BinaryExpression {
 		return MyDoubleType.notEqualTo((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
+
+	@Override
+	public Class<? extends Type> getInputType() {
+		return MyDoubleType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyDoubleType.class;
+	}
+
 }

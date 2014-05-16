@@ -32,4 +32,5 @@ public abstract class BinaryExpression extends Expression {
 		this.rightExpression = rightExpression;
 	}
 
+
 }

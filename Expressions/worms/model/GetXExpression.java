@@ -15,4 +15,15 @@ public class GetXExpression extends UnaryExpression {
 		return new MyDouble(value);
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return EntityType.class;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyDoubleType.class;
+	}
+
+
 }

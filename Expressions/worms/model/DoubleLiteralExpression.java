@@ -15,4 +15,15 @@ public class DoubleLiteralExpression extends Expression {
 		return this.d;
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return MyDoubleType.class;
+	}
+
+
 }

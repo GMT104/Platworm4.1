@@ -1,8 +1,10 @@
 package worms.model;
 
+import java.lang.Character.Subset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
 import worms.gui.game.IActionHandler;
 
 public class Program {
@@ -17,7 +19,9 @@ public class Program {
 	private IActionHandler handler;
 	private boolean runtimeError;
 
-	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) {
+	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) throws ModelException {
+		if (! typeCheck(statement))
+			throw new ModelException("This program has a type checking error!");
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
@@ -92,6 +96,42 @@ public class Program {
 					return false;
 			}
 		}
+		return true;
+	}
+	
+	public boolean typeCheck(Object statement) {
+		if (!(statement instanceof Statement))
+			return false;
+		Set<Statement> set = ((Statement) statement).getAllSubstatements();
+		for(Statement subStatement: set){
+			Set<Statement> subSet = ((Statement) subStatement).getAllSubstatements();
+			for(Statement subSubStatement: subSet) {
+				if (subSubStatement.hasExpressionAsInputToCheck()) {
+					if (! typeCheckExpression(subSubStatement.getInputExpression()))
+						return false;
+					if (! typeCheckStatement(subSubStatement))
+						return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	private boolean typeCheckStatement(Statement statement) {
+		System.out.println(statement.getInputExpression());
+		System.out.println("Return: "+(statement.getInputExpression().getReturnType()));
+		System.out.println(statement);
+		System.out.println("Input: "+statement.getInputType());
+		System.out.println((statement.getInputExpression().getReturnType() == statement.getInputType()));
+		return (statement.getInputExpression().getReturnType() == statement.getInputType());
+	}
+
+	private boolean typeCheckExpression(Expression expr) {
+		if (expr instanceof UnaryExpression)
+			return (((UnaryExpression) expr).getExpression().getReturnType() == ((UnaryExpression) expr).getInputType());
+		else if (expr instanceof BinaryExpression)
+			return ((BinaryExpression) expr).getLeftExpression().getReturnType() == expr.getInputType()
+						&& ((BinaryExpression) expr).getRightExpression().getReturnType() == expr.getInputType();
 		return true;
 	}
 	

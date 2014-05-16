@@ -15,6 +15,20 @@ public class MoveStatement extends ActionStatement {
 	}
 
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return null;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return false;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return null;
+	}
 
 
 }

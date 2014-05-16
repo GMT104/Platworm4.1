@@ -39,4 +39,19 @@ public  class ForEachStatement extends StatementWithBody{
 			this.setHasBeenRunAlready(true);
 		}
 
+		@Override
+		public Class<? extends Type> getInputType() {
+			return null;
+		}
+
+		@Override
+		public boolean hasExpressionAsInputToCheck() {
+			return false;
+		}
+
+		@Override
+		public Expression getInputExpression() {
+			return null;
+		}
+
 }

@@ -30,6 +30,21 @@ public class AssignStatement extends Statement {
 		return set;
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return null;
+	}
+
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return false;
+	}
+
+	@Override
+	public Expression getInputExpression() {
+		return null;
+	}
+
 
 
 }

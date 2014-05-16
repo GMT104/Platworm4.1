@@ -9,4 +9,15 @@ public class NullExpression extends Expression {
 		return null;
 	}
 
+	@Override
+	public Class<? extends Type> getInputType() {
+		return null;
+	}
+
+	@Override
+	public Class<? extends Type> getReturnType() {
+		return EntityType.class;
+	}
+
+
 }
