@@ -19,7 +19,7 @@ public class SequenceOfStatements extends Statement {
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
 		for(Statement subStatement: this.sequenceOfStatements){
-			subStatement.execute(activeWorm, handler);
+			subStatement.run(activeWorm, handler);
 		}
 		this.setHasBeenRunAlready(true);
 	}

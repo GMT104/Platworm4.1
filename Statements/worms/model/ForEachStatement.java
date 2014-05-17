@@ -23,17 +23,17 @@ public  class ForEachStatement extends StatementWithBody{
 			if (this.type == ForeachType.WORM)
 				for(Worm worm: activeWorm.getWorld().getAllWorms()){
 					activeWorm.getProgram().changeVariable(variableName, new Entity(worm));
-					getBodyStatement().execute(activeWorm, handler);
+					getBodyStatement().run(activeWorm, handler);
 				}
 			else if (this.type == ForeachType.FOOD)
 				for(Food food: activeWorm.getWorld().getAllFood()){
 					activeWorm.getProgram().changeVariable(variableName, new Entity(food));
-					getBodyStatement().execute(activeWorm, handler);
+					getBodyStatement().run(activeWorm, handler);
 				}
 			else
 				for(GameObject gameObject: activeWorm.getWorld().getGameObjectsClone()){
 					activeWorm.getProgram().changeVariable(variableName, new Entity(gameObject));
-					getBodyStatement().execute(activeWorm, handler);
+					getBodyStatement().run(activeWorm, handler);
 				}
 			activeWorm.getProgram().removeVariable(variableName);
 			this.setHasBeenRunAlready(true);

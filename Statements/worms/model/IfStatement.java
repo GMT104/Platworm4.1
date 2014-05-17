@@ -23,9 +23,9 @@ public class IfStatement extends Statement {
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
 		if (((MyBoolean) condition.getValue(activeWorm)).getValue())
-			this.then.execute(activeWorm, handler);
+			this.then.run(activeWorm, handler);
 		else
-			this.otherwise.execute(activeWorm, handler);
+			this.otherwise.run(activeWorm, handler);
 		this.setHasBeenRunAlready(true);
 	}
 

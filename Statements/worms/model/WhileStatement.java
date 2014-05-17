@@ -19,7 +19,7 @@ public class WhileStatement extends StatementWithBody {
 			for(Statement subStatement:this.getAllSubstatements()){
 				subStatement.setHasBeenRunAlready(false);
 			}
-			getBodyStatement().execute(activeWorm,handler);
+			getBodyStatement().run(activeWorm,handler);
 		}
 		this.setHasBeenRunAlready(true);
 	}
