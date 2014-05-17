@@ -1,6 +1,7 @@
 package worms.model;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import worms.gui.game.IActionHandler;
@@ -31,18 +32,19 @@ public class AssignStatement extends Statement {
 	}
 
 	@Override
-	public Class<? extends Type> getInputType() {
-		return null;
+	public Class<? extends Type> getInputType(Map<String, Type> globals) {
+		System.out.println("      Variable of required type: "+globals.get(variable).getClass());
+		return globals.get(variable).getClass();
 	}
 
 	@Override
 	public boolean hasExpressionAsInputToCheck() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public Expression getInputExpression() {
-		return null;
+		return rhs;
 	}
 
 

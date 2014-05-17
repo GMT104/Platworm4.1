@@ -103,13 +103,13 @@ public class Program {
 		if (!(statement instanceof Statement))
 			return false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
-		for(Statement subStatement: set){
-				if (subStatement.hasExpressionAsInputToCheck()) {
-					if (! typeCheckExpression(subStatement.getInputExpression(), globals))
-						return false;
-					if (! typeCheckStatement(subStatement, globals))
-						return false;
-				}
+		for(Statement subStatement: set) {
+			if (subStatement.hasExpressionAsInputToCheck()) {
+				if (! typeCheckExpression(subStatement.getInputExpression(), globals))
+					return false;
+				if (! typeCheckStatement(subStatement, globals))
+					return false;
+			}
 		}
 		return true;
 	}
@@ -118,8 +118,8 @@ public class Program {
 		System.out.println("################################################");
 		System.out.println("Statement: "+statement);
 		System.out.println("Input expression: "+statement.getInputExpression());
-		System.out.println("Input type required: "+statement.getInputType());
-		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType());
+		System.out.println("Input type required: "+statement.getInputType(globals));
+		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType(globals));
 	}
 
 	private boolean typeCheckExpression(Expression expr, Map<String, Type> globals) {
