@@ -843,10 +843,10 @@ public class Worm extends MovableObject{
 	 * 			| new.getActionPoints() == this.getActionPoints() - this.getProjectile().getCostActionPoints() 
 	 */
 	protected void shoot(int yield) throws ModelException {
-		this.projectile.setYield(yield);
-		this.setActionPoints(this.getActionPoints()-this.projectile.getCostActionPoints());
 		this.getProjectile().terminate();
 		this.setProjectile();
+		this.projectile.setYield(yield);
+		this.setActionPoints(this.getActionPoints()-this.projectile.getCostActionPoints());
 	}
 	
 	
@@ -1074,6 +1074,8 @@ public class Worm extends MovableObject{
 	public boolean canMove(){
 		if (!getStatus())
 			return false;
+		if (getActionPoints()==0)
+			return false; // TODO commentaar
 		for(double steps= 1.0; steps >= 0.1/(getRadius());steps = steps -0.1){
 			for(double direction = getDirection()-0.7875; direction <= getDirection()+0.7875;direction = direction + 0.0175){
 				if (canMove(steps,direction))

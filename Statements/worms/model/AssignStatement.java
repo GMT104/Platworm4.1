@@ -33,7 +33,7 @@ public class AssignStatement extends Statement {
 
 	@Override
 	public Class<? extends Type> getInputType(Map<String, Type> globals) {
-		System.out.println("      Variable of required type: "+globals.get(variable).getClass());
+		//System.out.println("      Variable of required type: "+globals.get(variable).getClass());
 		return globals.get(variable).getClass();
 	}
 
