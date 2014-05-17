@@ -21,7 +21,7 @@ public  abstract class Statement {
 		this.hasBeenRunAlready = b;
 	}
 	
-	public abstract Class<? extends Type> getInputType();
+	public abstract Class<? extends Type> getInputType(Map<String, Type> globals);
 	
 	public abstract boolean hasExpressionAsInputToCheck();
 	

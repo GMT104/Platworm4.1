@@ -1,6 +1,8 @@
 package worms.model;
 
 
+import java.util.Map;
+
 import worms.gui.game.IActionHandler;
 import worms.model.Worm;
 
@@ -16,7 +18,7 @@ public class MoveStatement extends ActionStatement {
 
 
 	@Override
-	public Class<? extends Type> getInputType() {
+	public Class<? extends Type> getInputType(Map<String, Type> globals) {
 		return null;
 	}
 
