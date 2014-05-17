@@ -104,15 +104,12 @@ public class Program {
 			return false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
 		for(Statement subStatement: set){
-			Set<Statement> subSet = ((Statement) subStatement).getAllSubstatements();
-			for(Statement subSubStatement: subSet) {
-				if (subSubStatement.hasExpressionAsInputToCheck()) {
-					if (! typeCheckExpression(subSubStatement.getInputExpression(), globals))
+				if (subStatement.hasExpressionAsInputToCheck()) {
+					if (! typeCheckExpression(subStatement.getInputExpression(), globals))
 						return false;
-					if (! typeCheckStatement(subSubStatement, globals))
+					if (! typeCheckStatement(subStatement, globals))
 						return false;
 				}
-			}
 		}
 		return true;
 	}
