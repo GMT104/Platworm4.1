@@ -24,6 +24,7 @@ public class VariableExpression extends Expression {
 
 	@Override
 	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
+		System.out.println("      Variable of type: "+globals.get(variableName).getClass());
 		return globals.get(variableName).getClass();
 	}
 

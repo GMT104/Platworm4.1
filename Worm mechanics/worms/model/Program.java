@@ -118,16 +118,36 @@ public class Program {
 	}
 	
 	private boolean typeCheckStatement(Statement statement, Map<String, Type> globals) {
+		System.out.println("################################################");
+		System.out.println("Statement: "+statement);
+		System.out.println("Input expression: "+statement.getInputExpression());
+		System.out.println("Input type required: "+statement.getInputType());
 		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType());
 	}
 
 	private boolean typeCheckExpression(Expression expr, Map<String, Type> globals) {
-		if (expr instanceof UnaryExpression)
-			return (((UnaryExpression) expr).getExpression().getReturnType(globals) == ((UnaryExpression) expr).getInputType());
-		else if (expr instanceof BinaryExpression)
-			return ((BinaryExpression) expr).getLeftExpression().getReturnType(globals) == expr.getInputType()
+		boolean correct = true;
+		if (expr instanceof UnaryExpression) {
+			System.out.println("################################################");
+			System.out.println("Unary expression: "+expr);
+			System.out.println("Input expression: "+((UnaryExpression) expr).getExpression());
+			System.out.println("Input type required: "+expr.getInputType());
+			correct = (((UnaryExpression) expr).getExpression().getReturnType(globals) == (expr.getInputType()));
+			if (correct)
+				correct = typeCheckExpression(((UnaryExpression) expr).getExpression(), globals);
+		} else if (expr instanceof BinaryExpression) {
+			System.out.println("################################################");
+			System.out.println("Binary expression: "+expr);
+			System.out.println("Input left expression: "+((BinaryExpression) expr).getLeftExpression());
+			System.out.println("Input right expression: "+((BinaryExpression) expr).getRightExpression());
+			System.out.println("Input type required: "+expr.getInputType());
+			correct = ((BinaryExpression) expr).getLeftExpression().getReturnType(globals) == expr.getInputType()
 						&& ((BinaryExpression) expr).getRightExpression().getReturnType(globals) == expr.getInputType();
-		return true;
+			if (correct)
+				correct = typeCheckExpression(((BinaryExpression) expr).getLeftExpression(), globals)
+							&& typeCheckExpression(((BinaryExpression) expr).getRightExpression(), globals);
+		}	
+		return correct;
 	}
 	
 }
