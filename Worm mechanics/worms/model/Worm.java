@@ -843,10 +843,10 @@ public class Worm extends MovableObject{
 	 * 			| new.getActionPoints() == this.getActionPoints() - this.getProjectile().getCostActionPoints() 
 	 */
 	protected void shoot(int yield) throws ModelException {
-		this.projectile.setYield(yield);
-		this.setActionPoints(this.getActionPoints()-this.projectile.getCostActionPoints());
 		this.getProjectile().terminate();
 		this.setProjectile();
+		this.projectile.setYield(yield);
+		this.setActionPoints(this.getActionPoints()-this.projectile.getCostActionPoints());
 	}
 	
 	

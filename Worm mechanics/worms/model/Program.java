@@ -1,6 +1,5 @@
 package worms.model;
 
-import java.lang.Character.Subset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -100,6 +99,9 @@ public class Program {
 	}
 	
 	public boolean typeCheck(Object statement, Map<String, Type> globals) {
+		System.out.println("################################################");
+		System.out.println("##################Type Checking#################");
+		System.out.println("################################################");
 		if (!(statement instanceof Statement))
 			return false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
@@ -111,6 +113,10 @@ public class Program {
 					return false;
 			}
 		}
+		System.out.println("################################################");
+		System.out.println("########Type Checking Succesfully Ended#########");
+		System.out.println("################################################");
+		
 		return true;
 	}
 	
