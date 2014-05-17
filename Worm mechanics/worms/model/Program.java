@@ -105,6 +105,7 @@ public class Program {
 		if (!(statement instanceof Statement))
 			correct = false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
+		System.out.println(set.size());
 		set.remove(statement);
 		if (set.size() == 1) {
 			Statement subStatement = set.iterator().next();
