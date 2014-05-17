@@ -573,17 +573,17 @@ public class World implements Cloneable {
 	 * Returns all the worms in this world.
 	 * 
 	 * @return	Returns all the worms that are currently in this world as a list.
-	 * 			|for each gameObject in this.getGameObjects
+	 * 			|for each gameObject in this.getGameObjects()
 	 * 			| 	if gameObject instanceof Worm
 	 * 			|		result.contains(gameObject) 
 	 */
 	//TODO mag niet public zijn
-	public List<Worm> getAllWorms(){
+	public List<Worm> getAllWorms() {
 		List<Worm> worms = new ArrayList<Worm>();
 		List<GameObject> objects = getGameObjects();
-		for(int counter = 0; counter < (objects.size()); counter = counter +1){
-			if (objects.get(counter) instanceof Worm)
-				worms.add((Worm) objects.get(counter));
+		for(GameObject object: objects){
+			if (object instanceof Worm)
+				worms.add((Worm) object);
 		}
 		return worms;
 	}
@@ -593,7 +593,7 @@ public class World implements Cloneable {
 	 * Returns all the food in this world.
 	 * 
 	 * @return	Returns all the food that are currently in this world as a list.
-	 * 			|for each gameObject in this.getGameObjects
+	 * 			|for each gameObject in this.getGameObjects()
 	 * 			| if gameObject instanceof Food
 	 * 			|		result.contains(gameObject)
 	 */
@@ -601,9 +601,9 @@ public class World implements Cloneable {
 	public List<Food> getAllFood(){
 		List<Food> food = new ArrayList<Food>();
 		List<GameObject> objects = getGameObjects();
-		for(int counter = 0; counter < (objects.size()); counter = counter +1){
-			if (objects.get(counter) instanceof Food)
-				food.add((Food) objects.get(counter));
+		for(GameObject object: objects){
+			if (object instanceof Food)
+				food.add((Food) object);
 		}
 		return food;
 			
@@ -961,8 +961,12 @@ public class World implements Cloneable {
 
 	//TODO
 	protected void tryRunProgramOfActiveWorm() {
-		if (getActiveWorm().hasProgram())
-			getActiveWorm().getProgram().run();
+		try {
+			if (getActiveWorm().hasProgram())
+				getActiveWorm().getProgram().run();
+		} catch (NullPointerException exc) {
+			// Means that there is no active worm.
+		}
 	}
 	
 	

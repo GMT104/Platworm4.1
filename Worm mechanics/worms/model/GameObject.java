@@ -82,9 +82,9 @@ public abstract class GameObject implements Cloneable {
 			throws ModelException {
 		this.setStatus(isActive);
 		this.setWorld(world);
+		this.getWorld().addAsGameObject(this);
 		this.setRadius(radius);
 		this.setCoordinates(coordinateX, coordinateY);
-		this.getWorld().addAsGameObject(this);
 	}
 	
 	
