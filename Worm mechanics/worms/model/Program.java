@@ -2,7 +2,6 @@ package worms.model;
 
 import java.lang.Character.Subset;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -101,28 +100,21 @@ public class Program {
 	}
 	
 	public boolean typeCheck(Object statement, Map<String, Type> globals) {
-		boolean correct = true;
 		if (!(statement instanceof Statement))
-			correct = false;
+			return false;
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
-		set.remove(statement);
-		if (set.size() == 1) {
-			Statement subStatement = set.iterator().next();
-			if (subStatement.hasExpressionAsInputToCheck()) {
-				if (! typeCheckExpression(subStatement.getInputExpression(), globals))
-					correct = false;
-				if (! typeCheckStatement(subStatement, globals))
-					correct = false;
+		for(Statement subStatement: set){
+			Set<Statement> subSet = ((Statement) subStatement).getAllSubstatements();
+			for(Statement subSubStatement: subSet) {
+				if (subSubStatement.hasExpressionAsInputToCheck()) {
+					if (! typeCheckExpression(subSubStatement.getInputExpression(), globals))
+						return false;
+					if (! typeCheckStatement(subSubStatement, globals))
+						return false;
+				}
 			}
 		}
-		else if (set.size() > 1) {
-			Iterator<Statement> iter = set.iterator();
-			while (iter.hasNext() && correct) {
-				correct = typeCheck(iter.next(), globals);
-			}
-		}
-		
-		return correct;
+		return true;
 	}
 	
 	private boolean typeCheckStatement(Statement statement, Map<String, Type> globals) {
