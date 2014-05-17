@@ -157,5 +157,22 @@ public class ProgramTest {
 		assertEquals(oldOrientation + 3.0, newOrientation, EPS);
 	}
 	
+	@Test
+	public void testStoppedAfter1000Statements() {
+		IActionHandler handler = new SimpleActionHandler(facade);
+		World world = facade.createWorld(100.0, 100.0, new boolean[][] { {true}, {false} }, random);
+		ParseOutcome<?> outcome = facade.parseProgram("double x; while (x < 1.5) {\nx := x + (1.5/1000);\n}\n turn x;", handler);
+		assertTrue(outcome.isSuccess());
+		Program program = ((Success)outcome).getResult();
+		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
+		assertTrue(worm.getProgram().isWellFormed());
+		facade.addNewWorm(world, null); 
+		double oldOrientation = facade.getOrientation(worm);
+		facade.startGame(world); // this will run the program
+		world.nextTurn();
+		assertNotEquals(worm, facade.getCurrentWorm(world)); // turn must end after executing program
+		double newOrientation = facade.getOrientation(worm);
+		assertEquals(oldOrientation + 1.5, newOrientation, EPS);
 	
+	}
 }

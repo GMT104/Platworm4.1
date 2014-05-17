@@ -1,6 +1,5 @@
 package worms.model;
 
-import java.lang.Character.Subset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +17,7 @@ public class Program {
 	private Worm activeWorm;
 	private IActionHandler handler;
 	private boolean runtimeError;
+	private int counter;
 
 	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) throws ModelException {
 		if (! typeCheck(statement, globals))
@@ -59,12 +59,12 @@ public class Program {
 	protected void run(){
 		if (! runtimeError()) {
 			try {	
+				resetCounter();
 				mainStatement.run(activeWorm, handler);
 				initialiseVariables();
 				restartStatements();
-				
 			} catch (Exception exc) {
-				if (!(exc instanceof InsufficientActionPointsException))
+				if (!(exc instanceof InsufficientActionPointsException || exc instanceof MaximumAmountOfStatementsException))
 					this.setRuntimeError(true);
 				// ELSE
 				// 	Worm can't perform the requested action because of a lack of action points.
@@ -146,5 +146,16 @@ public class Program {
 		}	
 		return correct;
 	}
+
+	public void count() {
+		this.counter = this.counter +1;
+	}
 	
+	public void resetCounter(){
+		this.counter = 0;
+	}
+	
+	public int getCounter() {
+		return this.counter;
+	}
 }

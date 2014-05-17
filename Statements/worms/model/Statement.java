@@ -10,8 +10,12 @@ public  abstract class Statement {
 	private boolean hasBeenRunAlready;
 
 	public void run(Worm activeWorm,IActionHandler handler ){
-		if (activeWorm.getStatus() && !this.hasBeenRunAlready)
+		if (activeWorm.getProgram().getCounter() >= 1000)
+			throw new MaximumAmountOfStatementsException("reached 1000 statements");
+		if (activeWorm.getStatus() && !this.hasBeenRunAlready){
 			this.execute(activeWorm, handler);
+			activeWorm.getProgram().count();
+		}
 	}
 	public abstract void execute(Worm activeWorm,IActionHandler handler );
 	
