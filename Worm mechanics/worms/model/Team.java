@@ -36,7 +36,7 @@ public class Team implements Cloneable {
 	 * 			The name of the new team.
 	 * 
 	 * @post	The team's name is equal to the given name.
-	 * 			| this.getName() == name
+	 * 			| new.getName() == name
 	 * 
 	 * @throws 	ModelException
 	 * 			The exception is thrown if the given name is invalid.

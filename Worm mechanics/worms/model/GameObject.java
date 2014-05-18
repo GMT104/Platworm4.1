@@ -49,32 +49,36 @@ public abstract class GameObject implements Cloneable {
 	 * The constructor to make a new game object. 
 	 * 
 	 * @param 	coordinateX
-	 * 			The x coordinate for this new game object.
+	 * 			The x coordinate of this new game object.
 	 * @param 	coordinateY
-	 * 			The y coordinate for this new game object.
+	 * 			The y coordinate of this new game object.
 	 * @param	radius
-	 * 			The radius for this new game object.
+	 * 			The radius of this new game object.
 	 * @param 	isActive
-	 * 			The status for this new game object.
+	 * 			The status of this new game object.
 	 * @param 	world
-	 * 			The world for this new game object.
+	 * 			The world of this new game object.
 	 * 
 	 * @post	The new x coordinate of this game object will be equal to the given coordinateX.
 	 * 			| new.getCoordinateX() == coordinateX
 	 * @post	The new y coordinate of this game object will be equal to the given coordinateY.
 	 * 			| new.getCoordinateY() == coordinateY
+	 * @post	The new radius of this game object will be equal to the given radius.
+	 * 			| new.getRadius() == radius
 	 * @post	The new status of this game object will be equal to the given isActive.
 	 * 			| new.getStatus() == isActive
 	 * @post	The new world of this game object will be equal to the given world.
 	 * 			| new.getWorld() == world
+	 * @post	The world of this game object will contain this game object.
+	 * 			| new.getWorld().getGameObjects().contains(this)
 	 * 
 	 * @effect	If one of the given coordinates is not in this world, this game object is terminated.
 	 * 			| if (this.isXCoordinateOutOfBounds(coordinateX) || this.isYCoordinateOutOfBounds(coordinateY))
 	 * 			|		then this.terminate()
 	 * 
 	 * @throws	ModelException
-	 * 			The exception is thrown if one or more of the given parameters are illegal 
-	 * 			assignments for this game object.
+	 * 			The exception is thrown if at least one of the given parameters is an illegal 
+	 * 			assignment for this game object.
 	 * 			| (! isValidCoordinate(coordinateX)) || (! isValidCoordinate(coordinateY))
 	 * 			|		|| (! isValidRadius(radius))
 	 */
@@ -95,7 +99,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO
+	//TODO 	I think that this function may return the world self (not a clone)
+	// 		because that world should be able to make sure its invariants stay correct.
 	public World getWorld(){
 		return this.world;
 	}
@@ -155,7 +160,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO public
+	//TODO 	public
+	//		No problem that this function is public or is there?
 	public double getCoordinateX(){
 		return this.coordinateX;
 	}
@@ -166,7 +172,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO public
+	//TODO 	public
+	//		No problem that this function is public or is there?
 	public double getCoordinateY(){
 		return this.coordinateY;
 	}
@@ -182,7 +189,7 @@ public abstract class GameObject implements Cloneable {
 	 * 			| new.getCoordinateX() == coordinateX
 	 * 
 	 * @effect	If the new x coordinate is out of bounds, then this game object will be terminated.
-	 * 			| if isXCoordinateOutOfBounds(coordinateX)
+	 * 			| if (isXCoordinateOutOfBounds(coordinateX))
 	 * 			| 	then this.terminate()
 	 * 
 	 * @throws	ModelException 
@@ -228,7 +235,7 @@ public abstract class GameObject implements Cloneable {
 	 * 			| new.getCoordinateY() == coordinateY 
 	 * 
 	 * @effect	If the new y coordinate is out of bounds, then this game object will be terminated.
-	 * 			| if isYCoordinateOutOfBounds(coordinateY)
+	 * 			| if (isYCoordinateOutOfBounds(coordinateY))
 	 * 			| 	then this.terminate()
 	 * 
 	 * @throws	ModelException 
@@ -307,7 +314,8 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO public
+	//TODO 	public
+	//		No problem that this function is public or is there?
 	public double getRadius(){
 		return this.radius;
 	}
@@ -354,6 +362,7 @@ public abstract class GameObject implements Cloneable {
 	public boolean getStatus() {
 		return this.isActive;
 	}
+
 	
 	/**
 	 * Set the status of a game object to the given status.
@@ -382,7 +391,8 @@ public abstract class GameObject implements Cloneable {
 	 * 			| result == overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 	 *			|			gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius())
 	 */
-	//TODO
+	//TODO	public
+	//		No problem that this function is public or is there?
 	public boolean overlapsGameObject(GameObject gameObject) {
 		return overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 						gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius());
@@ -390,7 +400,7 @@ public abstract class GameObject implements Cloneable {
 	
 	
 	/**
-	 * Checks whether two given circles with given center and radius overlaps.
+	 * Checks whether two given circles with given centre and radius overlaps.
 	 * 
 	 * @param 	x1
 	 * 			The x coordinate of the centre of the first circle.
@@ -409,7 +419,8 @@ public abstract class GameObject implements Cloneable {
 	 * 			distance between the two centres.
 	 * 			| result == ((radius1 + radius2) > SquareRoot((x2 - x1)² + (y2 - y1)²))
 	 */
-	//TODO
+	//TODO	public
+	//		No problem that this function is public or is there?
 	public static boolean overlaps(double x1, double y1, double radius1, double x2, double y2, double radius2) {
 		double distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 		return (distance < radius1 + radius2);
