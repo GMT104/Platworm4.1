@@ -68,6 +68,7 @@ public class Program {
 					this.setRuntimeError(true);
 				// ELSE
 				// 	Worm can't perform the requested action because of a lack of action points.
+				//  Or the worm wanted to execute more than 1000 statements. 
 				// 	Move on to the next worm.
 			}
 		}

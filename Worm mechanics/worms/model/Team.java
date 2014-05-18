@@ -35,6 +35,9 @@ public class Team implements Cloneable {
 	 * @param 	name
 	 * 			The name of the new team.
 	 * 
+	 * @post	The team's name is equal to the given name.
+	 * 			| this.getName() == name
+	 * 
 	 * @throws 	ModelException
 	 * 			The exception is thrown if the given name is invalid.
 	 * 			| ! isValidName(name)
@@ -62,7 +65,7 @@ public class Team implements Cloneable {
 	 * 			| result == (name.length() >= 2) &&
 	 * 			| 			(Character.isUpperCase(name.charAt(0))) &&
 	 * 			|			(for each char in name:
-	 * 							Character.isLetter(char))
+	 * 			|				Character.isLetter(char))
 	 */
 	protected static boolean isValidName(String name) {
 		if (name.length() < 2)
@@ -94,7 +97,11 @@ public class Team implements Cloneable {
 	 * Returns all the worms that are in this team.
 	 */
 	protected List<Worm> getWorms() {
-		return this.worms;
+		List<Worm> wormsList = new ArrayList<>();
+		for (Worm worm: this.worms) {
+			wormsList.add(worm);
+		}
+		return wormsList;
 	}
 	
 	
@@ -102,11 +109,11 @@ public class Team implements Cloneable {
 	 * Returns all the worms in this team that are alive.
 	 * 
 	 * @return	Returns all the worms that are in this team and that are alive.
-	 * 			| livingWorms = {}
-	 * 			| for each worm in getWorms()
-	 * 			|		if worm.isAlive()
-	 * 			|			then livingWorms.add(worm)
-	 * 			| result == livingWorms
+	 * 			| for each worm in this.getWorms()
+	 * 			|	if worm.isAlive()
+	 * 			|		then result.contains(worm)
+	 * 			|	else
+	 * 			|		then ! result.contains(worm)
 	 */
 	protected List<Worm> getLivingWorms() {
 		List<Worm> wormsAlive = new ArrayList<Worm>();
@@ -158,8 +165,10 @@ public class Team implements Cloneable {
 	 * @return	Returns if all the worms in this team have a reference to this team.
 	 * 			| if (for each worm in this.getAllWorms():
 	 * 			|		worm.getTeam() == this)
-	 * 			| then result == true
-	 * 			| else result == false
+	 * 			| then 
+	 * 			|	result == true
+	 * 			| else 
+	 * 			|	result == false
 	 */
 	protected boolean hasProperWorms() {
 		for(Worm worm: this.getWorms()) {
@@ -183,7 +192,7 @@ public class Team implements Cloneable {
 	 * 			The exception is thrown if this team cannot remove the given worm.
 	 * 			| ! this.canRemoveWorm(worm)
 	 */
-	protected void removeFromTeam(Worm worm) throws ModelException {
+	protected void removeFromTeam(@Raw Worm worm) throws ModelException {
 		if (! this.canRemoveWorm(worm))
 			throw new ModelException("Cannot remove this worm from team!");
 		this.worms.remove(worm);
@@ -197,7 +206,7 @@ public class Team implements Cloneable {
 	 * 			The worm that needs to be checked.
 	 * 
 	 * @return	Returns if the given worm is in this team and if the given worm's team is this team.
-	 * 			| result == this.getWorms().contains(worm) && (worm.getTeam() == this)
+	 * 			| result == (this.getWorms().contains(worm)) && (worm.getTeam() == this)
 	 */
 	protected boolean canRemoveWorm(Worm worm) {
 		return this.getWorms().contains(worm) && (worm.getTeam() == this);
