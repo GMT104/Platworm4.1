@@ -961,11 +961,13 @@ public class World implements Cloneable {
 
 	//TODO
 	protected void tryRunProgramOfActiveWorm() {
-		try {
-			if (getActiveWorm().hasProgram())
-				getActiveWorm().getProgram().run();
-		} catch (NullPointerException exc) {
-			// Means that there is no active worm.
+		if (! this.isGameFinished()) {
+			try {
+				if (getActiveWorm().hasProgram())
+					getActiveWorm().getProgram().run();
+			} catch (NullPointerException exc) {
+				// Means that there is no active worm.
+			}
 		}
 	}
 	
