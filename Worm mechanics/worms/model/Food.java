@@ -7,15 +7,6 @@ package worms.model;
  * @version 2.02
  * @author 	Gertjan Maenhout (2Bbi Computerwetenschappen - Elektrotechniek) & 
  * 			Harald Schafer (2Bbi Elektrotechniek - Computerwetenschappen)
- *
- * @invar	The x coordinate of the food must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateX()) 
- * @invar	The y coordinate of the food must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateY())
- * @invar	The radius of the food must be a valid radius.
- * 			| this.isValidRadius(this.getRadius())
- * @invar	The food should be in a proper world.
- * 			| this.hasProperWorld()
  */
 public class Food extends GameObject {
 
