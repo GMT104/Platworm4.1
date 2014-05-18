@@ -10,22 +10,10 @@ import be.kuleuven.cs.som.annotate.*;
  * @author 	Gertjan Maenhout (2Bbi Computerwetenschappen - Elektrotechniek) & 
  * 			Harald Schafer (2Bbi Elektrotechniek - Computerwetenschappen)
  * 
- * @invar	The x coordinate of the projectile must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateX()) 
- * @invar	The y coordinate of the projectile must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateY())
- * @invar	The direction of the projectile must be a valid direction.
- * 			| isValidDirection(this.getDirection())
- * @invar	The direction of the projectile is between 0 and 2Pi radians.
- *			| this.getDirection() >= 0 && this.getDirection() < Math.PI*2  
- * @invar	The radius of the projectile must be a valid radius.
- * 			| this.isValidRadius(this.getRadius())
  * @invar	The mass of the projectile must be a valid mass.
  * 			| isValidMass(this.getMass())
  * @invar	The yield of this projectile should be a valid yield.
  * 			| isValidYield(this.getYield())
- * @invar	The projectile should be in a proper world.
- * 			| this.hasProperWorld()
  */
 public abstract class Projectile extends MovableObject {
 	
@@ -70,25 +58,25 @@ public abstract class Projectile extends MovableObject {
 	 * The constructor to make a projectile.
 	 * 
 	 * @param 	coordinateX
-	 * 			The x coordinate for this new projectile.
+	 * 			The x coordinate of this new projectile.
 	 * @param 	coordinateY
-	 * 			The y coordinate for this new projectile.
+	 * 			The y coordinate of this new projectile.
 	 * @param	radius
-	 * 			The radius for this new projectile.
+	 * 			The radius of this new projectile.
 	 * @param 	isActive
-	 * 			The status for this new projectile.
+	 * 			The status of this new projectile.
 	 * @param 	world
-	 * 			The world for this new projectile.
+	 * 			The world of this new projectile.
 	 * @param 	direction
-	 * 			The direction for this new projectile.
+	 * 			The direction of this new projectile.
 	 * @param 	massOfProjectile
-	 * 			The mass for this new projectile.
+	 * 			The mass of this new projectile.
 	 * @param 	lostHitPoints
 	 * 			The amount of hit points that a worm will lose,
-	 * 			if it is hit by this projectile.
+	 * 			if it is hit by this new projectile.
 	 * @param 	costActionPoints
 	 * 			The amount of action points that a worm will lose,
-	 * 			if it fires this projectile.
+	 * 			if it fires this new projectile.
 	 * 
 	 * @post	The new x coordinate of this projectile will be equal to the given coordinateX.
 	 * 			| new.getCoordinateX() == coordinateX
@@ -102,13 +90,17 @@ public abstract class Projectile extends MovableObject {
 	 * 			| new.getMass() == massOfProjectile
 	 * @post	The new radius of this projectile will be deduced from the density and the mass,
 	 * 			assuming that the projectile is a spherical object.
-	 * 			| new.getRadius() == getRadius(new.getMass())
+	 * 			| new.getRadius() == getRadius(massOfProjectile)
 	 * @post	The new amount of hit points that a worm will lose, if it is hit
 	 * 			by this projectile, will be equal to the given lostHitPoints.
 	 * 			| new.getLostHitPoints() == lostHitPoints
 	 * @post	The new amount of action points that a worm will lose, if it fires this projectile,
 	 * 			will be equal to the given costActionPoints.
 	 * 			| new.getCostActionPoints() == costActionPoints
+	 *
+	 * @effect	If one of the given coordinates is not in this world, this projectile is terminated.
+	 * 			| if (this.isXCoordinateOutOfBounds(coordinateX) || this.isYCoordinateOutOfBounds(coordinateY))
+	 * 			|		then this.terminate()
 	 * 
 	 * @throws 	ModelException
 	 * 			The exception is thrown if one or more of the given parameters are illegal 
@@ -124,12 +116,12 @@ public abstract class Projectile extends MovableObject {
 		super(coordinateX, coordinateY, isActive, getRadius(massOfProjectile), world, direction);
 		if (! isValidMass(massOfProjectile))
 			throw new ModelException("Invalid mass assignment!");
-		this.massOfProjectile = massOfProjectile;
-		if (! isValidLostHitPoints(lostHitPoints))
-			throw new ModelException("Invalid amount of lost hit points assignment!");
-		this.lostHitPoints = lostHitPoints;
 		if (! isValidCostActionPoints(costActionPoints))
 			throw new ModelException("Invalid amount of cost action points assignment!");
+		if (! isValidLostHitPoints(lostHitPoints))
+			throw new ModelException("Invalid amount of lost hit points assignment!");
+		this.massOfProjectile = massOfProjectile;
+		this.lostHitPoints = lostHitPoints;
 		this.costActionPoints = costActionPoints;
 	}
 	
@@ -142,6 +134,8 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns the density.
 	 * 			| result == 7800
 	 */
+	// TODO	Can this return a specific value?
+	//		Meaning: if it is like this in the documentation, it can never be changed.
 	@Basic
 	@Raw
 	@Immutable
@@ -215,6 +209,7 @@ public abstract class Projectile extends MovableObject {
 	 * 			The mass should be a positive number.
 	 * 			| result == (mass != Double.NaN) && (mass > 0)
 	 */
+	@Raw
 	protected static boolean isValidMass(double mass) {
 		return (mass != Double.NaN) && (mass > 0);
 	}
@@ -230,8 +225,9 @@ public abstract class Projectile extends MovableObject {
 	 * 
 	 * @return	Returns the mass, assumed that the projectile is a spherical object.
 	 * 			| result == (mass*(3/4)*(1/getDensity())
-	 *			|			*(1/Math.PI))^(1/3)
+	 *			|			*(1/PI))^(1/3)
 	 */
+	@Raw
 	protected static double getRadius(double mass) {
 		return Math.pow((3*mass)/(getDensity()*4*Math.PI), 1.0/3);
 	}
@@ -253,12 +249,10 @@ public abstract class Projectile extends MovableObject {
 	/**
 	 * Returns if this projectile has a valid radius.
 	 * 
-	 * @param	radius
-	 * 			The radius that needs to be checked.
-	 * 
 	 * @return	Returns if the radius is positive.
 	 * 			| result == (radius > 0)
 	 */
+	@Raw
 	@Override
 	protected boolean isValidRadius(double radius) {
 		return (radius > 0);
@@ -289,7 +283,6 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns whether the given points are positive.
 	 * 			| result == (points > 0)
 	 */
-	@Raw
 	protected static boolean isValidLostHitPoints(int points) {
 		return (points > 0);
 	}
@@ -317,7 +310,6 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns whether the given points are positive.
 	 * 			| result == (points > 0)
 	 */
-	@Raw
 	protected static boolean isValidCostActionPoints(int points) {
 		return (points > 0);
 	}
@@ -376,7 +368,6 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns if the yield is between 0 and 100.
 	 * 			| result == ((0 <= yield) && (yield <= 100))
 	 */
-	@Raw
 	protected static boolean isValidYield(int yield) {
 		return (yield >= 0) && (yield <= 100);
 	}
@@ -387,12 +378,9 @@ public abstract class Projectile extends MovableObject {
 	/**
 	 * Calculates the time that this worm will be in the air.
 	 * 
-	 * @param	step
-	 * 			A time interval during which the worm will not move completely trough impassable terrain.
-	 * 
 	 * @return	Returns the time that this projectile is in the air until it hits impassable terrain
-	 * 			or it hits another worm. If the worm leaves the world, extra time is provided to make 
-	 * 			the worm visually disappear.
+	 * 			or it hits a worm that is not the active worm. If the worm leaves the world,  
+	 * 			extra time is provided to make the worm visually disappear.
 	 * 			| for each time in {t | t in 0..result & t = n*step (with n integer)}
 	 * 			|	position = this.getJumpStep(t)
 	 * 			|	(this.getWorld().isPassableArea(position[0],position[1], this.getRadius())
@@ -436,9 +424,6 @@ public abstract class Projectile extends MovableObject {
 	/**
 	 * Changes the position of this projectile as the result of a jump in the current direction
 	 * of this projectile. The direction does not change during the jump.
-	 * 
-	 * @param	timeStep
-	 * 			A time interval during which this projectile will not move completely trough impassable terrain.
 	 * 
 	 * @effect	The new x and y coordinates are assigned to this projectile. The end position of the jump 
 	 * 			is calculated by getting the step at the last position of the jump.

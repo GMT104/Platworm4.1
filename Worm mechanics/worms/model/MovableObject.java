@@ -72,6 +72,8 @@ public abstract class MovableObject extends GameObject {
 	 */
 	@Basic
 	@Raw
+	//TODO 	public
+	//		No problem that this function is public or is there?
 	public double getDirection() {
 		return this.direction;
 	}
