@@ -49,9 +49,7 @@ public class TeamTest {
 	public void testGetLivingWorms() {
 		Team team = new Team("Team");
 		John.joinTeam(team);
-		team.addWorm(John);
 		Fitzgerald.joinTeam(team);
-		team.addWorm(Fitzgerald);
 		assertTrue(team.getLivingWorms().contains(John));
 		assertTrue(team.getLivingWorms().contains(Fitzgerald));
 	}
@@ -60,9 +58,7 @@ public class TeamTest {
 	public void testRemoveFromTeam() {
 		Team team = new Team("Team");
 		John.joinTeam(team);
-		team.addWorm(John);
 		Fitzgerald.joinTeam(team);
-		team.addWorm(Fitzgerald);
 		assertTrue(team.getLivingWorms().contains(John));
 		assertTrue(team.getLivingWorms().contains(Fitzgerald));
 		

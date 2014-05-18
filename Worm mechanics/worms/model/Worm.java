@@ -11,16 +11,6 @@ import be.kuleuven.cs.som.annotate.*;
  * @author 	Gertjan Maenhout (2Bbi Computerwetenschappen - Elektrotechniek) & 
  * 			Harald Schafer (2Bbi Elektrotechniek - Computerwetenschappen)
  * 
- * @invar	The x coordinate of the worm must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateX()) 
- * @invar	The y coordinate of the worm must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateY())
- * @invar	The direction of the worm must be a valid direction.
- * 			| isValidDirection(this.getDirection())
- * @invar	The direction of the worm is between 0 and 2Pi radians.
- *			| this.getDirection() >= 0 && this.getDirection() < Math.PI*2  
- * @invar	The radius of the worm must be a valid radius.
- * 			| this.isValidRadius(this.getRadius())
  * @invar	The name of the worm must be a valid name.
  * 			| isValidName(this.getName())
  * @invar	The worm has a valid number of action points. The action points
@@ -29,13 +19,9 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar	The worm has a valid number of hit points. The hit points
  * 			must be greater than or equal to zero and smaller than or equal to the maximum hit points of the worm.
  * 			| 0 <= this.getHitPoints() && this.getHitPoints() <= this.getMaximumHitPoints()
- * @invar	The worm must have a proper world. This worm should be in a world that contains this worm.
- * 			| this.hasProperWorld()
  * @invar	The worm must be in a proper team. If this worm has a team, that team should contain this worm.
  * 			| this.hasProperTeam()
  */
-
-
 
 public class Worm extends MovableObject{
 	
@@ -103,6 +89,9 @@ public class Worm extends MovableObject{
 	 * 			The status of this new worm.
 	 * @param	world
 	 * 			The world of this new worm.
+	 * @param	program
+	 * 			The program that this new worm should execute if it is computer controlled.
+	 * 			If the worm is controlled by a player, the program equals null.
 	 * 
 	 * @post	The x coordinate of this worm is set to the given coordinateX.
 	 * 			| new.getCoordinateX() == coordinateX
@@ -122,12 +111,16 @@ public class Worm extends MovableObject{
 	 * 			| new.getActionPoints() == new.getMaximumActionPoints()
 	 * @post	This worm has the maximum number of hit points.
 	 * 			| new.getHitPoints() == new.getMaximumHitPoints()
-	 * @post	This worm is equipped with a weapon.
-	 * 			| new.getProjectile() isinstance Projectile
+	 * @post	This worm is equipped with the given program.
+	 * 			| new.getProgram() == program
+	 * @post	The program of this worm is linked with this worm.
+	 * 			| new.getProgram().getWorm() == this
 	 * 
 	 * @effect	If one of the given coordinates is not in this world, this worm is terminated.
 	 * 			| if (this.isXCoordinateOutOfBounds(coordinateX) || this.isYCoordinateOutOfBounds(coordinateY))
 	 * 			|		then this.terminate()
+	 * @effect	This worm is equipped with a weapon to launch projectiles.
+	 * 			| this.setProjectile()
 	 * 
 	 * @throws	ModelException
 	 * 			The exception is thrown if one or more of the given parameters are illegal 
@@ -149,7 +142,7 @@ public class Worm extends MovableObject{
 			this.setProjectile();
 			this.setProgram(program);
 			if (program != null)
-					this.program.setWorm(this);
+				this.program.setWorm(this);
 		}
 	}	
 	
@@ -162,6 +155,7 @@ public class Worm extends MovableObject{
 	@Basic
 	@Immutable
 	@Raw
+	// TODO	Should density be a static variable?
 	protected final double getDensity(){
 		return this.density;
 	}
@@ -174,8 +168,9 @@ public class Worm extends MovableObject{
 	 * 
 	 * @post	If this worm does not overlap with a food object, it will not have just eaten.
 	 * 			| if (this.getWorld.getFoodThatOverlaps(this) != null)
-	 * 			|		then new.hasJustEaten() == true
-	 * 			| else new.hasJustEaten() == false
+	 * 			|	then new.hasJustEaten() == true
+	 * 			| else 
+	 * 			|	new.hasJustEaten() == false
 	 *
 	 * @effect	If this worm overlaps with a food object, this worm will eat it.
 	 * 			| if (this.getWorld.getFoodThatOverlaps(this) != null)
@@ -232,7 +227,8 @@ public class Worm extends MovableObject{
 	@Basic
 	@Raw
 	@Immutable
-	//TODO
+	//TODO	Public shouldn't be a problem.
+	//		Is documentation like this correct?
 	public static double getMinimumRadius() {
 		return minimumRadius;
 	}
@@ -240,15 +236,12 @@ public class Worm extends MovableObject{
 	
 	/**
 	 * Checks if the given radius is a valid radius for this worm.
-	 * 
-	 * @param 	radius
-	 *			The radius to check.
 	 *
 	 * @return	True if and only if the given radius is larger than the minimum radius 
 	 * 			and the radius is a number or infinity and the mass for this radius is
 	 * 			a valid integer.
-	 * 			| result == ((radius >= getMinimumRadius()) && (! Double.isNaN(radius)))
-	 * 			| && getMass(radius) <= Integer.MAX_VALUE
+	 * 			| result == ((radius >= getMinimumRadius()) && (! Double.isNaN(radius))
+	 * 			| 				&& getMass(radius) <= Integer.MAX_VALUE)
 	 */
 	@Override
 	protected boolean isValidRadius(double radius) {
@@ -286,7 +279,7 @@ public class Worm extends MovableObject{
 	 * 			The radius for which the mass should be calculated.
 	 * 
 	 * @return	Returns the calculated mass.
-	 * 			| result == (this.getDensity()*4/3*Math.PI*Math.pow(radius, 3))
+	 * 			| result == (this.getDensity()*4/3*PI*radius³)
 	 */
 	@Raw
 	protected double getMass(double radius){
@@ -301,7 +294,7 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	//TODO public
+	//TODO public: shouldn't be a problem
 	public int getActionPoints(){
 		return this.actionPoints;
 	}
@@ -310,8 +303,12 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the maximum number of action points that this
 	 * worm can have.
+	 * 
+	 * @return	The maximum number of action points is equal to the mass of this worm.
+	 * 			| result == round(this.getMass())
 	 */
-	//TODO public
+	//TODO public: shouldn't be a problem
+	@Raw
 	public int getMaximumActionPoints(){
 		return (int) (Math.round(this.getMass()));
 	}
@@ -336,17 +333,18 @@ public class Worm extends MovableObject{
 	 * 			| if (actionPoints > getMaximumActionPoints())
 	 * 			| 	then new.getActionPoints() == this.getMaximumActionPoints()
 	 * 
-	 * @effect	If the action points are set to zero, the turn of this worm ends.
-	 * 			| if (new.getActionPoints() == 0)
+	 * @effect	If the action points are set to zero, the turn of this worm ends 
+	 * 			if the worm is player controlled.
+	 * 			| if ((new.getActionPoints() == 0) && (! this.hasProgram()))
 	 * 			|		then this.getWorld().nextTurn()
 	 */
-	//TODO 
+	@Raw
 	protected void setActionPoints(int actionPoints){
 		if ((0 < actionPoints) && (actionPoints <= this.getMaximumActionPoints()))
 			this.actionPoints = actionPoints;
 		else if (actionPoints <= 0){
 			this.actionPoints = 0;
-			if (this.getProgram()== null)
+			if (! this.hasProgram())
 				this.getWorld().nextTurn(); 
 		}
 		else if (actionPoints > this.getMaximumActionPoints())
@@ -361,7 +359,7 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	//TODO public
+	//TODO public: shouldn't be a problem
 	public int getHitPoints() {
 		return this.hitPoints;
 	}
@@ -373,23 +371,29 @@ public class Worm extends MovableObject{
 	 * @param 	hitPoints
 	 * 			The new number of hit points.
 	 * 
-	 * @post	If the given number of hit points is in the interval [0, getMaximumHitPoints()],
+	 * @post	If the given number of hit points is in the interval ]0, getMaximumHitPoints()],
 	 * 			the hit points of this worm are set to the given hitPoints.
-	 * 			| if ((0 <= hitPoints) && (hitPoints <= getMaximumHitPoints()))
+	 * 			| if ((0 < hitPoints) && (hitPoints <= getMaximumHitPoints()))
 	 * 			| 	new.getHitPoints() == hitPoints
-	 * @post	If the given number of hit points is negative,
+	 * @post	If the given number of hit points is negative or equal to 0,
 	 * 			the hitPoints of this worm are set to 0.
-	 * 			| if (hitPoints < 0)
+	 * 			| if (hitPoints <= 0)
 	 * 			| 	new.getHitPoints() == 0
 	 * @post	If the given number of hit points is larger than the maximum hit points,
 	 * 			the hitPoints of this worm are set to the maximum number of hit points.
 	 * 			| if (actionPoints > getMaximumHitPoints())
-	 * 			| 	new.getHitPoints() == this.getMaximumHitPoints()	
+	 * 			| 	new.getHitPoints() == this.getMaximumHitPoints()
+	 * 
+	 * @effect	If the given number of hit points is equal to or smaller than 0,
+	 * 			then this worm is terminated.
+	 * 			| if (hitPoints <= 0)
+	 * 			|	then this.terminate()
 	 */
+	@Raw
 	protected void setHitPoints(int hitPoints) {
-		if ((0 <= hitPoints) && (hitPoints <= this.getMaximumHitPoints()))
+		if ((0 < hitPoints) && (hitPoints <= this.getMaximumHitPoints()))
 			this.hitPoints = hitPoints;
-		else if (hitPoints < 0) {
+		else if (hitPoints <= 0) {
 			this.hitPoints = 0;
 			this.terminate();
 		}
@@ -399,9 +403,14 @@ public class Worm extends MovableObject{
 	
 	
 	/**
-	 * Returns the maximum number of hit points this worm can have.
+	 * Returns the maximum number of hit points that this
+	 * worm can have.
+	 * 
+	 * @return	The maximum number of hit points is equal to the mass of this worm.
+	 * 			| result == round(this.getMass())
 	 */
-	//TODO public
+	@Raw
+	//TODO public: shouldn't be a problem
 	public int getMaximumHitPoints() {
 		return (int) Math.round(this.getMass());
 	}
@@ -410,7 +419,7 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns if this worm is alive or not.
 	 * 
-	 * @return	This worm is alive if its number of hitpoints is 
+	 * @return	This worm is alive if its number of hit points is 
 	 * 			larger than 0.
 	 * 			| result == (this.getHitPoints() > 0)
 	 */
@@ -441,7 +450,7 @@ public class Worm extends MovableObject{
 	 * 			| new.getName() == assignedName
 	 * 
 	 * @throws 	ModelException
-	 * 			The assignedName is not a legal name for a worm.
+	 * 			The exception is thrown if the assignedName is not a legal name for a worm.
 	 * 			| ! isValidName(assignedName)
 	 */
 	@Raw
@@ -462,11 +471,11 @@ public class Worm extends MovableObject{
 	 * 			- The length of the name must be at least two characters long.
 	 * 			- The first character of the name must be an uppercase letter.
 	 * 			- The name can only contain letters (uppercase and lowercase),
-	 * 			  quotes (single and double) and spaces.
+	 * 			  digits, quotes (single and double) and spaces.
 	 * 			| return == (name.length() >= 2) &&
 	 * 			|			(Character.isUpperCase(name.charAt(0))) &&
 	 * 			|			(for each character in name:
-	 * 			|				(isLetter(character) || character in {" ", "'", """}))
+	 * 			|				(isLetterOrDigit(character) || character in {" ", "'", """}))
 	 */
 	@Raw
 	protected static boolean isValidName(String name){
@@ -489,7 +498,10 @@ public class Worm extends MovableObject{
 	 * Returns the team of this worm.
 	 * If the worm has not joined a team, null is returned.
 	 */
-	//TODO public
+	//TODO public: 	Shouldn't be a problem because	
+	//				team should be able to keep correct invariants.
+	@Basic
+	@Raw
 	public Team getTeam() {
 		return this.team;
 	}
@@ -504,6 +516,9 @@ public class Worm extends MovableObject{
 	 * @post	The worm is assigned to the given team.
 	 * 			| new.getTeam() == team
 	 * 
+	 * @effect	This worm is added to the given team.
+	 * 			| team.addWorm(this)
+	 * 
 	 * @throws 	ModelException
 	 * 			The exception is thrown if the assignment happens 
 	 * 			after the game has already started.
@@ -511,8 +526,9 @@ public class Worm extends MovableObject{
 	 */
 	protected void joinTeam(Team team) throws ModelException {
 		if (this.getWorld().getStatus())
-			throw new ModelException("Game has already started, cannot assign to team!");
+			throw new ModelException("Game has already started, cannot assign worm to team!");
 		this.setTeam(team);
+		team.addWorm(this);
 	}
 	
 	
@@ -522,10 +538,14 @@ public class Worm extends MovableObject{
 	 * @param 	team
 	 * 			The new team of this worm.
 	 * 
+	 * @post	The team of this worm is equal to the given team.
+	 * 			| new.getTeam() == team
+	 * 
 	 * @throws	ModelException
 	 * 			The exception is thrown if the given team is invalid.
 	 * 			| (! isValidTeam(team))
 	 */
+	@Raw
 	private void setTeam(Team team) throws ModelException {
 		if (! isValidTeam(team))
 			throw new ModelException("Invalid team assignment!");
@@ -556,7 +576,7 @@ public class Worm extends MovableObject{
 	 * 			|				|| (this.getTeam().getWorms.contains(this))
 	 */
 	protected boolean hasProperTeam() {
-		return (this.getTeam() == null) || (this.team.getWorms().contains(this));
+		return (this.getTeam() == null) || (this.getTeam().getWorms().contains(this));
 	}
 
 
@@ -568,8 +588,7 @@ public class Worm extends MovableObject{
 	 * @param 	angle
 	 * 			The angle to be added to the direction.
 	 * 
-	 * @pre		New direction should be an existing angle and this worm needs enough
-	 * 			action points to turn.
+	 * @pre		This worm should be able to turn.
 	 * 			| this.canTurn(angle)
 
 	 * @post	The given angle is added to this worm's direction.
@@ -632,9 +651,6 @@ public class Worm extends MovableObject{
 	 * Changes the position of this worm as the result of a jump in the current direction
 	 * of this worm, consuming all action points. The direction does not change during the jump.
 	 * 
-	 * @param	timeStep
-	 * 			A time interval during which the worm will not move completely trough impassable terrain.
-	 * 
 	 * @effect	The new x and y coordinates are assigned to this worm. The end position of the jump 
 	 * 			is calculated by getting the step at the last position of the jump.
 	 * 			| position = this.getJumpStep(this.getJumpRealTimeInAir(10^-5))
@@ -696,14 +712,11 @@ public class Worm extends MovableObject{
 	/**
 	 * Calculates the time that this worm will be in the air.
 	 * 
-	 * @param	step
-	 * 			A time interval during which the worm will not move completely trough impassable terrain.
-	 * 
 	 * @return	Returns the time that this worm is in the air until it reaches impassable terrain
 	 * 			or it leaves the world. If the worm leaves the world, extra time is provided to make 
 	 * 			the worm visually disappear.
 	 * 			| for each time in {t | t in 0..result & t = n*step (with n integer)}
-	 * 			|	position = this.getJumpStep(t)
+	 * 			|	position = this.getJumpStep(time)
 	 * 			|	this.getWorld().isPassableArea(position[0],position[1], this.getRadius()) == true
 	 * 			| 
 	 * 			| nextPosition = this.getJumpStep(result+step)
@@ -739,6 +752,8 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the number of the current weapon.
 	 */
+	@Basic
+	@Raw
 	protected int getCurrentWeaponNumber() {
 		return this.currentWeaponNumber;
 	}
@@ -775,6 +790,7 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the current projectile of this worm.
 	 */
+	@Basic
 	public Projectile getProjectile(){
 		return this.projectile;
 	}
@@ -798,8 +814,10 @@ public class Worm extends MovableObject{
 	 * @post	The new projectile is fired from a rifle or a bazooka, according to the current waepon number.
 	 * 			| if (this.getCurrentWeaponNumber() == 0)
 	 * 			|		then this.getProjectile() isinstance Rifle
-	 * 			| else this.getProjectile() isinstance Bazooka
+	 * 			| else 
+	 * 			|		this.getProjectile() isinstance Bazooka
 	 */
+	@Model
 	private void setProjectile() {
 		if (this.getCurrentWeaponNumber() == 0)
 			this.projectile = new Rifle(this.getCoordinateX() + this.getRadius()*Math.cos(this.getDirection()),
@@ -813,16 +831,16 @@ public class Worm extends MovableObject{
 	
 	
 	/**
-	 * Selects the newt weapon for this worm and terminates the old weapon.
+	 * Selects the next weapon for this worm and terminates the old weapon.
+	 * 
+	 * @post	The current weapon number is increased with one 
+	 * 			and becomes 0 if it equals getNumberOfProjectiles()
+	 * 			| new.getCurrentWeaponNumber() == (this.getCurrentWeaponNumber() + 1) % getNumberOfProjectiles()
 	 * 
 	 * @effect	Terminates the old projectile.
 	 * 			| this.getProjectile().terminate()
 	 * @effect	Creates a new projectile for this worm, corresponding with the new current weapon number.
 	 * 			| this.setWeapon()
-	 * 
-	 * @post	The current weapon number is increased with one 
-	 * 			and becomes 0 if it equals getNumberOfProjectiles()
-	 * 			| new.getCurrentWeaponNumber() == (this.getCurrentWeaponNumber() + 1) % getNumberOfProjectiles()
 	 */
 	protected void selectWeapon() {
 		this.projectile.terminate();
@@ -841,6 +859,11 @@ public class Worm extends MovableObject{
 	 * 			| (new this.getProjectile()).getYield == yield
 	 * @post	Subtract the action points that it requires to shoot this weapon.
 	 * 			| new.getActionPoints() == this.getActionPoints() - this.getProjectile().getCostActionPoints() 
+	 * 
+	 * @effect	The old projectile of this worm is terminated.
+	 * 			| this.getProjectile().terminate()
+	 * @effect	A new projectile is given to this worm.
+	 * 			| this.setProjectile()
 	 */
 	protected void shoot(int yield) throws ModelException {
 		this.getProjectile().terminate();
@@ -868,6 +891,7 @@ public class Worm extends MovableObject{
 										   this.getCoordinateY() + this.getRadius()*Math.sin(this.getDirection()));
 			this.projectile.setDirection(this.getDirection());
 		}
+		// else: do nothing
 	}
 	
 	
@@ -937,7 +961,6 @@ public class Worm extends MovableObject{
 	
 	/**
 	 * Calculates the amount of action points needed to move the given number of steps.
-	 *
 	 * 
 	 * @param 	NbSteps
 	 * 			The number of steps the worm should move.
@@ -945,12 +968,11 @@ public class Worm extends MovableObject{
 	 * 			The direction of movement.
 	 * 
 	 * @return	Returns the amount of action points needed to execute the moves.
-	 * 			| result == NbSteps*((Math.abs(Math.cos(theta)) + 4*Math.abs(Math.sin(theta))))
+	 * 			| result == NbSteps*((abs(cos(theta)) + 4*abs(sin(theta))))
 	 */
 	@Raw
 	protected static double usedActionPointsMove(int NbSteps, double theta) {
-		double usedActionPoints = NbSteps*( (Math.abs(Math.cos(theta)) + 4*Math.abs(Math.sin(theta))));
-		return usedActionPoints;
+		return NbSteps*( (Math.abs(Math.cos(theta)) + 4*Math.abs(Math.sin(theta))));
 	}
 	
 	
@@ -1280,6 +1302,8 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns if this worm has just eaten.
 	 */
+	@Basic
+	@Raw
 	protected boolean hasJustEaten() {
 		return this.hasJustEaten;
 	}
@@ -1298,21 +1322,42 @@ public class Worm extends MovableObject{
 
 
 
-	//TODO
+	/**
+	 * Returns the program of this worm if this worm is computer-controlled,
+	 * else null is returned.
+	 */
+	@Basic
+	@Raw
 	public Program getProgram() {
 		return program;
 	}
 
 
 
-	//TODO
-	public void setProgram(Program program) {
+	/**
+	 * Sets the program of this worm to the given program.
+	 * 
+	 * @param 	program
+	 * 			The new program of this worm.
+	 * 
+	 * @post	The new program of this worm will be equal to the given program.
+	 * 			| new.getProgram() == program
+	 */
+	@Raw
+	private void setProgram(Program program) {
 		this.program = program;
 	}
 
 
 
-//TODO
+	/**
+	 * Returns if a worm has a program.
+	 * (This means that this worm is computer controlled.)
+	 * 
+	 * @return	Returns if this worm's program differs from null.
+	 * 			(Null is the program of a player-controlled worm.)
+	 * 			| result == (this.getProgram != null)
+	 */
 	public boolean hasProgram() {
 		return this.getProgram() != null;
 	}

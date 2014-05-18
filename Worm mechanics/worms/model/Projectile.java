@@ -382,7 +382,7 @@ public abstract class Projectile extends MovableObject {
 	 * 			or it hits a worm that is not the active worm. If the worm leaves the world,  
 	 * 			extra time is provided to make the worm visually disappear.
 	 * 			| for each time in {t | t in 0..result & t = n*step (with n integer)}
-	 * 			|	position = this.getJumpStep(t)
+	 * 			|	position = this.getJumpStep(time)
 	 * 			|	(this.getWorld().isPassableArea(position[0],position[1], this.getRadius())
 	 * 			|		&& ! this.getWorld().coordinatesOverlapsWorm(position[0]-0.5*this.getRadius(),
 	 * 			|					position[1]-0.5*this.getRadius(),this.getRadius()) ) == true

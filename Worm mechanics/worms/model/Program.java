@@ -28,6 +28,10 @@ public class Program {
 		initialiseVariables();
 	}
 	
+	protected Worm getWorm() {
+		return this.activeWorm;
+	}
+	
 	protected void setWorm(Worm worm) {
 		this.activeWorm = worm;
 	}
