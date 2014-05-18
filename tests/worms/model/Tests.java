@@ -1440,7 +1440,6 @@ public class Tests {
 		world.addAsGameObject(testWorm);
 		Team winners = new Team("Winners");
 		testWorm.joinTeam(winners);
-		winners.addWorm(testWorm);
 		assertEquals(testWorm.getTeam(),winners);
 		assertTrue(winners.getLivingWorms().contains(testWorm));
 		winners.removeFromTeam(testWorm);
@@ -1461,7 +1460,6 @@ public class Tests {
 		Worm testWorm = new Worm(12.0, 4.0, Math.PI / 4, 1, "Bob", true, world,null);
 		Team winners = new Team("Winners");
 		testWorm.joinTeam(winners);
-		winners.addWorm(testWorm);
 		testWorm.terminate();
 		assertFalse(testWorm.getStatus());
 		assertFalse(world.getAllWorms().contains(testWorm));
