@@ -11,18 +11,10 @@ import be.kuleuven.cs.som.annotate.Raw;
  * @author 	Gertjan Maenhout (2Bbi Computerwetenschappen - Elektrotechniek) & 
  * 			Harald Schafer (2Bbi Elektrotechniek - Computerwetenschappen)
  *
- * @invar	The x coordinate of the movable object must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateX()) 
- * @invar	The y coordinate of the movable object must be a valid coordinate.
- * 			| isValidCoordinate(this.getCoordinateY())
  * @invar	The direction of the movable object must be a valid direction.
  * 			| isValidDirection(this.getDirection())
  * @invar	The direction of the movable object is between 0 and 2Pi radians.
  *			| this.getDirection() >= 0 && this.getDirection() < Math.PI*2  
- * @invar	The radius of the movable object must be a valid radius.
- * 			| this.isValidRadius(this.getRadius())
- * @invar	The movable object should be in a proper world.
- * 			| this.hasProperWorld()
  */
 public abstract class MovableObject extends GameObject {
 
@@ -32,15 +24,15 @@ public abstract class MovableObject extends GameObject {
 	 * The constructor to make a movable object.
 	 * 
 	 * @param 	coordinateX
-	 * 			The x coordinate for this new game object.
+	 * 			The x coordinate of this new game object.
 	 * @param 	coordinateY
-	 * 			The y coordinate for this new game object.
+	 * 			The y coordinate of this new game object.
 	 * @param	radius
-	 * 			The radius for this new game object.
+	 * 			The radius of this new game object.
 	 * @param 	isActive
-	 * 			The status for this new game object.
+	 * 			The status of this new game object.
 	 * @param 	world
-	 * 			The world for this new game object.
+	 * 			The world of this new game object.
 	 * @param 	direction
 	 * 			The new direction of this movable object.
 	 * 
@@ -171,8 +163,9 @@ public abstract class MovableObject extends GameObject {
 	 * 			by assuming that the direction equals PI/2+2^(-1074). The value that is added 
 	 * 			is the smallest positive value that the type Double can represent.
 	 * 			| if this.getDirection() == Math.PI/2
-	 * 			|	then result == this.getJumpDistance()/(this.getJumpVelocity()*Math.cos(Math.PI/2+2^(-1047)))
-	 * 			| result == this.getJumpDistance()/(this.getJumpVelocity()*Math.cos(this.getDirection()))
+	 * 			|	then result == this.getJumpDistance()/(this.getJumpVelocity()*cos(Math.PI/2+2^(-1047)))
+	 * 			| else
+	 * 			|	result == this.getJumpDistance()/(this.getJumpVelocity()*cos(this.getDirection()))
 	 */
 	protected double getJumpTime(){
 		if (this.getDirection() == Math.PI/2)
@@ -191,8 +184,8 @@ public abstract class MovableObject extends GameObject {
 	 * Returns the horizontal distance of the potential jump of this movable object.
 	 * 
 	 * @return	The horizontal distance.
-	 * 			| result == Math.pow(this.getJumpVelocity(), 2)*
-	 * 			|				Math.sin(2*this.getDirection())/this.getWorld().getGravity()
+	 * 			| result == (this.getJumpVelocity())²*
+	 * 			|				sin(2*this.getDirection())/this.getWorld().getGravity()
 	 */
 	protected double getJumpDistance(){
 		return Math.pow(this.getJumpVelocity(), 2)*Math.sin(2*this.getDirection())/this.getWorld().getGravity();
@@ -206,13 +199,13 @@ public abstract class MovableObject extends GameObject {
 	 * 			The point in time at which the position should be calculated.
 	 * 
 	 * @return	Returns the x and y coordinates of the position at which this worm will be at the given time.
-	 * 			| initialJumpVelocityX = this.getJumpVelocity()*Math.cos(this.getDirection())
-	 * 			| initialJumpVelocityY = this.getJumpVelocity()*Math.sin(this.getDirection())
+	 * 			| initialJumpVelocityX = this.getJumpVelocity()*cos(this.getDirection())
+	 * 			| initialJumpVelocityY = this.getJumpVelocity()*sin(this.getDirection())
 	 * 			| result == {this.getCoordinateX()+initialJumpVelocityX*time, 
-	 * 			| 			 this.getCoordinateY()+initialJumpVelocityY*time-0.5*this.getWorld().getGravity()*Math.pow(time, 2)}
+	 * 			| 			 this.getCoordinateY()+initialJumpVelocityY*time-0.5*this.getWorld().getGravity()*time²}
 	 * 
 	 * @throws	ModelException
-	 * 			This worm cannot jump.
+	 * 			The exception is thrown if this worm cannot jump.
 	 * 			| (!canJump())
 	 */
 	protected double[] getJumpStep(double time) throws ModelException {
@@ -229,7 +222,7 @@ public abstract class MovableObject extends GameObject {
 	
 	/**
 	 * Returns the real time that a movable object is in the air.
-	 * (In contrast to getJumpTime(), the y coordinate can change.)
+	 * (In contrast to this.getJumpTime(), the y coordinate can change.)
 	 * 
 	 * @param 	step
 	 * 			A time interval in which the movable object will not

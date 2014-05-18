@@ -14,15 +14,15 @@ public class Food extends GameObject {
 	 * Constructor to make a new food.
 	 * 
 	 * @param 	coordinateX
-	 * 			The x coordinate for this new food.
+	 * 			The x coordinate of this new food.
 	 * @param 	coordinateY
-	 * 			The y coordinate for this new food.
+	 * 			The y coordinate of this new food.
 	 * @param	radius
-	 * 			The radius for this new food.
+	 * 			The radius of this new food.
 	 * @param 	isActive
-	 * 			The status for this new food.
+	 * 			The status of this new food.
 	 * @param 	world
-	 * 			The world for this new food.
+	 * 			The world of this new food.
 	 * 
 	 * @post	The new x coordinate of this food will be equal to the given coordinateX.
 	 * 			| new.getCoordinateX() == coordinateX
