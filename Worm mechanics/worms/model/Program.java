@@ -17,7 +17,7 @@ public class Program {
 	private boolean typeCheckError;
 	private int counter;
 
-	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) throws ModelException {
+	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) {
 		if (! typeCheck(statement, globals))
 			setTypeCheckError(true);
 		this.globals = globals;
