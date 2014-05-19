@@ -14,15 +14,17 @@ public class Program {
 	private Worm activeWorm;
 	private IActionHandler handler;
 	private boolean runtimeError;
+	private boolean typeCheckError;
 	private int counter;
 
 	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) throws ModelException {
 		if (! typeCheck(statement, globals))
-			throw new ModelException("This program has a type checking error!");
+			setTypeCheckError(true);
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
 		initialiseVariables();
+			
 	}
 	
 	protected Worm getWorm() {
@@ -39,6 +41,14 @@ public class Program {
 	
 	private void setRuntimeError(boolean error) {
 		this.runtimeError = error;
+	}
+	
+	protected boolean getTypeCheckError() {
+		return this.typeCheckError;
+	}
+	
+	private void setTypeCheckError(boolean error) {
+		this.typeCheckError = error;
 	}
 	
 	protected void addVariable(String key, MyObject variable) {
@@ -121,10 +131,18 @@ public class Program {
 		Set<Statement> set = ((Statement) statement).getAllSubstatements();
 		for(Statement subStatement: set) {
 			if (subStatement.hasExpressionAsInputToCheck()) {
-				if (! typeCheckExpression(subStatement.getInputExpression(), globals))
+				if (! typeCheckExpression(subStatement.getInputExpression(), globals)) {
+					System.out.println("################################################");
+					System.out.println("##############Type Checking Error###############");
+					System.out.println("################################################");
 					return false;
-				if (! typeCheckStatement(subStatement, globals))
+				}
+				if (! typeCheckStatement(subStatement, globals)) {
+					System.out.println("################################################");
+					System.out.println("##############Type Checking Error###############");
+					System.out.println("################################################");
 					return false;
+				}
 			}
 		}
 		System.out.println("################################################");

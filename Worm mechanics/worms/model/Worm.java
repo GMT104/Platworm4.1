@@ -113,11 +113,16 @@ public class Worm extends MovableObject{
 	 * 			| new.getHitPoints() == new.getMaximumHitPoints()
 	 * @post	This worm is equipped with the given program.
 	 * 			| new.getProgram() == program
-	 * @post	The program of this worm is linked with this worm.
-	 * 			| new.getProgram().getWorm() == this
+	 * @post	If this worm has a program, then that program is linked with this worm.
+	 * 			| if (new.hasProgram())
+	 * 			| 	then new.getProgram().getWorm() == this
 	 * 
 	 * @effect	If one of the given coordinates is not in this world, this worm is terminated.
 	 * 			| if (this.isXCoordinateOutOfBounds(coordinateX) || this.isYCoordinateOutOfBounds(coordinateY))
+	 * 			|		then this.terminate()
+	 * @effect	If this worm has a program and if that program contains a type checking error,
+	 * 			then this worm is terminated.
+	 * 			| if (new.hasProgram() && new.getProgram().getTypeCheckError())
 	 * 			|		then this.terminate()
 	 * @effect	This worm is equipped with a weapon to launch projectiles.
 	 * 			| this.setProjectile()
@@ -141,8 +146,11 @@ public class Worm extends MovableObject{
 			this.setName(name);
 			this.setProjectile();
 			this.setProgram(program);
-			if (program != null)
+			if (this.hasProgram()) {
 				this.program.setWorm(this);
+				if (this.getProgram().getTypeCheckError())
+					this.terminate();
+			}
 		}
 	}	
 	
