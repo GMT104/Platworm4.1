@@ -389,8 +389,6 @@ public class World implements Cloneable {
 	 *			|	result == true
 	 */
 	protected boolean isPassableArea(double x, double y, double radius){
-		//double step = 0.5*Math.min(getHeight()/(1.0*getHeightInPixels()), getWidth()/(1.0*getWidthInPixels()));
-		// TODO I assume this line of code can be removed.
 		double step = getStep(radius);
 		if (! isInWorld(x, y, radius))
 			return false;
@@ -426,7 +424,6 @@ public class World implements Cloneable {
 	 * 			|result == !((x-radius) < 0 || (x+radius) > this.getWidth() 
 	 * 			|		|| (y-radius) < 0 || (y + radius) > this.getHeight())
 	 */
-	//TODO: don't see a problem why this function cannot be public
 	public boolean isInWorld(double x, double y, double radius) {
 		return !((x-radius) < 0 || (x+radius) > getWidth() || (y-radius) < 0 || (y + radius) > getHeight());
 	}
@@ -444,7 +441,6 @@ public class World implements Cloneable {
 	 * @return	The step size
 	 * 			| result == 0.05*radius
 	 */
-	//TODO: don't see a problem why this function cannot be public
 	public double getStep(double radius) {
 		return 0.05*radius;
 	}
@@ -583,9 +579,6 @@ public class World implements Cloneable {
 	 * 			|	else
 	 * 			|		! result.contains(gameObject) 
 	 */
-	//TODO 	mag niet public zijn
-	//  	Public shouldn't be a problem because the list is created in this function
-	//		and all the worms should be able to keep their invariants.
 	public List<Worm> getAllWorms() {
 		List<Worm> worms = new ArrayList<Worm>();
 		List<GameObject> objects = getGameObjects();
@@ -607,9 +600,6 @@ public class World implements Cloneable {
 	 * 			|	else
 	 * 			|		! result.contains(gameObject)
 	 */
-	//TODO mag niet public zijn
-	//  	Public shouldn't be a problem because the list is created in this function
-	//		and all the foods should be able to keep their invariants.
 	public List<Food> getAllFood(){
 		List<Food> food = new ArrayList<Food>();
 		List<GameObject> objects = getGameObjects();
@@ -1211,11 +1201,6 @@ public class World implements Cloneable {
 
 	 */
 	@Raw
-	//TODO Dit is volgens mij niet juist, als de actieve worm een worm dood
-	// zal de index van deze worm verminderen, maar dat betekent niet dat 
-	// tryrunProgram opnieuw uitgevoerd moet worden.
-	
-	// Is this already solved?
 	private void setIndexOfActiveWorm(int indexToBeSet) {
 		this.indexOfActiveWorm = indexToBeSet;
 	}
@@ -1226,15 +1211,8 @@ public class World implements Cloneable {
 	 * the action points of all the worms are set to the max and the hit
 	 * points of each worm are increased by 10.
 	 * 
-	 * @post 	The action points have been set to the max and the hit points
+	 * @effect 	The action points have been set to the max and the hit points
 	 * 			been increased by 10.
-	 * 			| for each oldWorm in this.getAllWorms() and each newWorm in new.getAllWorms()
-	 * 			|	newWorm.getActionPoints() == newWorm.getMaximumActionPoints() &&
-	 * 			|		newWorm.getHitPoints() == oldWorm.getHitpoints() +10
-	 * 
-	 * TODO Isn't it better to use @effect than @post
-	 * 		because if hitpoints +10 is bigger than maxHP then the postcondition wouldn't be true.
-	 * @effect	...
 	 * 			| for each worm in this.getAllWorms()
 	 * 			| 	(new worm).setActionPoints(worm.getMaximumActionPoints())
 	 * 			|	(new worm).setHitPoints(worm.getHitPoints() + 10)

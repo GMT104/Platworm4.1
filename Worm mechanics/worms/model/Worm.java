@@ -155,7 +155,6 @@ public class Worm extends MovableObject{
 	@Basic
 	@Immutable
 	@Raw
-	// TODO	Should density be a static variable?
 	protected final double getDensity(){
 		return this.density;
 	}
@@ -221,14 +220,12 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the minimum radius of this worm.
 	 * 
-	 * @return 	The radius is a positive number.
-	 * 			| result > 0
+	 * @return 	The minimum radius.
+	 * 			| result == this.minimumRadius
 	 */
 	@Basic
 	@Raw
 	@Immutable
-	//TODO	Public shouldn't be a problem.
-	//		Is documentation like this correct?
 	public static double getMinimumRadius() {
 		return minimumRadius;
 	}
@@ -294,7 +291,6 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	//TODO public: shouldn't be a problem
 	public int getActionPoints(){
 		return this.actionPoints;
 	}
@@ -307,7 +303,6 @@ public class Worm extends MovableObject{
 	 * @return	The maximum number of action points is equal to the mass of this worm.
 	 * 			| result == round(this.getMass())
 	 */
-	//TODO public: shouldn't be a problem
 	@Raw
 	public int getMaximumActionPoints(){
 		return (int) (Math.round(this.getMass()));
@@ -358,7 +353,6 @@ public class Worm extends MovableObject{
 	 */
 	@Basic
 	@Raw
-	//TODO public: shouldn't be a problem
 	public int getHitPoints() {
 		return this.hitPoints;
 	}
@@ -409,7 +403,6 @@ public class Worm extends MovableObject{
 	 * 			| result == round(this.getMass())
 	 */
 	@Raw
-	//TODO public: shouldn't be a problem
 	public int getMaximumHitPoints() {
 		return (int) Math.round(this.getMass());
 	}
@@ -497,8 +490,6 @@ public class Worm extends MovableObject{
 	 * Returns the team of this worm.
 	 * If the worm has not joined a team, null is returned.
 	 */
-	//TODO public: 	Shouldn't be a problem because	
-	//				team should be able to keep correct invariants.
 	@Basic
 	@Raw
 	public Team getTeam() {
@@ -1095,8 +1086,6 @@ public class Worm extends MovableObject{
 	public boolean canMove(){
 		if (!getStatus())
 			return false;
-		if (getActionPoints()==0)
-			return false; // TODO commentaar
 		for(double steps= 1.0; steps >= 0.1/(getRadius());steps = steps -0.1){
 			for(double direction = getDirection()-0.7875; direction <= getDirection()+0.7875;direction = direction + 0.0175){
 				if (canMove(steps,direction))
