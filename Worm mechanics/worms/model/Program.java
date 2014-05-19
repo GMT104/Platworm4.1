@@ -8,9 +8,6 @@ import worms.gui.game.IActionHandler;
 
 public class Program {
 	
-	//TODO houdt momenteel geen rekening met 
-	//het programma in het midden verder uit te voeren
-	
 	private Map<String, Type> globals;
 	private Map<String, MyObject> variables = new HashMap<String, MyObject>();
 	private Statement mainStatement;
@@ -36,7 +33,7 @@ public class Program {
 		this.activeWorm = worm;
 	}
 	
-	protected boolean runtimeError() {
+	protected boolean getRuntimeError() {
 		return this.runtimeError;
 	}
 	
@@ -61,10 +58,10 @@ public class Program {
 	}
 	
 	protected void run(){
-		if (! runtimeError()) {
+		if (! getRuntimeError()) {
 			try {	
 				resetCounter();
-				mainStatement.run(activeWorm, handler);
+				getMainStatement().run(activeWorm, handler);
 				initialiseVariables();
 				restartStatements();
 			} catch (Exception exc) {
@@ -76,24 +73,34 @@ public class Program {
 				// 	Move on to the next worm.
 			}
 		}
-		this.activeWorm.getWorld().nextTurn();
+		// TODO The problem that occurred here, because of calling nextTurn twice could possibly be a problem at other places too.
+		// This is linked to the problem in World. I still need to think about the solution.
+		this.getWorm().getWorld().nextTurn();
 	}
 
 	private void restartStatements() {
-		Set<Statement> set = this.mainStatement.getAllSubstatements();
+		Set<Statement> set = this.getMainStatement().getAllSubstatements();
 		for(Statement subStatement: set){
 			subStatement.setHasBeenRunAlready(false);
 		}
 	}
 
+	private Statement getMainStatement() {
+		return this.mainStatement;
+	}
+
 	private void initialiseVariables() {
-		for (String variableName: this.globals.keySet()) {
-			addVariable(variableName, globals.get(variableName).createObjectWithDefaultValue());
+		for (String variableName: this.getGlobals().keySet()) {
+			addVariable(variableName, getGlobals().get(variableName).createObjectWithDefaultValue());
 		}
 	}
 
+	private Map<String, Type> getGlobals() {
+		return this.globals;
+	}
+
 	public boolean isWellFormed() {
-		Set<Statement> set = this.mainStatement.getAllSubstatements();
+		Set<Statement> set = this.getMainStatement().getAllSubstatements();
 		for(Statement subStatement: set){
 			Set<Statement> subSet = subStatement.getAllSubstatements();
 			for(Statement subSubStatement: subSet){

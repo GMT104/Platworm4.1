@@ -501,12 +501,20 @@ public class Facade implements IFacade {
 
 	@Override
 	public boolean hasProgram(Worm worm) {
-		return worm.hasProgram();
+		try {
+			return worm.hasProgram();
+		} catch (NullPointerException exc) {
+			throw new ModelException("Null is invalid object!");
+		}
 	}
 
 	@Override
 	public boolean isWellFormed(Program program) {
-		return program.isWellFormed();
+		try {
+			return program.isWellFormed();
+		} catch (NullPointerException exc) {
+			throw new ModelException("Null is invalid object!");
+		}
 	}
 	
 

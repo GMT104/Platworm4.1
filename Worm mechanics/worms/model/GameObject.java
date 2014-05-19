@@ -99,8 +99,6 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO 	I think that this function may return the world self (not a clone)
-	// 		because that world should be able to make sure its invariants stay correct.
 	public World getWorld(){
 		return this.world;
 	}
@@ -160,8 +158,6 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO 	public
-	//		No problem that this function is public or is there?
 	public double getCoordinateX(){
 		return this.coordinateX;
 	}
@@ -172,8 +168,6 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO 	public
-	//		No problem that this function is public or is there?
 	public double getCoordinateY(){
 		return this.coordinateY;
 	}
@@ -201,7 +195,9 @@ public abstract class GameObject implements Cloneable {
 		if (!isValidCoordinate(coordinateX))
 			throw new ModelException("Illegal X coordinate!");
 		if (isXCoordinateOutOfBounds(coordinateX)){
-			this.coordinateX = coordinateX-this.getRadius();
+			//TODO I removed the -radius, because that is only right if the worm  leaves the world to the left
+			// seemed all to much hassle. Better leave it out in my opinion.
+			this.coordinateX = coordinateX;
 			this.terminate();
 		}
 		else
@@ -247,7 +243,9 @@ public abstract class GameObject implements Cloneable {
 		if (!isValidCoordinate(coordinateY))
 			throw new ModelException("Illegal Y coordinate!");
 		if (this.isYCoordinateOutOfBounds(coordinateY)){
-			this.coordinateY = coordinateY-this.getRadius();
+			//TODO I removed the -radius, because that is only right if the worm  leaves the world by going down
+			// seemed all to much hassle. Better leave it out in my opinion.
+			this.coordinateY = coordinateY;
 			this.terminate();
 		}
 		else
@@ -302,6 +300,7 @@ public abstract class GameObject implements Cloneable {
 	@Raw
 	protected void setCoordinates(double x, double y) throws ModelException {
 		setX(x);
+		//TODO I don't understand this if
 		if (this.getStatus())
 			setY(y);
 	}
@@ -314,8 +313,6 @@ public abstract class GameObject implements Cloneable {
 	 */
 	@Basic
 	@Raw
-	//TODO 	public
-	//		No problem that this function is public or is there?
 	public double getRadius(){
 		return this.radius;
 	}
@@ -391,8 +388,6 @@ public abstract class GameObject implements Cloneable {
 	 * 			| result == overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 	 *			|			gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius())
 	 */
-	//TODO	public
-	//		No problem that this function is public or is there?
 	public boolean overlapsGameObject(GameObject gameObject) {
 		return overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 						gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius());
@@ -419,8 +414,7 @@ public abstract class GameObject implements Cloneable {
 	 * 			distance between the two centres.
 	 * 			| result == ((radius1 + radius2) > SquareRoot((x2 - x1)² + (y2 - y1)²))
 	 */
-	//TODO	public
-	//		No problem that this function is public or is there?
+	//TODO There is no problem here, just wanted to congratulate you. This is an beautiful solution. Would never have thought of that.
 	public static boolean overlaps(double x1, double y1, double radius1, double x2, double y2, double radius2) {
 		double distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 		return (distance < radius1 + radius2);

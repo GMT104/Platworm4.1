@@ -33,7 +33,7 @@ public class SearchObjectExpression extends UnaryExpression {
 		objects.remove(activeWorm);		
 		while(world.isInWorld(x, y, step)) {
 			for(GameObject object: objects) { 
-				if (GameObject.overlaps(object.getCoordinateX(), object.getCoordinateY(), object.getRadius(), 
+				if (GameObject.overlaps(object.getCoordinateX(), object.getCoordinateY(), object.getRadius()*0.5, 
 						x, y, step)) {
 					return new Entity(object);
 				}
