@@ -1196,6 +1196,7 @@ public class World implements Cloneable {
 		else{
 			setIndexOfActiveWorm(getIndexOfActiveWorm()+1);
 		}
+		tryRunProgramOfActiveWorm();
 	}
 	
 	
@@ -1207,10 +1208,7 @@ public class World implements Cloneable {
 	 * 
 	 * @post 	The index has been set.
 	 * 			| new.getIndexOfActiveWorm() == indexToBeSet
-	 * 
-	 * @effect	If the next worm is another worm, the program of that worm will run.
-	 * 			| if (new.getIndexOfActiveWorm() != this.getIndexOfActiveWorm())
-	 * 			|	then this.tryRunProgramOfActiveWorm()
+
 	 */
 	@Raw
 	//TODO Dit is volgens mij niet juist, als de actieve worm een worm dood
@@ -1219,10 +1217,7 @@ public class World implements Cloneable {
 	
 	// Is this already solved?
 	private void setIndexOfActiveWorm(int indexToBeSet) {
-		int previousIndex = getIndexOfActiveWorm();
 		this.indexOfActiveWorm = indexToBeSet;
-		if (getIndexOfActiveWorm() != previousIndex)
-			tryRunProgramOfActiveWorm();
 	}
 	
 	

@@ -344,8 +344,7 @@ public class Worm extends MovableObject{
 			this.actionPoints = actionPoints;
 		else if (actionPoints <= 0){
 			this.actionPoints = 0;
-			if (! this.hasProgram())
-				this.getWorld().nextTurn(); 
+			this.getWorld().nextTurn(); 
 		}
 		else if (actionPoints > this.getMaximumActionPoints())
 			this.actionPoints = this.getMaximumActionPoints();

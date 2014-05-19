@@ -75,7 +75,8 @@ public class Program {
 		}
 		// TODO The problem that occurred here, because of calling nextTurn twice could possibly be a problem at other places too.
 		// This is linked to the problem in World. I still need to think about the solution.
-		this.getWorm().getWorld().nextTurn();
+		if (this.getWorm() == this.getWorm().getWorld().getActiveWorm())
+			this.getWorm().getWorld().nextTurn();
 	}
 
 	private void restartStatements() {
