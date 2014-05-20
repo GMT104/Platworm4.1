@@ -195,8 +195,6 @@ public abstract class GameObject implements Cloneable {
 		if (!isValidCoordinate(coordinateX))
 			throw new ModelException("Illegal X coordinate!");
 		if (isXCoordinateOutOfBounds(coordinateX)){
-			//TODO I removed the -radius, because that is only right if the worm  leaves the world to the left
-			// seemed all to much hassle. Better leave it out in my opinion.
 			this.coordinateX = coordinateX;
 			this.terminate();
 		}
@@ -243,8 +241,6 @@ public abstract class GameObject implements Cloneable {
 		if (!isValidCoordinate(coordinateY))
 			throw new ModelException("Illegal Y coordinate!");
 		if (this.isYCoordinateOutOfBounds(coordinateY)){
-			//TODO I removed the -radius, because that is only right if the worm  leaves the world by going down
-			// seemed all to much hassle. Better leave it out in my opinion.
 			this.coordinateY = coordinateY;
 			this.terminate();
 		}
@@ -300,7 +296,6 @@ public abstract class GameObject implements Cloneable {
 	@Raw
 	protected void setCoordinates(double x, double y) throws ModelException {
 		setX(x);
-		//TODO I don't understand this if
 		if (this.getStatus())
 			setY(y);
 	}
@@ -414,7 +409,6 @@ public abstract class GameObject implements Cloneable {
 	 * 			distance between the two centres.
 	 * 			| result == ((radius1 + radius2) > SquareRoot((x2 - x1)² + (y2 - y1)²))
 	 */
-	//TODO There is no problem here, just wanted to congratulate you. This is an beautiful solution. Would never have thought of that.
 	public static boolean overlaps(double x1, double y1, double radius1, double x2, double y2, double radius2) {
 		double distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 		return (distance < radius1 + radius2);

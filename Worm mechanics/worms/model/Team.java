@@ -96,8 +96,7 @@ public class Team implements Cloneable {
 	/**
 	 * Returns all the worms that are in this team.
 	 */
-	//TODO waarom een clone?
-	protected List<Worm> getWorms() {
+	public List<Worm> getWorms() {
 		List<Worm> wormsList = new ArrayList<>();
 		for (Worm worm: this.worms) {
 			wormsList.add(worm);
@@ -155,7 +154,6 @@ public class Team implements Cloneable {
 	 * @return	Returns if the worm has a reference to this team.
 	 * 			| result == (worm.getTeam() == this)
 	 */
-	//TODO Wat is deze raw?
 	protected boolean canHaveAsWorm(@Raw Worm worm) {
 		return (worm.getTeam() == this);
 	}

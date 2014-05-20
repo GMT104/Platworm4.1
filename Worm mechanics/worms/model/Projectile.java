@@ -25,7 +25,7 @@ public abstract class Projectile extends MovableObject {
 	/**
 	 * The density of the projectile.
 	 */
-	private static final double density = 7800;		// In kg/m³
+	private final static double density = 7800;		// In kg/m³
 	/**
 	 * The mass of the projectile.
 	 */
@@ -131,15 +131,13 @@ public abstract class Projectile extends MovableObject {
 	/**
 	 * Returns the density of the projectile in kg/m³.
 	 * 
-	 * @return	Returns the density.
-	 * 			| result == 7800
+	 * @return	Returns a positive number.
+	 * 			| result > 0
 	 */
-	// TODO	Can this return a specific value?
-	//		Meaning: if it is like this in the documentation, it can never be changed.
 	@Basic
 	@Raw
 	@Immutable
-	protected static final double getDensity() {
+	protected final static double getDensity() {
 		return density;
 	}
 	

@@ -159,6 +159,9 @@ public class Worm extends MovableObject{
 	
 	/**
 	 * Returns the density of this worm.
+	 * 
+	 * @return	Result must be a positive number.
+	 * 			| result > 0
 	 */
 	@Basic
 	@Immutable
@@ -228,8 +231,8 @@ public class Worm extends MovableObject{
 	/**
 	 * Returns the minimum radius of this worm.
 	 * 
-	 * @return 	The minimum radius.
-	 * 			| result == this.minimumRadius
+	 * @return	Returns a positive number.
+	 * 			| result > 0 
 	 */
 	@Basic
 	@Raw

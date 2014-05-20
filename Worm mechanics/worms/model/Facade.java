@@ -489,7 +489,6 @@ public class Facade implements IFacade {
 	}
 
 	@Override
-	//TODO commentaar
 	public ParseOutcome<?> parseProgram(String programText,
 			IActionHandler handler) {
 		ProgramParser<Expression,Statement,Type> parser = new ProgramParser<>(new ProgramFactoryImpl());
