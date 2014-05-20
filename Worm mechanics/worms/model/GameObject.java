@@ -230,9 +230,6 @@ public abstract class GameObject implements Cloneable {
 	protected void setY(double coordinateY) throws ModelException {
 		if (!isValidCoordinate(coordinateY))
 			throw new ModelException("Illegal Y coordinate!");
-		if (this.isYCoordinateOutOfBounds(coordinateY)){
-			this.coordinateY = coordinateY;
-		}
 		else
 			this.coordinateY = coordinateY;
 	}
