@@ -377,44 +377,25 @@ public abstract class Projectile extends MovableObject {
 	 * Calculates the time that this worm will be in the air.
 	 * 
 	 * @return	Returns the time that this projectile is in the air until it hits impassable terrain
-	 * 			or it hits a worm that is not the active worm. If the worm leaves the world,  
-	 * 			extra time is provided to make the worm visually disappear.
+	 * 			or it hits a worm that is not the active worm. 
 	 * 			| for each time in {t | t in 0..result & t = n*step (with n integer)}
 	 * 			|	position = this.getJumpStep(time)
 	 * 			|	(this.getWorld().isPassableArea(position[0],position[1], this.getRadius())
 	 * 			|		&& ! this.getWorld().coordinatesOverlapsWorm(position[0]-0.5*this.getRadius(),
 	 * 			|					position[1]-0.5*this.getRadius(),this.getRadius()) ) == true
-	 * 			| 
-	 * 			| nextPosition = this.getJumpStep(result+step)
-	 * 			| (! this.getWorld().isPassableLocation(nextPosition[0], nextPosition[1]) 
-	 * 			|		|| this.getWorld().coordinatesOverlapsWorm(nextPosition[0]-0.5*this.getRadius(),
-	 * 			|					nextPosition[1]-0.5*this.getRadius(),this.getRadius()) )  == true
-	 * 			|
-	 * 			| if(! this.getWorld().isInWorld(position[0], position[1], this.getRadius()))
-	 * 			|	then result = result + 0.20 
+	
 	 */
 	@Override
 	protected double getJumpRealTimeInAir(double step) {
-		double time = 0.0;
 		double radius = this.getRadius();
-		step = 10.0*step;
-		boolean hasLanded = false;
-		
-		for (double t = step; (! hasLanded) ; t = t + step) {
+		step = 10.0*step;		
+		for (double t = step; true; t = t + step) {
 			double[] position = this.getJumpStep(t);
-			if (this.getWorld().isPassableLocation(position[0], position[1])
-					&& ! this.getWorld().coordinatesOverlapsWorm(position[0]-0.5*radius,position[1]-0.5*radius,radius)) {
-				time = t;
-				}
-			else if(! this.getWorld().isInWorld(position[0], position[1], radius)) {
-				time = time+0.20;
-				hasLanded = true;
+			if (!this.getWorld().isPassableLocation(position[0], position[1]) || this.getWorld().coordinatesOverlapsWorm(position[0],position[1],radius)){
+					return t;
 			}
-			else {
-				hasLanded = true;}
 		}
 		
-		return time;
 	}
 	
 	
