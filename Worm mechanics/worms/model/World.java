@@ -478,32 +478,18 @@ public class World implements Cloneable {
 	 * 			The radius of the entity for which to find a random location.
 	 * 
 	 * @return 	The x and y position of the random location that was found as a list.
-	 * 			|x = (getRandom().nextDouble())*(getWidth()-radius*2.0)+radius
-	 *			|y = 0
-	 *			|if (x == getWidth()/2.0)
-	 *			|	angle = Math.PI/2.0
-	 *			|else
-	 *			|	angle = Math.atan(getHeight()*0.5/Math.abs(getWidth()*0.5-x))
-	 *			|step = getStep(radius)
-	 *			|stepY = Math.sin(angle)*step
-	 *			|
-	 *			|if (!isAdjacent(y/tan(angle), y, radius))
-	 *			|	for each y in {y| y in 0..(result[1]-stepY)  & y= n*stepY (with n integer)}
-	 *			|		then result == [result[1]/tan(angle),result[1]]
+	 * 			| isAdjacent(result[0],result[1],radius)
 	 *
 	 *@throws	No location was found.
-	 *			| If the nothing is returned during the while loop.
-	 */		
-	//TODO commentaar world
-	// Shall we make this together on Tuesday?
-	// It's kind of big to make it alone ... (means a lot of possible errors)
+	 *			| None of the random locations checked were valid.
+	 */
 	private double[] getRandomAdjacentLocation(double radius) throws ModelException {
 		double[][] possibles = {{(getRandom().nextDouble())*(getWidth()-radius*2.0)+radius,0},
 								{(getRandom().nextDouble())*(getWidth()-radius*2.0)+radius,getHeight()},
 								{0, (getRandom().nextDouble())*(getHeight()-radius*2.0)+radius},
 								{getWidth(), (getRandom().nextDouble())*(getHeight()-radius*2.0)+radius}};
 		double angle;
-		int randomInt = Math.abs(getRandom().nextInt())%4;
+		int randomInt = getRandom().nextInt(4);
 		double x = possibles[randomInt][0];
 		double y = possibles[randomInt][1];
 		if (x == getWidth()/2.0)

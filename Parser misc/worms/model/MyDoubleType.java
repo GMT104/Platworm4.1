@@ -68,6 +68,4 @@ public class MyDoubleType extends Type {
 	public MyDouble createObjectWithDefaultValue() {
 		return new MyDouble(0.0);
 	}
-	
-	//TODO convert to int
 }
