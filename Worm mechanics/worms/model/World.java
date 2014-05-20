@@ -338,6 +338,7 @@ public class World implements Cloneable {
 	@Raw
 	protected boolean isPassablePixel(int row, int column) throws ModelException{
 		if (!(row < this.getHeightInPixels() && row >= 0 && column < this.getWidthInPixels() && column >= 0)) 
+			
 			throw new ModelException("Tested passable pixel outside of range!");
 		return this.passableMap[row][column];
 	}
@@ -360,7 +361,7 @@ public class World implements Cloneable {
 		double pixelHeight = (getHeight()/getHeightInPixels());
 		double pixelWidth = (getWidth()/getWidthInPixels());
 		try{
-		return isPassablePixel((getHeightInPixels()-1-(int)(y/pixelHeight)),(int)(x/pixelWidth));
+		return isPassablePixel((getHeightInPixels()-1-(int)Math.floor((y/pixelHeight))),(int)Math.floor((x/pixelWidth)));
 		} catch(ModelException e){
 			return false;
 		}

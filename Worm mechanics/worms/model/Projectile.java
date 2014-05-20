@@ -428,7 +428,7 @@ public abstract class Projectile extends MovableObject {
 	protected void jump(double timeStep) throws ModelException {
 		if (! this.canJump()) 
 			throw new ModelException("Cannot jump!");
-
+			
 		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -6)));
 		this.setCoordinates(position[0], position[1]);
 		

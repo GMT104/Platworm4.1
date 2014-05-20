@@ -193,12 +193,14 @@ public abstract class GameObject implements Cloneable {
 	 *       	| (! isValidCoordinate(coordinateX))
 	 */
 	@Raw
+	//TODO KJAdbasjkfbjkasf
 	protected void setX(double coordinateX) throws ModelException {
 		if (!isValidCoordinate(coordinateX))
 			throw new ModelException("Illegal X coordinate!");
 		if (isXCoordinateOutOfBounds(coordinateX)){
 			this.coordinateX = coordinateX;
-			this.terminate();
+			if (!(this instanceof Projectile))
+				this.terminate();
 		}
 		else
 			this.coordinateX = coordinateX;

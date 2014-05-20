@@ -13,11 +13,11 @@ public class Tester {
 		final double EPS = Util.DEFAULT_EPSILON;
 		
 //		
-//		World world = new World(2, 2, new boolean[][] {	{true, true, true, true},
-//																	{true, true, true, true},
-//																	{true, true, true, true},
-//																	{false, false, false, false}
-//		}, random);
+		World world = new World(2, 2, new boolean[][] {	{true, true, true, true},
+																	{true, true, true, true},
+																	{true, true, true, true},
+																	{false, false, false, false}
+		}, random);
 //		System.out.println(world);
 //		
 //		Worm testWorm = new Worm(1,-1,0,1,"Bob",true,world);
@@ -39,17 +39,17 @@ public class Tester {
 //			e.printStackTrace();
 //		}
 
-	
-		
-		
-		boolean b = true;
-		double c = 6;
-		
-		BooleanExpression e1 = new BooleanLiteralExpression(b);
-		DoubleExpression e2 = new DoubleLiteralExpression(c);
-		new BooleanOrExpression(e1, e2);
-		
-		EntityExpression w;
-		new IsFoodExpression(w);
+		System.out.println(world.isPassableLocation(-3.997110291772664,6.2725013811295165));
+//		
+//		
+//		boolean b = true;
+//		double c = 6;
+//		
+//		BooleanExpression e1 = new BooleanLiteralExpression(b);
+//		DoubleExpression e2 = new DoubleLiteralExpression(c);
+//		new BooleanOrExpression(e1, e2);
+//		
+//		EntityExpression w;
+//		new IsFoodExpression(w);
 	}
 }
