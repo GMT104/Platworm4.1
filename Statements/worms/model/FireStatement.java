@@ -11,7 +11,7 @@ public class FireStatement extends ActionStatement {
 
 	private Expression yieldExpression;
 
-	public FireStatement(Expression yield) {
+	public FireStatement(DoubleExpression yield) {
 		this.yieldExpression = yield;
 	}
 

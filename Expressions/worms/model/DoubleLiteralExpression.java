@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleLiteralExpression extends Expression {
+public class DoubleLiteralExpression extends DoubleExpression {
 
 	private MyDouble d;
 

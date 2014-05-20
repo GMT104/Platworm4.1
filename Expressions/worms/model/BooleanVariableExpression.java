@@ -14,7 +14,7 @@ public class BooleanVariableExpression extends BooleanExpression {
 
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
-		return activeWorm.getProgram().getVariable(variableName);
+		return (MyBoolean) activeWorm.getProgram().getVariable(variableName);
 	}
 
 	@Override

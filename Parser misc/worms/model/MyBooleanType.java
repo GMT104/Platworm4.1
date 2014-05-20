@@ -21,4 +21,9 @@ public class MyBooleanType extends Type {
 	public MyBoolean createObjectWithDefaultValue() {
 		return new MyBoolean(false);
 	}
+	
+	@Override
+	public BooleanExpression createVariableExpression(String name) {
+		return new BooleanVariableExpression(name);
+	}
 }

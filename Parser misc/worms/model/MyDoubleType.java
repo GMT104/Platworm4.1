@@ -68,4 +68,9 @@ public class MyDoubleType extends Type {
 	public MyDouble createObjectWithDefaultValue() {
 		return new MyDouble(0.0);
 	}
+
+	@Override
+	public DoubleExpression createVariableExpression(String name) {
+		return new DoubleVariableExpression(name);
+	}
 }

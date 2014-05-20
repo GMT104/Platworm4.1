@@ -45,8 +45,11 @@ public class Tester {
 		boolean b = true;
 		double c = 6;
 		
-		Expression e1 = new BooleanLiteralExpression(b);
-		Expression e2 = new DoubleLiteralExpression(c);
+		BooleanExpression e1 = new BooleanLiteralExpression(b);
+		DoubleExpression e2 = new DoubleLiteralExpression(c);
 		new BooleanOrExpression(e1, e2);
+		
+		EntityExpression w;
+		new IsFoodExpression(w);
 	}
 }

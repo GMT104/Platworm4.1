@@ -14,7 +14,7 @@ public class EntityVariableExpression extends EntityExpression {
 
 	@Override
 	public Entity getValue(Worm activeWorm) {
-		return activeWorm.getProgram().getVariable(variableName);
+		return (Entity) activeWorm.getProgram().getVariable(variableName);
 	}
 
 	@Override

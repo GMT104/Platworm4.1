@@ -47,7 +47,6 @@ import worms.model.SkipStatement;
 import worms.model.Statement;
 import worms.model.ToggleWeaponStatement;
 import worms.model.TurnStatement;
-import worms.model.VariableExpression;
 import worms.model.WhileStatement;
 import worms.model.programs.ProgramFactory;
 
@@ -70,18 +69,18 @@ public class ProgramFactoryImpl
   @Override
   public Expression createAnd(int line, int column, Expression e1,
     Expression e2) {
-    return new BooleanAndExpression(e1,e2);
+    return new BooleanAndExpression((BooleanExpression) e1,(BooleanExpression) e2);
   }
 
   @Override
   public Expression createOr(int line, int column, Expression e1,
     Expression e2) {
-    return new BooleanOrExpression(e1,e2);
+    return new BooleanOrExpression((BooleanExpression) e1,(BooleanExpression) e2);
   }
 
   @Override
   public Expression createNot(int line, int column, Expression e) {
-    return new BooleanNotExpression(e);
+    return new BooleanNotExpression((BooleanExpression) e);
   }
 
   @Override
@@ -96,135 +95,135 @@ public class ProgramFactoryImpl
 
   @Override
   public Expression createGetX(int line, int column, Expression e) {
-    return new GetXExpression(e);
+    return new GetXExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetY(int line, int column, Expression e) {
-    return new GetYExpression(e);
+    return new GetYExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetRadius(int line, int column, Expression e) {
-    return new GetRadiusExpression(e);
+    return new GetRadiusExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetDir(int line, int column, Expression e) {
-    return new GetDirectionExpression(e);
+    return new GetDirectionExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetAP(int line, int column, Expression e) {
-    return new GetActionPointsExpression(e);
+    return new GetActionPointsExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetMaxAP(int line, int column, Expression e) {
-    return new GetMaxActionPointsExpression(e);
+    return new GetMaxActionPointsExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetHP(int line, int column, Expression e) {
-    return new GetHitPointsExpression(e);
+    return new GetHitPointsExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createGetMaxHP(int line, int column, Expression e) {
-    return new GetMaxHitPointsExpression(e);
+    return new GetMaxHitPointsExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createSameTeam(int line, int column, Expression e) {
-    return new GetSameTeamExpression(e);
+    return new GetSameTeamExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createSearchObj(int line, int column, Expression e) {
-    return new SearchObjectExpression(e);
+    return new SearchObjectExpression((DoubleExpression) e);
   }
 
   @Override
   public Expression createIsWorm(int line, int column, Expression e) {
-    return new IsWormExpression(e);
+    return new IsWormExpression((EntityExpression) e);
   }
 
   @Override
   public Expression createIsFood(int line, int column, Expression e) {
-    return new IsFoodExpression(e);
+    return new IsFoodExpression((EntityExpression) e);
   }
 
 //  public E IsTerrain(int line, int column, E e);
 
   @Override
   public Expression createVariableAccess(int line, int column, String name) {
-    return new VariableExpression(name);
+    return null;
   }
 
   @Override
   public Expression createLessThan(int line, int column, Expression e1, Expression e2) {
-    return new DoubleLessThanExpression(e1,e2);
+    return new DoubleLessThanExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createGreaterThan(int line, int column, Expression e1, Expression e2) {
-    return new DoubleGreaterThanExpression(e1,e2);
+    return new DoubleGreaterThanExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createLessThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-    return new DoubleLessThanOrEqualToExpression(e1,e2);
+    return new DoubleLessThanOrEqualToExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createGreaterThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
-    return new DoubleGreaterThanOrEqualToExpression(e1,e2);
+    return new DoubleGreaterThanOrEqualToExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createEquality(int line, int column, Expression e1, Expression e2) {
-    return  new EqualityExpression(e1,e2);
+    return  new EqualityExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createInequality(int line, int column, Expression e1, Expression e2) {
-    return new InequalityExpression(e1,e2);
+    return new InequalityExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createAdd(int line, int column, Expression e1, Expression e2) {
-    return new DoubleAdditionExpression(e1,e2);
+    return new DoubleAdditionExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createSubtraction(int line, int column, Expression e1, Expression e2) {
-    return new DoubleSubtractionExpression(e1,e2);
+    return new DoubleSubtractionExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createMul(int line, int column, Expression e1, Expression e2) {
-    return new DoubleMultiplyExpression(e1,e2);
+    return new DoubleMultiplyExpression((DoubleExpression) e1,(DoubleExpression) e2);
     		
   }
 
   @Override
   public Expression createDivision(int line, int column, Expression e1, Expression e2) {
-    return new DoubleDivisionExpression(e1,e2);
+    return new DoubleDivisionExpression((DoubleExpression) e1,(DoubleExpression) e2);
   }
 
   @Override
   public Expression createSqrt(int line, int column, Expression e) {
-    return new DoubleSqrtExpression(e);
+    return new DoubleSqrtExpression((DoubleExpression) e);
   }
 
   @Override
   public Expression createSin(int line, int column, Expression e) {
-    return new DoubleSinusExpression(e);
+    return new DoubleSinusExpression((DoubleExpression) e);
   }
 
   @Override
   public Expression createCos(int line, int column, Expression e) {
-    return new DoubleCosinusExpression(e);
+    return new DoubleCosinusExpression((DoubleExpression) e);
   }
 
   @Override
@@ -305,8 +304,7 @@ public class ProgramFactoryImpl
 @Override
 public Expression createVariableAccess(int line, int column, String name,
 		Type type) {
-	// TODO Auto-generated method stub
-	return null;
+	return type.createVariableExpression(name);
 }
 }
 

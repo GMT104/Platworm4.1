@@ -14,7 +14,7 @@ public class DoubleVariableExpression extends DoubleExpression {
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		return activeWorm.getProgram().getVariable(variableName);
+		return (MyDouble) activeWorm.getProgram().getVariable(variableName);
 	}
 
 	@Override
