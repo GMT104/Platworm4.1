@@ -814,9 +814,9 @@ public class Worm extends MovableObject{
 	 * 			| (new this.getProjectile()).getDirection() == this.getDirection()
 	 * @post	The new projectile is fired from a rifle or a bazooka, according to the current waepon number.
 	 * 			| if (this.getCurrentWeaponNumber() == 0)
-	 * 			|		then this.getProjectile() isinstance Rifle
+	 * 			|		then this.getProjectile() instanceof Rifle
 	 * 			| else 
-	 * 			|		this.getProjectile() isinstance Bazooka
+	 * 			|		this.getProjectile() instanceof Bazooka
 	 */
 	@Model
 	private void setProjectile() {
@@ -824,7 +824,7 @@ public class Worm extends MovableObject{
 			this.projectile = new Rifle(this.getCoordinateX() + this.getRadius()*Math.cos(this.getDirection()),
 					this.getCoordinateY() + this.getRadius()*Math.sin(this.getDirection()), 
 					true, this.getWorld(), this.getDirection());
-		if (this.getCurrentWeaponNumber() == 1)
+		else if (this.getCurrentWeaponNumber() == 1)
 			this.projectile = new Bazooka(this.getCoordinateX() + this.getRadius()*Math.cos(this.getDirection()),
 					this.getCoordinateY() + this.getRadius()*Math.sin(this.getDirection()), 
 					true, this.getWorld(), this.getDirection());	
@@ -861,16 +861,15 @@ public class Worm extends MovableObject{
 	 * @post	Subtract the action points that it requires to shoot this weapon.
 	 * 			| new.getActionPoints() == this.getActionPoints() - this.getProjectile().getCostActionPoints() 
 	 * 
-	 * @effect	The old projectile of this worm is terminated.
-	 * 			| this.getProjectile().terminate()
 	 * @effect	A new projectile is given to this worm.
 	 * 			| this.setProjectile()
 	 */
 	protected void shoot(int yield) throws ModelException {
-		this.getProjectile().terminate();
-		this.setProjectile();
 		this.projectile.setYield(yield);
 		this.setActionPoints(this.getActionPoints()-this.projectile.getCostActionPoints());
+		this.projectile.terminate();
+		this.setProjectile();
+		this.getProjectile().setYield(yield);
 	}
 	
 	

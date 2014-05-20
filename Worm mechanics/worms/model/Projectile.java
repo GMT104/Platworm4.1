@@ -142,6 +142,13 @@ public abstract class Projectile extends MovableObject {
 	}
 	
 	
+	@Override
+	protected void setCoordinates(double x, double y) throws ModelException {
+		if (! isTerminated())
+			super.setCoordinates(x,y);
+	}
+	
+	
 	
 	
 	/**
@@ -425,10 +432,13 @@ public abstract class Projectile extends MovableObject {
 		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -6)));
 		this.setCoordinates(position[0], position[1]);
 		
-		Worm target = this.getWorld().getWormThatOverlaps(this);
-		if (target != null) {
-			target.setHitPoints(target.getHitPoints()-this.getLostHitPoints());
+		if (! isTerminated()) {
+			Worm target = this.getWorld().getWormThatOverlaps(this);
+			if (target != null) {
+				target.setHitPoints(target.getHitPoints()-this.getLostHitPoints());
+			}
 		}
+		
 	}
 
 	

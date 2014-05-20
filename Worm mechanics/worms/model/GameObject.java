@@ -145,9 +145,11 @@ public abstract class GameObject implements Cloneable {
 	 * 			| new.getWorld() == null
 	 */
 	protected void terminate() {
-		this.setStatus(false);
-		this.getWorld().removeAsGameObject(this);
-		this.setWorld(null);
+		if (getStatus()) {
+			this.setStatus(false);
+			this.getWorld().removeAsGameObject(this);
+			this.setWorld(null);
+		}
 	}
 	
 	
