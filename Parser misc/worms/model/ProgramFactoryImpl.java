@@ -253,12 +253,13 @@ public class ProgramFactoryImpl
 
   @Override
   public Statement createAssignment(int line, int column, String variable, Expression rhs) {
-    if (rhs instanceof BooleanExpression)
-	  	return new AssignStatement(variable,(BooleanExpression) rhs);
-    else if (rhs instanceof DoubleExpression)
-	  	return new AssignStatement(variable,(DoubleExpression) rhs);
-    else
-	  	return new AssignStatement(variable,(EntityExpression) rhs);
+//    if (rhs instanceof BooleanExpression)
+//	  	return new AssignStatement(variable,(BooleanExpression) rhs);
+//    else if (rhs instanceof DoubleExpression)
+//	  	return new AssignStatement(variable,(DoubleExpression) rhs);
+//    else
+//	  	return new AssignStatement(variable,(EntityExpression) rhs);
+	  return new AssignStatement(variable, rhs);
   }
 
   @Override

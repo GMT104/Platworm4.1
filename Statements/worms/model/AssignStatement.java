@@ -12,21 +12,31 @@ public class AssignStatement extends Statement {
 
 	private String variable;
 	private Expression rhs;
-	
-	public AssignStatement(String variable, BooleanExpression rhs) {
+
+	public AssignStatement(String variable, Expression rhs){
 		this.variable = variable;
-		this.rhs = rhs;
+		if (rhs instanceof BooleanExpression)
+			this.rhs = (BooleanExpression) rhs;
+		else if (rhs instanceof DoubleExpression)
+			this.rhs = (DoubleExpression) rhs;
+		else
+			this.rhs = (EntityExpression) rhs;
 	}
 	
-	public AssignStatement(String variable, DoubleExpression rhs) {
-		this.variable = variable;
-		this.rhs = rhs;
-	}
-	
-	public AssignStatement(String variable, EntityExpression rhs) {
-		this.variable = variable;
-		this.rhs = rhs;
-	}
+//	public AssignStatement(String variable, BooleanExpression rhs) {
+//		this.variable = variable;
+//		this.rhs = rhs;
+//	}
+//	
+//	public AssignStatement(String variable, DoubleExpression rhs) {
+//		this.variable = variable;
+//		this.rhs = rhs;
+//	}
+//	
+//	public AssignStatement(String variable, EntityExpression rhs) {
+//		this.variable = variable;
+//		this.rhs = rhs;
+//	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
