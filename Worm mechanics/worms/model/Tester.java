@@ -47,9 +47,9 @@ public class Tester {
 		
 		BooleanExpression e1 = new BooleanLiteralExpression(b);
 		DoubleExpression e2 = new DoubleLiteralExpression(c);
-		new BooleanOrExpression(e1, e2);
+		// new BooleanOrExpression(e1, e2); => Gives an error before compiling
 		
-		EntityExpression w;
+		EntityExpression w = new SearchObjectExpression(e2);
 		new AssignStatement("w",w);
 		new AssignStatement("w",e1);
 		new AssignStatement("w",e2);
