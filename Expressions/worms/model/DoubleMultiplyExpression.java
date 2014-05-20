@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class DoubleMultiplyExpression extends DoubleBinaryExpression {
 
-	public DoubleMultiplyExpression(Expression e1, Expression e2) {
+	public DoubleMultiplyExpression(DoubleExpression e1, DoubleExpression e2) {
 		super(e1,e2);
 	}
 

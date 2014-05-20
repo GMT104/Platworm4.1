@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class DoubleCosinusExpression extends DoubleUnaryExpression {
 
-	public DoubleCosinusExpression(Expression e) {
+	public DoubleCosinusExpression(DoubleExpression e) {
 		super(e);
 	}
 

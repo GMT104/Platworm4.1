@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class DoubleGreaterThanExpression extends BooleanBinaryExpression {
 
-	public DoubleGreaterThanExpression(Expression e1, Expression e2) {
+	public DoubleGreaterThanExpression(DoubleExpression e1, DoubleExpression e2) {
 		super(e1,e2);
 	}
 

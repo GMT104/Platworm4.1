@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class GetDirectionExpression extends DoubleUnaryExpression {
 
-	public GetDirectionExpression(Expression e) {
+	public GetDirectionExpression(EntityExpression e) {
 		super(e);
 	}
 

@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class GetMaxHitPointsExpression extends DoubleUnaryExpression {
 
-	public GetMaxHitPointsExpression(Expression e) {
+	public GetMaxHitPointsExpression(EntityExpression e) {
 		super(e);
 	}
 

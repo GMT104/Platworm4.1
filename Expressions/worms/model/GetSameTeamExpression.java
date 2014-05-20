@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class GetSameTeamExpression extends BooleanUnaryExpression {
 
-	public GetSameTeamExpression(Expression e) {
+	public GetSameTeamExpression(EntityExpression e) {
 		super(e);
 	}
 

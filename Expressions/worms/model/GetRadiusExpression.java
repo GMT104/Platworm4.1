@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class GetRadiusExpression extends DoubleUnaryExpression {
 
-	public GetRadiusExpression(Expression e) {
+	public GetRadiusExpression(EntityExpression e) {
 		super(e);
 	}
 

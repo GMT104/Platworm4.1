@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class EqualityExpression extends BooleanBinaryExpression {
 
-	public EqualityExpression(Expression e1, Expression e2) {
+	public EqualityExpression(DoubleExpression e1, DoubleExpression e2) {
 		super(e1,e2);
 	}
 

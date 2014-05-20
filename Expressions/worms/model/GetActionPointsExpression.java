@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class GetActionPointsExpression extends DoubleUnaryExpression {
 
-	public GetActionPointsExpression(Expression e) {
+	public GetActionPointsExpression(EntityExpression e) {
 		super(e);
 	}
 

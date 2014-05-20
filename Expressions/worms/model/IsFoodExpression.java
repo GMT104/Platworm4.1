@@ -7,7 +7,7 @@ import worms.model.Worm;
 
 public class IsFoodExpression extends BooleanUnaryExpression {
 
-	public IsFoodExpression(Expression e) {
+	public IsFoodExpression(EntityExpression e) {
 		super(e);
 	}
 

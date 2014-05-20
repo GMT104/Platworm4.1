@@ -4,16 +4,16 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class VariableExpression extends Expression {
+public class EntityVariableExpression extends EntityExpression {
 
 	private String variableName;
 	
-	public VariableExpression(String name) {
+	public EntityVariableExpression(String name) {
 		this.variableName = name;
 	}
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
+	public Entity getValue(Worm activeWorm) {
 		return activeWorm.getProgram().getVariable(variableName);
 	}
 

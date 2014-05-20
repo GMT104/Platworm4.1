@@ -7,7 +7,7 @@ import worms.model.GameObject;
 
 public class GetXExpression extends DoubleUnaryExpression {
 
-	public GetXExpression(Expression e) {
+	public GetXExpression(EntityExpression e) {
 		super(e);
 	}
 

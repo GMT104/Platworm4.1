@@ -7,7 +7,7 @@ import worms.model.GameObject;
 
 public class GetYExpression extends DoubleUnaryExpression {
 
-	public GetYExpression(Expression e) {
+	public GetYExpression(EntityExpression e) {
 		super(e);
 	}
 

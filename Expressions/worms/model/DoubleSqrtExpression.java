@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class DoubleSqrtExpression extends DoubleUnaryExpression {
 
-	public DoubleSqrtExpression(Expression e) {
+	public DoubleSqrtExpression(DoubleExpression e) {
 		super(e);
 	}
 

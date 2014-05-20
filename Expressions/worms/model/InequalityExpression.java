@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public class InequalityExpression extends BooleanBinaryExpression {
 
-	public InequalityExpression(Expression e1, Expression e2) {
+	public InequalityExpression(DoubleExpression e1, DoubleExpression e2) {
 		super(e1,e2);
 	}
 

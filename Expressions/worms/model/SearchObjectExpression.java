@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class SearchObjectExpression extends EntityUnaryExpression {
 	
-	public SearchObjectExpression(Expression e) {
+	public SearchObjectExpression(DoubleExpression e) {
 		super(e); 
 	}
 
