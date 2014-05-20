@@ -2,7 +2,7 @@
 ===============
 
 A project worms and their daily living. 
-This include shooting, eating, dying and amusing people like you.
+This include shooting, eating, dying and amusing people like **you**.
 
 - *Worms Mechanics* 	 contains all aspects concerning the worms and their daily world.
 - *Statements*		 is used to parse programs
