@@ -386,7 +386,7 @@ public abstract class Projectile extends MovableObject {
 	 * 			|					position[1]-0.5*this.getRadius(),this.getRadius()) ) == true
 	 * 			| 
 	 * 			| nextPosition = this.getJumpStep(result+step)
-	 * 			| (! this.getWorld().isPassableArea(nextPosition[0], nextPosition[1], this.getRadius()) 
+	 * 			| (! this.getWorld().isPassableLocation(nextPosition[0], nextPosition[1]) 
 	 * 			|		|| this.getWorld().coordinatesOverlapsWorm(nextPosition[0]-0.5*this.getRadius(),
 	 * 			|					nextPosition[1]-0.5*this.getRadius(),this.getRadius()) )  == true
 	 * 			|
@@ -402,7 +402,7 @@ public abstract class Projectile extends MovableObject {
 		
 		for (double t = step; (! hasLanded) ; t = t + step) {
 			double[] position = this.getJumpStep(t);
-			if (this.getWorld().isPassableArea(position[0], position[1], radius)
+			if (this.getWorld().isPassableLocation(position[0], position[1])
 					&& ! this.getWorld().coordinatesOverlapsWorm(position[0]-0.5*radius,position[1]-0.5*radius,radius)) {
 				time = t;
 				}
@@ -441,7 +441,7 @@ public abstract class Projectile extends MovableObject {
 		if (! this.canJump()) 
 			throw new ModelException("Cannot jump!");
 
-		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -4)));
+		double[] position = this.getJumpStep(this.getJumpRealTimeInAir(Math.pow(10, -6)));
 		this.setCoordinates(position[0], position[1]);
 		
 		Worm target = this.getWorld().getWormThatOverlaps(this);

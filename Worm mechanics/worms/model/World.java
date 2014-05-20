@@ -356,8 +356,7 @@ public class World implements Cloneable {
 	 * 			| pixelWidth = (this.getWidth()/this.getDimensionInPixels(true))
 	 *			| result == this.isPassablePixel((int)(y/pixelHeight),(int)(x/pixelWidth))
 	 */
-	@Raw
-	private boolean isPassableLocation(double x, double y){
+	@Raw protected boolean isPassableLocation(double x, double y){
 		double pixelHeight = (getHeight()/getHeightInPixels());
 		double pixelWidth = (getWidth()/getWidthInPixels());
 		return isPassablePixel((getHeightInPixels()-1-(int)(y/pixelHeight)),(int)(x/pixelWidth));
