@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class SelfExpression extends Expression {
+public class SelfExpression extends EntityExpression {
 
 	@Override
 	public Entity getValue(Worm activeWorm) {
