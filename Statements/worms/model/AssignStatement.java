@@ -13,7 +13,17 @@ public class AssignStatement extends Statement {
 	private String variable;
 	private Expression rhs;
 	
-	public AssignStatement(String variable, Expression rhs) {
+	public AssignStatement(String variable, BooleanExpression rhs) {
+		this.variable = variable;
+		this.rhs = rhs;
+	}
+	
+	public AssignStatement(String variable, DoubleExpression rhs) {
+		this.variable = variable;
+		this.rhs = rhs;
+	}
+	
+	public AssignStatement(String variable, EntityExpression rhs) {
 		this.variable = variable;
 		this.rhs = rhs;
 	}

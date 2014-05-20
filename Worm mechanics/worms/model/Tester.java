@@ -50,6 +50,8 @@ public class Tester {
 		new BooleanOrExpression(e1, e2);
 		
 		EntityExpression w;
-		new IsFoodExpression(w);
+		new AssignStatement("w",w);
+		new AssignStatement("w",e1);
+		new AssignStatement("w",e2);
 	}
 }
