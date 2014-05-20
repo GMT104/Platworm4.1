@@ -359,8 +359,13 @@ public class World implements Cloneable {
 	@Raw protected boolean isPassableLocation(double x, double y){
 		double pixelHeight = (getHeight()/getHeightInPixels());
 		double pixelWidth = (getWidth()/getWidthInPixels());
+		try{
 		return isPassablePixel((getHeightInPixels()-1-(int)(y/pixelHeight)),(int)(x/pixelWidth));
+		} catch(ModelException e){
+			return false;
+		}
 	}
+		
 	
 	
 	/**
