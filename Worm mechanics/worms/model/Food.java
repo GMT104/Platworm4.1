@@ -1,5 +1,7 @@
 package worms.model;
 
+import be.kuleuven.cs.som.annotate.Raw;
+
 
 /**
  * A class describing the attributes and actions of a food.
@@ -59,6 +61,25 @@ public class Food extends GameObject {
 	@Override
 	protected boolean isValidRadius(double radius) {
 		return (radius > 0);
+	}
+	
+	
+	
+	
+	/**
+	 * Sets the x and y coordinates of this food.
+	 * 
+	 * @effect	If the new x or y coordinate is out of bounds, then this food will be terminated.
+	 * 			| if (isXCoordinateOutOfBounds(x) || isYCoordinateOutOfBounds(y))
+	 * 			| 	then this.terminate()
+	 * 
+	 */
+	@Raw
+	@Override
+	protected void setCoordinates(double x, double y) throws ModelException {
+		super.setCoordinates(x, y);
+		if (isXCoordinateOutOfBounds(x) ||isYCoordinateOutOfBounds(y))
+			this.terminate();
 	}
 
 	

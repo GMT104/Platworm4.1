@@ -184,24 +184,14 @@ public abstract class GameObject implements Cloneable {
 	 * @post	The new x coordinate of this game object is equal to the given coordinateX.
 	 * 			| new.getCoordinateX() == coordinateX
 	 * 
-	 * @effect	If the new x coordinate is out of bounds, then this game object will be terminated.
-	 * 			| if (isXCoordinateOutOfBounds(coordinateX))
-	 * 			| 	then this.terminate()
-	 * 
 	 * @throws	ModelException 
 	 * 			The given coordinateX is not a valid coordinate for a game object.
 	 *       	| (! isValidCoordinate(coordinateX))
 	 */
 	@Raw
-	//TODO KJAdbasjkfbjkasf
 	protected void setX(double coordinateX) throws ModelException {
 		if (!isValidCoordinate(coordinateX))
 			throw new ModelException("Illegal X coordinate!");
-		if (isXCoordinateOutOfBounds(coordinateX)){
-			this.coordinateX = coordinateX;
-			if (!(this instanceof Projectile))
-				this.terminate();
-		}
 		else
 			this.coordinateX = coordinateX;
 	}
@@ -230,11 +220,7 @@ public abstract class GameObject implements Cloneable {
 	 * 			The new y coordinate of this game object.
 	 * 
 	 * @post	The new y coordinate of this game object is equal to the given coordinateY.
-	 * 			| new.getCoordinateY() == coordinateY 
-	 * 
-	 * @effect	If the new y coordinate is out of bounds, then this game object will be terminated.
-	 * 			| if (isYCoordinateOutOfBounds(coordinateY))
-	 * 			| 	then this.terminate()
+	 * 			| new.getCoordinateY() == coordinateY
 	 * 
 	 * @throws	ModelException 
 	 * 			The given coordinateY is not a valid coordinate for a game object.
@@ -246,7 +232,6 @@ public abstract class GameObject implements Cloneable {
 			throw new ModelException("Illegal Y coordinate!");
 		if (this.isYCoordinateOutOfBounds(coordinateY)){
 			this.coordinateY = coordinateY;
-			this.terminate();
 		}
 		else
 			this.coordinateY = coordinateY;

@@ -182,18 +182,24 @@ public class Worm extends MovableObject{
 	 * 			| else 
 	 * 			|	new.hasJustEaten() == false
 	 *
-	 * @effect	If this worm overlaps with a food object, this worm will eat it.
-	 * 			| if (this.getWorld.getFoodThatOverlaps(this) != null)
-	 * 			|		then this.eat()
+	 * @effect	If the new x coordinate is out of bounds, then this worm will be terminated.
+	 * 			| if (isXCoordinateOutOfBounds(x) || isYCoordinateOutOfBounds(y))
+	 * 			| 	then this.terminate()
+	 *  @effect	If this worm overlaps with a food object and its coordinates are in this world, 
+	 *  		this worm will eat it.
+	 * 			| if ( !(isXCoordinateOutOfBounds(x) || isYCoordinateOutOfBounds(y)) 
+	 * 			|		&& (this.getWorld.getFoodThatOverlaps(this) != null))
+	 * 			|			then this.eat()
 	 */
+	@Raw
 	@Override
 	protected void setCoordinates(double x, double y) throws ModelException  {
 		this.hasJustEaten = false;
 		super.setCoordinates(x, y);
-		// If setCoordinates terminates this worm, this function will throw a NullPointer.
-		try {
+		if (isXCoordinateOutOfBounds(x) ||isYCoordinateOutOfBounds(y))
+			this.terminate();
+		else
 			eatFoodIfPossible();
-		} catch (NullPointerException exc) {}
 	}
 	
 	
