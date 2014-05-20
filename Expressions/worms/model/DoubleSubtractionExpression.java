@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleSubtractionExpression extends BinaryExpression {
+public class DoubleSubtractionExpression extends DoubleBinaryExpression {
 
 	public DoubleSubtractionExpression(Expression e1, Expression e2) {
 		super(e1,e2);

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleSinusExpression extends UnaryExpression {
+public class DoubleSinusExpression extends DoubleUnaryExpression {
 
 	public DoubleSinusExpression(Expression e) {
 		super(e);

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetMaxHitPointsExpression extends UnaryExpression {
+public class GetMaxHitPointsExpression extends DoubleUnaryExpression {
 
 	public GetMaxHitPointsExpression(Expression e) {
 		super(e);

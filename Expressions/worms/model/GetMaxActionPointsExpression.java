@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetMaxActionPointsExpression extends UnaryExpression {
+public class GetMaxActionPointsExpression extends DoubleUnaryExpression {
 
 	public GetMaxActionPointsExpression(Expression e) {
 		super(e);

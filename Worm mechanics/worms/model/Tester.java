@@ -12,11 +12,6 @@ public class Tester {
 		Random random= new Random(4);
 		final double EPS = Util.DEFAULT_EPSILON;
 		
-		double ne = Integer.MAX_VALUE+1;
-		int e = (int) ne;
-		System.out.println(e);
-		
-		
 //		
 //		World world = new World(2, 2, new boolean[][] {	{true, true, true, true},
 //																	{true, true, true, true},
@@ -45,5 +40,13 @@ public class Tester {
 //		}
 
 	
+		
+		
+		boolean b = true;
+		double c = 6;
+		
+		Expression e1 = new BooleanLiteralExpression(b);
+		Expression e2 = new DoubleLiteralExpression(c);
+		new BooleanOrExpression(e1, e2);
 	}
 }

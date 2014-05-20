@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetActionPointsExpression extends UnaryExpression {
+public class GetActionPointsExpression extends DoubleUnaryExpression {
 
 	public GetActionPointsExpression(Expression e) {
 		super(e);

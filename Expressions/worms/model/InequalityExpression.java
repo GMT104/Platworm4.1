@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class InequalityExpression extends BinaryExpression {
+public class InequalityExpression extends BooleanBinaryExpression {
 
 	public InequalityExpression(Expression e1, Expression e2) {
 		super(e1,e2);

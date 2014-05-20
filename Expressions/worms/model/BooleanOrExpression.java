@@ -4,11 +4,11 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class BooleanOrExpression extends BinaryExpression {
+public class BooleanOrExpression extends BooleanBinaryExpression {
 
 
 
-	public BooleanOrExpression(Expression e1, Expression e2) {
+	public BooleanOrExpression(BooleanExpression e1, BooleanExpression e2) {
 		super(e1, e2);
 	}
 

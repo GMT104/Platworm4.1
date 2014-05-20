@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class IsWormExpression extends UnaryExpression {
+public class IsWormExpression extends BooleanUnaryExpression {
 	
 	public IsWormExpression(Expression e) {
 		super(e);

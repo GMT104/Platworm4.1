@@ -6,7 +6,7 @@ import worms.model.Worm;
 
 public abstract class Expression {
 	
-	public abstract MyObject getValue(Worm activeWorm);
+	protected abstract MyObject getValue(Worm activeWorm);
 	
 	public abstract Class<? extends Type> getInputType();
 	

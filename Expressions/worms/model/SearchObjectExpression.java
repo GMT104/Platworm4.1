@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class SearchObjectExpression extends UnaryExpression {
+public class SearchObjectExpression extends EntityUnaryExpression {
 	
 	public SearchObjectExpression(Expression e) {
 		super(e); 

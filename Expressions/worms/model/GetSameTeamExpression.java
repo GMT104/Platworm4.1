@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetSameTeamExpression extends UnaryExpression {
+public class GetSameTeamExpression extends BooleanUnaryExpression {
 
 	public GetSameTeamExpression(Expression e) {
 		super(e);

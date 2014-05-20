@@ -2,7 +2,7 @@ package worms.model;
 
 import java.util.Map;
 
-public class BooleanLiteralExpression extends Expression {
+public class BooleanLiteralExpression extends BooleanExpression {
 
 	private MyBoolean value;
 	

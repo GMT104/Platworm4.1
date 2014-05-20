@@ -5,7 +5,7 @@ import java.util.Map;
 import worms.model.Worm;
 import worms.model.GameObject;
 
-public class GetXExpression extends UnaryExpression {
+public class GetXExpression extends DoubleUnaryExpression {
 
 	public GetXExpression(Expression e) {
 		super(e);

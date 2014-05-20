@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetRadiusExpression extends UnaryExpression {
+public class GetRadiusExpression extends DoubleUnaryExpression {
 
 	public GetRadiusExpression(Expression e) {
 		super(e);

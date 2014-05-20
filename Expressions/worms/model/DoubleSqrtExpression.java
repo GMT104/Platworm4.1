@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleSqrtExpression extends UnaryExpression {
+public class DoubleSqrtExpression extends DoubleUnaryExpression {
 
 	public DoubleSqrtExpression(Expression e) {
 		super(e);

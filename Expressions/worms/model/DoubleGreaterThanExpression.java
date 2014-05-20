@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleGreaterThanExpression extends BinaryExpression {
+public class DoubleGreaterThanExpression extends BooleanBinaryExpression {
 
 	public DoubleGreaterThanExpression(Expression e1, Expression e2) {
 		super(e1,e2);

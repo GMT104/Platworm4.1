@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class GetDirectionExpression extends UnaryExpression {
+public class GetDirectionExpression extends DoubleUnaryExpression {
 
 	public GetDirectionExpression(Expression e) {
 		super(e);

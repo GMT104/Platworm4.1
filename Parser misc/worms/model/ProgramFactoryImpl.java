@@ -59,6 +59,7 @@ public class ProgramFactoryImpl
   @Override
   public Expression createDoubleLiteral(int line, int column, double d) {
     return new DoubleLiteralExpression(d);
+  
   }
 
   @Override

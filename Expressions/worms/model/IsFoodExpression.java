@@ -5,7 +5,7 @@ import java.util.Map;
 import worms.model.Food;
 import worms.model.Worm;
 
-public class IsFoodExpression extends UnaryExpression {
+public class IsFoodExpression extends BooleanUnaryExpression {
 
 	public IsFoodExpression(Expression e) {
 		super(e);

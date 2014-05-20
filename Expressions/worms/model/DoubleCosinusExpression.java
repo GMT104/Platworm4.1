@@ -4,7 +4,7 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class DoubleCosinusExpression extends UnaryExpression {
+public class DoubleCosinusExpression extends DoubleUnaryExpression {
 
 	public DoubleCosinusExpression(Expression e) {
 		super(e);

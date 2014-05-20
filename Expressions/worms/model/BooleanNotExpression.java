@@ -4,9 +4,9 @@ import java.util.Map;
 
 import worms.model.Worm;
 
-public class BooleanNotExpression extends UnaryExpression {
+public class BooleanNotExpression extends BooleanUnaryExpression {
 
-	public BooleanNotExpression(Expression e) {
+	public BooleanNotExpression(BooleanExpression e) {
 		super(e);
 	}
 

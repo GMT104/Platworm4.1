@@ -2,20 +2,17 @@ package worms.model;
 
 import worms.model.Worm;
 
-public abstract class UnaryExpression extends Expression {
+public abstract class BooleanUnaryExpression extends BooleanExpression {
 
 	private Expression expression;
 
 
 
-	public UnaryExpression(Expression e) {
+	public BooleanUnaryExpression(Expression e) {
 		this.setExpression(e); 
 	}
 	
 	
-	
-	@Override
-	public abstract MyObject getValue(Worm activeWorm);
 
 
 
