@@ -11,7 +11,7 @@ public class TurnStatement extends ActionStatement {
 
 	private Expression angle;
 	
-	public TurnStatement(Expression angle) {
+	public TurnStatement(DoubleExpression angle) {
 		this.angle = angle;
 	}
 

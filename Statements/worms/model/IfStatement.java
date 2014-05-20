@@ -15,7 +15,7 @@ public class IfStatement extends Statement {
 	private Statement otherwise;
 	
 	
-	public IfStatement(Expression condition, Statement then, Statement otherwise) {
+	public IfStatement(BooleanExpression condition, Statement then, Statement otherwise) {
 		this.condition = condition;
 		this.then = then;
 		this.otherwise = otherwise;

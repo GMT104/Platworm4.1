@@ -228,7 +228,7 @@ public class ProgramFactoryImpl
 
   @Override
   public Statement createTurn(int line, int column, Expression angle) {
-    return new TurnStatement(angle);
+    return new TurnStatement((DoubleExpression) angle);
   }
 
   @Override
@@ -248,7 +248,7 @@ public class ProgramFactoryImpl
 
   @Override
   public Statement createFire(int line, int column, Expression yield) {
-    return new FireStatement(yield);
+    return new FireStatement((DoubleExpression) yield);
   }
 
   @Override
@@ -258,12 +258,12 @@ public class ProgramFactoryImpl
 
   @Override
   public Statement createIf(int line, int column, Expression condition, Statement then, Statement otherwise) {
-    return new IfStatement(condition,then,otherwise);
+    return new IfStatement((BooleanExpression) condition,then,otherwise);
   }
 
   @Override
   public Statement createWhile(int line, int column, Expression condition, Statement body) {
-    return new WhileStatement(condition,body);
+    return new WhileStatement((BooleanExpression) condition,body);
   }
 
   @Override

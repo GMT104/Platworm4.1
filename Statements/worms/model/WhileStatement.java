@@ -10,7 +10,7 @@ public class WhileStatement extends StatementWithBody {
 
 	private Expression condition;
 	
-	public WhileStatement(Expression condition, Statement body) {
+	public WhileStatement(BooleanExpression condition, Statement body) {
 		super(body);
 		this.condition = condition;
 	}
