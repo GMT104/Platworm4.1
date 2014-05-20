@@ -477,11 +477,12 @@ public class World implements Cloneable {
 	 * @param 	radius
 	 * 			The radius of the entity for which to find a random location.
 	 * 
-	 * @return 	The x and y position of the random location that was found as a list.
-	 * 			| isAdjacent(result[0],result[1],radius)
+	 * @return 	One of the checked random locations is adjacent. These checked random are locations on a line from
+	 * 			a random place on the boundary of the map to the center of the map.
+	 * 			| isAdjacent(result[0],result[1],radius) && (checkedLocations.contains(result))
 	 *
-	 *@throws	No location was found.
-	 *			| None of the random locations checked were valid.
+	 *@throws	No location was found in all the checked locations (randomLocations is a list of all the checked locations).
+	 *			| for each location in randomLocations: !isAdjacent(randomLocation[0],randomLocation[1],radius)
 	 */
 	private double[] getRandomAdjacentLocation(double radius) throws ModelException {
 		double[][] possibles = {{(getRandom().nextDouble())*(getWidth()-radius*2.0)+radius,0},

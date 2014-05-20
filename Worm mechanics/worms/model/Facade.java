@@ -441,6 +441,7 @@ public class Facade implements IFacade {
 		try {
 			worm.selectWeapon();
 		} catch (NullPointerException exc) {
+			System.out.println("yolo16");
 			throw new ModelException("Null is invalid object!");
 		}
 		
