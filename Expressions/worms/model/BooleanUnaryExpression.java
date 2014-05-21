@@ -1,7 +1,5 @@
 package worms.model;
 
-import worms.model.Worm;
-
 public abstract class BooleanUnaryExpression extends BooleanExpression {
 
 	private Expression expression;

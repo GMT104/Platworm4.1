@@ -1,7 +1,5 @@
 package worms.model;
 
-import java.util.Map;
-
 import worms.model.Worm;
 
 public class DoubleDivisionExpression extends DoubleBinaryExpression {
@@ -17,14 +15,4 @@ public class DoubleDivisionExpression extends DoubleBinaryExpression {
 	}
 
 
-	@Override
-	public Class<? extends Type> getInputType() {
-		return MyDoubleType.class;
-	}
-
-	@Override
-	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
-		return MyDoubleType.class;
-	}
-	
 }

@@ -1,7 +1,5 @@
 package worms.model;
 
-import java.util.Map;
-
 import worms.gui.game.IActionHandler;
 import worms.model.Expression;
 import worms.model.Worm;
@@ -25,22 +23,5 @@ public class WhileStatement extends StatementWithBody {
 		}
 		this.setHasBeenRunAlready(true);
 	}
-
-
-	@Override
-	public Class<? extends Type> getInputType(Map<String, Type> globals) {
-		return MyBooleanType.class;
-	}
-
-	@Override
-	public boolean hasExpressionAsInputToCheck() {
-		return true;
-	}
-
-	@Override
-	public Expression getInputExpression() {
-		return condition;
-	}
-
 
 }

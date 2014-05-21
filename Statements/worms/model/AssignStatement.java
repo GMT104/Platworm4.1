@@ -1,7 +1,6 @@
 package worms.model;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import worms.gui.game.IActionHandler;
@@ -22,21 +21,6 @@ public class AssignStatement extends Statement {
 		else
 			this.rhs = (EntityExpression) rhs;
 	}
-	
-//	public AssignStatement(String variable, BooleanExpression rhs) {
-//		this.variable = variable;
-//		this.rhs = rhs;
-//	}
-//	
-//	public AssignStatement(String variable, DoubleExpression rhs) {
-//		this.variable = variable;
-//		this.rhs = rhs;
-//	}
-//	
-//	public AssignStatement(String variable, EntityExpression rhs) {
-//		this.variable = variable;
-//		this.rhs = rhs;
-//	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
@@ -50,23 +34,4 @@ public class AssignStatement extends Statement {
 		set.add(this);
 		return set;
 	}
-
-	@Override
-	public Class<? extends Type> getInputType(Map<String, Type> globals) {
-		//System.out.println("      Variable of required type: "+globals.get(variable).getClass());
-		return globals.get(variable).getClass();
-	}
-
-	@Override
-	public boolean hasExpressionAsInputToCheck() {
-		return true;
-	}
-
-	@Override
-	public Expression getInputExpression() {
-		return rhs;
-	}
-
-
-
 }

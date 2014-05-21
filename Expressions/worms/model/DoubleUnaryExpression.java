@@ -1,7 +1,5 @@
 package worms.model;
 
-import worms.model.Worm;
-
 public abstract class DoubleUnaryExpression extends DoubleExpression {
 
 	private Expression expression;

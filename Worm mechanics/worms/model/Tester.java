@@ -1,7 +1,5 @@
 package worms.model;
 
-import static org.junit.Assert.*;
-
 import java.util.Random;
 
 import worms.util.Util;

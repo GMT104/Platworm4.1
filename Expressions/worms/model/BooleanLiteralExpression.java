@@ -1,7 +1,5 @@
 package worms.model;
 
-import java.util.Map;
-
 public class BooleanLiteralExpression extends BooleanExpression {
 
 	private MyBoolean value;
@@ -13,16 +11,6 @@ public class BooleanLiteralExpression extends BooleanExpression {
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
 		return value;
-	}
-
-	@Override
-	public Class<? extends Type> getInputType() {
-		return null;
-	}
-
-	@Override
-	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
-		return MyBooleanType.class;
 	}
 
 }

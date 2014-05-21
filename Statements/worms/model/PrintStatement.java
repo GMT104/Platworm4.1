@@ -1,7 +1,6 @@
 package worms.model;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import worms.gui.game.IActionHandler;
@@ -29,19 +28,5 @@ public class PrintStatement extends Statement {
 		return set;
 	}
 
-	@Override
-	public Class<? extends Type> getInputType(Map<String, Type> globals) {
-		return null;
-	}
-
-	@Override
-	public boolean hasExpressionAsInputToCheck() {
-		return false;
-	}
-
-	@Override
-	public Expression getInputExpression() {
-		return null;
-	}
 
 }

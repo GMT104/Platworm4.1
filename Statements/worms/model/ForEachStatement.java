@@ -1,7 +1,5 @@
 package worms.model;
 
-import java.util.Map;
-
 import worms.gui.game.IActionHandler;
 import worms.model.Food;
 import worms.model.GameObject;
@@ -39,21 +37,6 @@ public  class ForEachStatement extends StatementWithBody{
 				}
 			activeWorm.getProgram().removeVariable(variableName);
 			this.setHasBeenRunAlready(true);
-		}
-
-		@Override
-		public Class<? extends Type> getInputType(Map<String, Type> globals) {
-			return null;
-		}
-
-		@Override
-		public boolean hasExpressionAsInputToCheck() {
-			return false;
-		}
-
-		@Override
-		public Expression getInputExpression() {
-			return null;
 		}
 
 }

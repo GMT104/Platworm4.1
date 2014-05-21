@@ -2,7 +2,6 @@ package worms.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class SearchObjectExpression extends EntityUnaryExpression {
 	
@@ -42,16 +41,6 @@ public class SearchObjectExpression extends EntityUnaryExpression {
 			y = y + step*Math.sin(direction);
 		}
 		return new Entity(null);
-	}
-
-	@Override
-	public Class<? extends Type> getInputType() {
-		return MyDoubleType.class;
-	}
-
-	@Override
-	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
-		return EntityType.class;
 	}
 
 
