@@ -83,11 +83,4 @@ public class Food extends GameObject {
 	}
 
 	
-	
-	
-	@Override
-	protected Food clone() throws CloneNotSupportedException {
-		return (Food) super.clone();
-	}
-	
 }

@@ -20,7 +20,7 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar	The game object should be in a proper world.
  * 			| this.hasProperWorld()
  */
-public abstract class GameObject implements Cloneable {
+public abstract class GameObject {
 	
 	/**
 	 * The x coordinate of the game object.
@@ -400,13 +400,4 @@ public abstract class GameObject implements Cloneable {
 		return (distance < radius1 + radius2);
 	}
 	
-	
-	
-	
-	@Override
-	protected GameObject clone() throws CloneNotSupportedException {
-		GameObject cloned = (GameObject) super.clone();
-		cloned.setWorld(cloned.getWorld().clone());
-		return cloned;
-	}
 }

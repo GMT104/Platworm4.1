@@ -81,9 +81,4 @@ public class Bazooka extends Projectile {
 		return (2.5 + this.getYield()*0.07);
 	}
 
-	
-	@Override
-	protected Bazooka clone() throws CloneNotSupportedException {
-		return (Bazooka) super.clone();
-	}
 }

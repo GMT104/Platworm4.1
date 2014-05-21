@@ -788,6 +788,9 @@ public class Worm extends MovableObject{
 	
 	/**
 	 * Returns the number of possible weapons to propel projectiles.
+	 * 
+	 * @return	The result must be bigger than 1.
+	 * 			| result > 1
 	 */
 	protected static int getNumberOfProjectiles() {
 		return 2;
@@ -1312,17 +1315,6 @@ public class Worm extends MovableObject{
 		return this.hasJustEaten;
 	}
 	
-	
-	
-	
-	@Override
-	protected Worm clone() throws CloneNotSupportedException {
-		Worm cloned = (Worm) super.clone();
-		if (this.getTeam() != null)
-			cloned.setTeam(this.getTeam().clone());
-		cloned.setProjectile();
-		return cloned;
-	}
 
 
 

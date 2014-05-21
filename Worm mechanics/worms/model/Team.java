@@ -17,7 +17,7 @@ import be.kuleuven.cs.som.annotate.*;
  * @invar	The team has proper worms.
  * 			| this.hasProperWorms()
  */
-public class Team implements Cloneable {
+public class Team {
 
 	/**
 	 * The name of this team.
@@ -212,10 +212,4 @@ public class Team implements Cloneable {
 		return this.getWorms().contains(worm) && (worm.getTeam() == this);
 	}
 	
-	
-	
-	
-	protected Team clone() throws CloneNotSupportedException {
-		return (Team) super.clone();
-	}
 }

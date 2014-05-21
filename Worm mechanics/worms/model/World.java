@@ -26,7 +26,7 @@ import worms.util.Util;
  * @invar	The world has proper teams.
  *			| this.hasProperTeams()
  */
-public class World implements Cloneable {
+public class World {
 	
 	
 	
@@ -1215,13 +1215,7 @@ public class World implements Cloneable {
 			getAllWorms().get(counter).setHitPoints(getAllWorms().get(counter).getHitPoints()+10);
 		}
 	}
-	
-	
-	
-	@Override
-	protected World clone() throws CloneNotSupportedException {
-		return (World) super.clone();
-	}
+
 
 }
 

@@ -81,12 +81,4 @@ public class Rifle extends Projectile {
 		return 1.5;
 	}
 
-
-	
-	
-	@Override
-	protected Rifle clone() throws CloneNotSupportedException {
-		return (Rifle) super.clone();
-	}
-	
 }
