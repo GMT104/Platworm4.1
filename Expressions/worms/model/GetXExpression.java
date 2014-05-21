@@ -3,15 +3,15 @@ package worms.model;
 import worms.model.Worm;
 import worms.model.GameObject;
 
-public class GetXExpression extends DoubleUnaryExpression {
+public class GetXExpression extends UnaryExpression<MyDouble> {
 
-	public GetXExpression(EntityExpression e) {
+	public GetXExpression(Expression<Entity> e) {
 		super(e);
 	}
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		double value = ((GameObject) this.getExpression().getValue(activeWorm).getValue()).getCoordinateX();
+		double value = ((GameObject) ((Entity) this.getExpression().getValue(activeWorm)).getValue()).getCoordinateX();
 		return new MyDouble(value);
 	}
 

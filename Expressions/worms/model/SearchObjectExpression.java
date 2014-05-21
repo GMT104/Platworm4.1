@@ -3,9 +3,9 @@ package worms.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchObjectExpression extends EntityUnaryExpression {
+public class SearchObjectExpression extends UnaryExpression<Entity> {
 	
-	public SearchObjectExpression(DoubleExpression e) {
+	public SearchObjectExpression(Expression<MyDouble> e) {
 		super(e); 
 	}
 

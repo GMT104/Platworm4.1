@@ -7,9 +7,9 @@ import worms.model.Worm;
 
 public class TurnStatement extends ActionStatement {
 
-	private Expression angle;
+	private Expression<MyDouble> angle;
 	
-	public TurnStatement(DoubleExpression angle) {
+	public TurnStatement(Expression<MyDouble> angle) {
 		this.angle = angle;
 	}
 

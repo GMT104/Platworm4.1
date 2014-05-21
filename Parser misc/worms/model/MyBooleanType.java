@@ -22,8 +22,5 @@ public class MyBooleanType extends Type {
 		return new MyBoolean(false);
 	}
 	
-	@Override
-	public BooleanExpression createVariableExpression(String name) {
-		return new BooleanVariableExpression(name);
-	}
+	
 }

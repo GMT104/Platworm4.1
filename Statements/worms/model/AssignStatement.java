@@ -10,16 +10,11 @@ import worms.model.Worm;
 public class AssignStatement extends Statement {
 
 	private String variable;
-	private Expression rhs;
+	private Expression<MyObject> rhs;
 
-	public AssignStatement(String variable, Expression rhs){
+	public AssignStatement(String variable, Expression<MyObject> rhs){
 		this.variable = variable;
-		if (rhs instanceof BooleanExpression)
-			this.rhs = (BooleanExpression) rhs;
-		else if (rhs instanceof DoubleExpression)
-			this.rhs = (DoubleExpression) rhs;
-		else
-			this.rhs = (EntityExpression) rhs;
+		this.rhs = rhs;
 	}
 
 	@Override

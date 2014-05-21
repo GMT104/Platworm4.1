@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class BooleanNotExpression extends BooleanUnaryExpression {
+public class BooleanNotExpression extends UnaryExpression<MyBoolean> {
 
-	public BooleanNotExpression(BooleanExpression e) {
+	public BooleanNotExpression(Expression<MyBoolean> e) {
 		super(e);
 	}
 

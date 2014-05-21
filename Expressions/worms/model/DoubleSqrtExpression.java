@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleSqrtExpression extends DoubleUnaryExpression {
+public class DoubleSqrtExpression extends UnaryExpression<MyDouble> {
 
-	public DoubleSqrtExpression(DoubleExpression e) {
+	public DoubleSqrtExpression(Expression<MyDouble> e) {
 		super(e);
 	}
 

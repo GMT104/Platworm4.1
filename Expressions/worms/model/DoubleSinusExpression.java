@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleSinusExpression extends DoubleUnaryExpression {
+public class DoubleSinusExpression extends UnaryExpression<MyDouble> {
 
-	public DoubleSinusExpression(DoubleExpression e) {
+	public DoubleSinusExpression(Expression<MyDouble> e) {
 		super(e);
 	}
 

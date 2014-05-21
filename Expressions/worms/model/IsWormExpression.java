@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class IsWormExpression extends BooleanUnaryExpression {
+public class IsWormExpression extends UnaryExpression<MyBoolean> {
 	
-	public IsWormExpression(EntityExpression e) {
+	public IsWormExpression(Expression<Entity> e) {
 		super(e);
 	}
 
@@ -14,7 +14,7 @@ public class IsWormExpression extends BooleanUnaryExpression {
 		if (this.getExpression() == null)
 			value = false;
 		else
-			value = this.getExpression().getValue(activeWorm).getValue() instanceof Worm;
+			value = ((Entity) this.getExpression().getValue(activeWorm)).getValue() instanceof Worm;
 		return new MyBoolean(value);
 	}
 

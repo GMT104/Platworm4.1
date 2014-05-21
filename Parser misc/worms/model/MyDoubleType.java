@@ -69,8 +69,5 @@ public class MyDoubleType extends Type {
 		return new MyDouble(0.0);
 	}
 
-	@Override
-	public DoubleExpression createVariableExpression(String name) {
-		return new DoubleVariableExpression(name);
-	}
+	
 }

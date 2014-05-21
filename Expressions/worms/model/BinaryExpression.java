@@ -2,19 +2,19 @@ package worms.model;
 
 import worms.model.Worm;
 
-public abstract class BooleanBinaryExpression extends BooleanExpression {
+public abstract class BinaryExpression<T> extends Expression<T> {
 
 	
-	private Expression leftExpression;
-	private Expression rightExpression;
+	private Expression<MyObject> leftExpression;
+	private Expression<MyObject> rightExpression;
 	
-	public BooleanBinaryExpression(Expression e1, Expression e2) {
+	public BinaryExpression(Expression e1, Expression e2) {
 		this.setLeftExpression(e1);
 		this.setRightExpression(e2);
 	}
 		
 	@Override
-	public abstract MyBoolean getValue(Worm activeWorm);
+	public abstract T getValue(Worm activeWorm);
 
 	public Expression getLeftExpression() {
 		return leftExpression;

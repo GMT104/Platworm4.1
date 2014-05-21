@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleAdditionExpression extends DoubleBinaryExpression {
+public class DoubleAdditionExpression extends BinaryExpression<MyDouble> {
 	
-	public DoubleAdditionExpression(DoubleExpression e1, DoubleExpression e2) {
+	public DoubleAdditionExpression(Expression<MyDouble> e1, Expression<MyDouble> e2) {
 		super(e1, e2);
 	}
 

@@ -2,7 +2,7 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleVariableExpression extends DoubleExpression {
+public class DoubleVariableExpression extends Expression<MyDouble> {
 
 	private String variableName;
 	

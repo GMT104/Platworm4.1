@@ -1,12 +1,12 @@
 package worms.model;
 
-public abstract class BooleanUnaryExpression extends BooleanExpression {
+public abstract class UnaryExpression<T> extends Expression<T> {
 
 	private Expression expression;
 
 
 
-	public BooleanUnaryExpression(Expression e) {
+	public UnaryExpression(Expression e) {
 		this.setExpression(e); 
 	}
 	

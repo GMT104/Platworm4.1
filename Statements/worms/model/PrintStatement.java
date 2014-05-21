@@ -9,9 +9,9 @@ import worms.model.Worm;
 
 public class PrintStatement extends Statement {
 
-	private Expression expression;
+	private Expression<MyObject> expression;
 	
-	public PrintStatement(Expression e) {
+	public PrintStatement(Expression<MyObject> e) {
 		this.expression = e;
 	}
 

@@ -1,6 +1,6 @@
 package worms.model;
 
-public class BooleanLiteralExpression extends BooleanExpression {
+public class BooleanLiteralExpression extends Expression<MyBoolean> {
 
 	private MyBoolean value;
 	

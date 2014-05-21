@@ -2,15 +2,15 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class GetActionPointsExpression extends DoubleUnaryExpression {
+public class GetActionPointsExpression extends UnaryExpression<MyDouble> {
 
-	public GetActionPointsExpression(EntityExpression e) {
+	public GetActionPointsExpression(Expression<Entity> e) {
 		super(e);
 	}
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		double value = ((Worm) this.getExpression().getValue(activeWorm).getValue()).getActionPoints();
+		double value = ((Worm) (((Entity) this.getExpression().getValue(activeWorm)).getValue())).getActionPoints();
 		return new MyDouble(value);
 	}
 

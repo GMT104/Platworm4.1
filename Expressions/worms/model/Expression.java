@@ -2,7 +2,7 @@ package worms.model;
 
 import worms.model.Worm;
 
-public abstract class Expression {
+public abstract class Expression<O> {
 	
-	protected abstract MyObject getValue(Worm activeWorm);
+	protected abstract O getValue(Worm activeWorm);
 }

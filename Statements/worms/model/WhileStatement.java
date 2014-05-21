@@ -6,9 +6,9 @@ import worms.model.Worm;
 
 public class WhileStatement extends StatementWithBody {
 
-	private Expression condition;
+	private Expression<MyBoolean> condition;
 	
-	public WhileStatement(BooleanExpression condition, Statement body) {
+	public WhileStatement(Expression<MyBoolean> condition, Statement body) {
 		super(body);
 		this.condition = condition;
 	}

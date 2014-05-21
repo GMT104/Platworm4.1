@@ -2,7 +2,7 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleLiteralExpression extends DoubleExpression {
+public class DoubleLiteralExpression extends Expression<MyDouble> {
 
 	private MyDouble d;
 

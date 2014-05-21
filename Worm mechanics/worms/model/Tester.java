@@ -38,16 +38,17 @@ public class Tester {
 //		}
 
 		System.out.println(world.isPassableLocation(-3.997110291772664,6.2725013811295165));
-//		
-//		
-//		boolean b = true;
-//		double c = 6;
-//		
-//		BooleanExpression e1 = new BooleanLiteralExpression(b);
-//		DoubleExpression e2 = new DoubleLiteralExpression(c);
-//		new BooleanOrExpression(e1, e2);
-//		
-//		EntityExpression w;
-//		new IsFoodExpression(w);
+		
+		
+		boolean b = true;
+		double c = 6;
+		
+		Expression<MyBoolean> e1 = new BooleanLiteralExpression(b);
+		Expression<MyDouble> e2 = new DoubleLiteralExpression(c);
+		new BooleanOrExpression(e1, e2);
+		
+		Expression<Entity> w;
+		new IsFoodExpression(w);
+		new FireStatement(e1);
 	}
 }

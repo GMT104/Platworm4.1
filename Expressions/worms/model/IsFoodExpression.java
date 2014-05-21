@@ -3,9 +3,9 @@ package worms.model;
 import worms.model.Food;
 import worms.model.Worm;
 
-public class IsFoodExpression extends BooleanUnaryExpression {
+public class IsFoodExpression extends UnaryExpression<MyBoolean>{
 
-	public IsFoodExpression(EntityExpression e) {
+	public IsFoodExpression(Expression<Entity> e) {
 		super(e);
 	}
 
@@ -15,7 +15,7 @@ public class IsFoodExpression extends BooleanUnaryExpression {
 		if (this.getExpression() == null)
 			value = false;
 		else
-			value = this.getExpression().getValue(activeWorm).getValue() instanceof Food;
+			value = ((Entity) this.getExpression().getValue(activeWorm)).getValue() instanceof Food;
 		return new MyBoolean(value);
 	}
 

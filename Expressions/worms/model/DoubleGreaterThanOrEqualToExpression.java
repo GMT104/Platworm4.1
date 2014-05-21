@@ -2,9 +2,9 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class DoubleGreaterThanOrEqualToExpression extends BooleanBinaryExpression {
+public class DoubleGreaterThanOrEqualToExpression extends BinaryExpression<MyBoolean> {
 
-	public DoubleGreaterThanOrEqualToExpression(DoubleExpression e1, DoubleExpression e2) {
+	public DoubleGreaterThanOrEqualToExpression(Expression<MyDouble> e1, Expression<MyDouble> e2) {
 		super(e1,e2);
 	}
 

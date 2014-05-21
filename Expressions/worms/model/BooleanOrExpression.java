@@ -2,11 +2,11 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class BooleanOrExpression extends BooleanBinaryExpression {
+public class BooleanOrExpression extends BinaryExpression<MyBoolean> {
 
 
 
-	public BooleanOrExpression(BooleanExpression e1, BooleanExpression e2) {
+	public BooleanOrExpression(Expression<MyBoolean> e1, Expression<MyBoolean> e2) {
 		super(e1, e2);
 	}
 

@@ -7,9 +7,9 @@ import worms.model.Worm;
 
 public class FireStatement extends ActionStatement {
 
-	private Expression yieldExpression;
+	private Expression<MyDouble> yieldExpression;
 
-	public FireStatement(DoubleExpression yield) {
+	public FireStatement(Expression<MyDouble> yield) {
 		this.yieldExpression = yield;
 	}
 

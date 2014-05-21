@@ -9,12 +9,12 @@ import worms.model.Worm;
 
 public class IfStatement extends Statement {
 	
-	private Expression condition;
+	private Expression<MyBoolean> condition;
 	private Statement then;
 	private Statement otherwise;
 	
 	
-	public IfStatement(BooleanExpression condition, Statement then, Statement otherwise) {
+	public IfStatement(Expression<MyBoolean> condition, Statement then, Statement otherwise) {
 		this.condition = condition;
 		this.then = then;
 		this.otherwise = otherwise;
