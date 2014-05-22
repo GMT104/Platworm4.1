@@ -46,34 +46,19 @@ public class Tester {
 		
 		Expression<MyBoolean> e1 = new BooleanLiteralExpression(b);
 		Expression<MyDouble> e2 = new DoubleLiteralExpression(c);
-		new BooleanOrExpression(e1, e2);
-		
-		
+		new BooleanOrExpression(e1, e1);
+		new DoubleAdditionExpression(e2, e2);
+		// Shouldn't work: new BooleanOrExpression(e1, e2);
 		
 		new VariableExpression<Entity>("es",new Entity());
-		Expression<Entity> w;
+		Expression<Entity> w = null;
 		new IsFoodExpression(w);
-		new FireStatement(new VariableExpression<MyBoolean>("Bob",new MyDouble(6)));
-		new SearchObjectExpression(w);
-	
+		// Shouldn't work: new FireStatement(new VariableExpression<MyBoolean>("Bob",new MyDouble(6)));
+		// Shouldn't work: new SearchObjectExpression(w);
 		
-		ProgramFactory<Expression<?>, Statement, Type> programFactory;
-		
-		
-		
-		
-	//zoals ik dus al zei lijkt het mij raar dat variable Expression werkt.
-	//Maar toch
 		new VariableExpression<Entity>("es",new Entity());
-		//dat moet lukken
-		new VariableExpression<MyDouble>("es",new Entity());
-		// Dit niet
-		//Waarom het werkt snap ik niet.
-	
-	//Maar dit zou volgens mij wel moeten werken
-	Expression<MyDouble> a = programFactory.createVariableAccess(6	, 6, "YES", new MyDouble());
-	new FireStatement(a);
-	
+		
+		// Shouldn't work: new VariableExpression<MyDouble>("es",new Entity());
 	
 	}
 	

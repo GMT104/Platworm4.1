@@ -24,6 +24,12 @@ public  abstract class Statement {
 	public void setHasBeenRunAlready(boolean b) {
 		this.hasBeenRunAlready = b;
 	}
+	
+	public abstract boolean hasExpressionAsInputToCheck();
+	
+	public abstract Class<? extends Type> getInputType(Map<String, Type> globals);
+	
+	public abstract Expression<?> getInputExpression();
 
 }
 	
