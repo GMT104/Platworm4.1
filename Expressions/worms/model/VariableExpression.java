@@ -2,17 +2,17 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class VariableExpression<Type> extends Expression<Type> {
+public class VariableExpression<T> extends Expression<T> {
 
 	private String variableName;
 	
-	public VariableExpression(String name, Type type) {
+	public VariableExpression(String name, T type) {
 		this.variableName = name;
 	}
 
 	@Override
-	public Type getValue(Worm activeWorm) {
-		return  (Type) activeWorm.getProgram().getVariable(variableName);
+	public T getValue(Worm activeWorm) {
+		return  (T) activeWorm.getProgram().getVariable(variableName);
 	}
 
 

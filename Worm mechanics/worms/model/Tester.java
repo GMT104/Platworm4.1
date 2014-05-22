@@ -56,6 +56,12 @@ public class Tester {
 		new FireStatement(new VariableExpression<MyBoolean>("Bob",new MyDouble(6)));
 		new SearchObjectExpression(w);
 	
+		
+		ProgramFactory<Expression<?>, Statement, Type> programFactory;
+		
+		
+		
+		
 	//zoals ik dus al zei lijkt het mij raar dat variable Expression werkt.
 	//Maar toch
 		new VariableExpression<Entity>("es",new Entity());
@@ -63,6 +69,12 @@ public class Tester {
 		new VariableExpression<MyDouble>("es",new Entity());
 		// Dit niet
 		//Waarom het werkt snap ik niet.
+	
+	//Maar dit zou volgens mij wel moeten werken
+	Expression<MyDouble> a = programFactory.createVariableAccess(6	, 6, "YES", new MyDouble());
+	new FireStatement(a);
+	
+	
 	}
 	
 
