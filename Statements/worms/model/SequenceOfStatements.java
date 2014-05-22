@@ -2,6 +2,7 @@ package worms.model;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import worms.gui.game.IActionHandler;
@@ -34,6 +35,21 @@ public class SequenceOfStatements extends Statement {
 		}
 		}
 		return set;
+	}
+	
+	@Override
+	public boolean hasExpressionAsInputToCheck() {
+		return false;
+	}
+
+	@Override
+	public Class<? extends Type> getInputType(Map<String, Type> globals) {
+		return null;
+	}
+
+	@Override
+	public Expression<? extends Type> getInputExpression() {
+		return null;
 	}
 	
 }

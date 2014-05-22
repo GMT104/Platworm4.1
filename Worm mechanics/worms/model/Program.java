@@ -17,8 +17,8 @@ public class Program {
 	private int counter;
 
 	public Program(IActionHandler handler, Map<String, Type> globals, Object statement) {
-//		if (! typeCheck(statement, globals))
-//			setTypeCheckError(true);
+		if (! typeCheck(statement, globals))
+			setTypeCheckError(true);
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
@@ -121,68 +121,69 @@ public class Program {
 		return true;
 	}
 	
-//	public boolean typeCheck(Object statement, Map<String, Type> globals) {
-//		System.out.println("################################################");
-//		System.out.println("##################Type Checking#################");
-//		System.out.println("################################################");
-//		if (!(statement instanceof Statement))
-//			return false;
-//		Set<Statement> set = ((Statement) statement).getAllSubstatements();
-//		for(Statement subStatement: set) {
-//			if (subStatement.hasExpressionAsInputToCheck()) {
-//				if (! typeCheckExpression(subStatement.getInputExpression(), globals)) {
-//					System.out.println("################################################");
-//					System.out.println("##############Type Checking Error###############");
-//					System.out.println("################################################");
-//					return false;
-//				}
-//				if (! typeCheckStatement(subStatement, globals)) {
-//					System.out.println("################################################");
-//					System.out.println("##############Type Checking Error###############");
-//					System.out.println("################################################");
-//					return false;
-//				}
-//			}
-//		}
-//		System.out.println("################################################");
-//		System.out.println("########Type Checking Succesfully Ended#########");
-//		System.out.println("################################################");
-//		
-//		return true;
-//	}
-//	
-//	private boolean typeCheckStatement(Statement statement, Map<String, Type> globals) {
-//		System.out.println("################################################");
-//		System.out.println("Statement: "+statement);
-//		System.out.println("Input expression: "+statement.getInputExpression());
-//		System.out.println("Input type required: "+statement.getInputType(globals));
-//		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType(globals));
-//	}
-//
-//	private boolean typeCheckExpression(Expression expr, Map<String, Type> globals) {
-//		boolean correct = true;
-//		if (expr instanceof UnaryExpression) {
-//			System.out.println("################################################");
-//			System.out.println("Unary expression: "+expr);
-//			System.out.println("Input expression: "+((UnaryExpression) expr).getExpression());
-//			System.out.println("Input type required: "+expr.getInputType());
-//			correct = (((UnaryExpression) expr).getExpression().getReturnType(globals) == (expr.getInputType()));
-//			if (correct)
-//				correct = typeCheckExpression(((UnaryExpression) expr).getExpression(), globals);
-//		} else if (expr instanceof BinaryExpression) {
-//			System.out.println("################################################");
-//			System.out.println("Binary expression: "+expr);
-//			System.out.println("Input left expression: "+((BinaryExpression) expr).getLeftExpression());
-//			System.out.println("Input right expression: "+((BinaryExpression) expr).getRightExpression());
-//			System.out.println("Input type required: "+expr.getInputType());
-//			correct = ((BinaryExpression) expr).getLeftExpression().getReturnType(globals) == expr.getInputType()
-//						&& ((BinaryExpression) expr).getRightExpression().getReturnType(globals) == expr.getInputType();
-//			if (correct)
-//				correct = typeCheckExpression(((BinaryExpression) expr).getLeftExpression(), globals)
-//							&& typeCheckExpression(((BinaryExpression) expr).getRightExpression(), globals);
-//		}	
-//		return correct;
-//	}
+	public boolean typeCheck(Object statement, Map<String, Type> globals) {
+		System.out.println("################################################");
+		System.out.println("##################Type Checking#################");
+		System.out.println("################################################");
+		if (!(statement instanceof Statement))
+			return false;
+		Set<Statement> set = ((Statement) statement).getAllSubstatements();
+		for(Statement subStatement: set) {
+			if (subStatement.hasExpressionAsInputToCheck()) {
+				if (! typeCheckExpression(subStatement.getInputExpression(), globals)) {
+					System.out.println("################################################");
+					System.out.println("##############Type Checking Error###############");
+					System.out.println("################################################");
+					return false;
+				}
+				if (! typeCheckStatement(subStatement, globals)) {
+					System.out.println("################################################");
+					System.out.println("##############Type Checking Error###############");
+					System.out.println("################################################");
+					return false;
+				}
+			}
+		}
+		System.out.println("################################################");
+		System.out.println("########Type Checking Succesfully Ended#########");
+		System.out.println("################################################");
+		
+		return true;
+	}
+	
+	private boolean typeCheckStatement(Statement statement, Map<String, Type> globals) {
+		System.out.println("################################################");
+		System.out.println("Statement: "+statement);
+		System.out.println("Input expression: "+statement.getInputExpression());
+		System.out.println("Input type required: "+statement.getInputType(globals));
+		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType(globals));
+	}
+
+	@SuppressWarnings("unchecked")
+	private boolean typeCheckExpression(Expression<?> expression, Map<String, Type> globals) {
+		boolean correct = true;
+		if (expression instanceof UnaryExpression) {
+			System.out.println("################################################");
+			System.out.println("Unary expression: "+expression);
+			System.out.println("Input expression: "+((UnaryExpression<? extends Type>) expression).getExpression());
+			System.out.println("Input type required: "+expression.getInputType());
+			correct = (((UnaryExpression<? extends Type>) expression).getExpression().getReturnType(globals) == (expression.getInputType()));
+			if (correct)
+				correct = typeCheckExpression(((UnaryExpression<? extends Type>) expression).getExpression(), globals);
+		} else if (expression instanceof BinaryExpression) {
+			System.out.println("################################################");
+			System.out.println("Binary expression: "+expression);
+			System.out.println("Input left expression: "+((BinaryExpression<? extends Type>) expression).getLeftExpression());
+			System.out.println("Input right expression: "+((BinaryExpression<? extends Type>) expression).getRightExpression());
+			System.out.println("Input type required: "+expression.getInputType());
+			correct = ((BinaryExpression<? extends Type>) expression).getLeftExpression().getReturnType(globals) == expression.getInputType()
+						&& ((BinaryExpression<? extends Type>) expression).getRightExpression().getReturnType(globals) == expression.getInputType();
+			if (correct)
+				correct = typeCheckExpression(((BinaryExpression<? extends Type>) expression).getLeftExpression(), globals)
+							&& typeCheckExpression(((BinaryExpression<? extends Type>) expression).getRightExpression(), globals);
+		}	
+		return correct;
+	}
 
 	public void count() {
 		this.counter = this.counter +1;
