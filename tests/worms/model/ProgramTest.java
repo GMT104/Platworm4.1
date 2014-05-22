@@ -43,6 +43,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("double x; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x;", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertTrue(worm.getProgram().isWellFormed());
 		facade.addNewWorm(world, null); // add another worm
@@ -60,6 +61,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("double x; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x; foreach (worm, w) do{ toggleweap;}", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertFalse(worm.getProgram().isWellFormed());
 	}
@@ -67,13 +69,17 @@ public class ProgramTest {
 	@Test
 	public void testTypeCastProblem() {
 		IActionHandler handler = new SimpleActionHandler(facade);
-		facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn (y+x);", handler);
+		ParseOutcome<?> outcome = facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn (y+x);", handler);
+		Program program = ((Success)outcome).getResult();
+		assertTrue(program.getTypeCheckError());
 	}
 	
 	@Test
 	public void testTypeCastProblem2() {
 		IActionHandler handler = new SimpleActionHandler(facade);
-		facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x; while(x){;}", handler);
+		ParseOutcome<?> outcome = facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x; while(x){;}", handler);
+		Program program = ((Success)outcome).getResult();
+		assertTrue(program.getTypeCheckError());
 	}
 	
 	@Test
@@ -83,6 +89,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x; fire  (getx y); ", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertTrue(worm.getProgram().isWellFormed());
 		facade.addNewWorm(world, null); // add another worm
@@ -106,6 +113,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("double x;entity y; while (x < 1.5) {\nx := x + 0.1;\n}\n turn x; ", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertTrue(worm.getProgram().isWellFormed());
 		facade.addNewWorm(world, null); // add another worm
@@ -127,6 +135,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("jump;jump;turn 1.5;", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertTrue(worm.getProgram().isWellFormed());
 		facade.addNewWorm(world, null); // add another worm
@@ -164,6 +173,7 @@ public class ProgramTest {
 		ParseOutcome<?> outcome = facade.parseProgram("double x; while (x < 1.5) {\nx := x + (1.5/1000);\n}\n turn x;", handler);
 		assertTrue(outcome.isSuccess());
 		Program program = ((Success)outcome).getResult();
+		assertFalse(program.getTypeCheckError());
 		Worm worm = facade.createWorm(world, 50.0, 50.51, 0, 0.5, "Test", program);
 		assertTrue(worm.getProgram().isWellFormed());
 		facade.addNewWorm(world, null); 
