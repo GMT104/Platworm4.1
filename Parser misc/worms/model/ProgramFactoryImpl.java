@@ -79,7 +79,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Expression<MyBoolean> createNot(int line, int column, Expression e) {
+  public Expression<MyBoolean> createNot(int line, int column, Expression<?>e) {
     return new BooleanNotExpression((Expression<MyBoolean>) e);
   }
 
@@ -94,7 +94,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Expression<MyDouble> createGetX(int line, int column, Expression e) {
+  public Expression<MyDouble> createGetX(int line, int column, Expression<?>e) {
     return new GetXExpression((Expression<Entity>) e);
   }
 
@@ -109,42 +109,42 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Expression<MyDouble>  createGetDir(int line, int column, Expression e) {
+  public Expression<MyDouble>  createGetDir(int line, int column, Expression<?>e) {
     return new GetDirectionExpression((Expression<Entity>) e);
   }
   
   @Override
-  public Expression<MyDouble>  createGetAP(int line, int column, Expression e) {
+  public Expression<MyDouble>  createGetAP(int line, int column, Expression<?>e) {
     return new GetActionPointsExpression((Expression<Entity>) e);
   }
 
   @Override
-  public Expression<MyDouble>  createGetMaxAP(int line, int column, Expression e) {
+  public Expression<MyDouble>  createGetMaxAP(int line, int column, Expression<?>e) {
     return new GetMaxActionPointsExpression((Expression<Entity>) e);
   }
 
   @Override
-  public Expression<MyDouble>  createGetHP(int line, int column, Expression e) {
+  public Expression<MyDouble>  createGetHP(int line, int column, Expression<?>e) {
     return new GetHitPointsExpression((Expression<Entity>) e);
   }
 
   @Override
-  public Expression<MyDouble>  createGetMaxHP(int line, int column, Expression e) {
+  public Expression<MyDouble>  createGetMaxHP(int line, int column, Expression<?>e) {
     return new GetMaxHitPointsExpression((Expression<Entity>) e);
   }
 
   @Override
-  public Expression<MyBoolean>  createSameTeam(int line, int column, Expression e) {
+  public Expression<MyBoolean>  createSameTeam(int line, int column, Expression<?>e) {
     return new GetSameTeamExpression((Expression<Entity>) e);
   }
 
   @Override
-  public Expression<Entity>  createSearchObj(int line, int column, Expression e) {
+  public Expression<Entity>  createSearchObj(int line, int column, Expression<?>e) {
     return new SearchObjectExpression((Expression<MyDouble>) e);
   }
 
   @Override
-  public Expression<MyBoolean>  createIsWorm(int line, int column, Expression e) {
+  public Expression<MyBoolean>  createIsWorm(int line, int column, Expression<?>e) {
     return new IsWormExpression((Expression<Entity>) e);
   }
 
@@ -156,73 +156,73 @@ public class ProgramFactoryImpl
 //  public E IsTerrain(int line, int column, E e);
 
   @Override
-  public Expression createVariableAccess(int line, int column, String name) {
+  public Expression<?>createVariableAccess(int line, int column, String name) {
     return null;
   }
 
   @Override
-  public Expression<MyBoolean> createLessThan(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createLessThan(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleLessThanExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyBoolean> createGreaterThan(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createGreaterThan(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleGreaterThanExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyBoolean> createLessThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createLessThanOrEqualTo(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleLessThanOrEqualToExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyBoolean> createGreaterThanOrEqualTo(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createGreaterThanOrEqualTo(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleGreaterThanOrEqualToExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyBoolean> createEquality(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createEquality(int line, int column, Expression<?>e1, Expression<?>e2) {
     return  new EqualityExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyBoolean> createInequality(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyBoolean> createInequality(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new InequalityExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyDouble> createAdd(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyDouble> createAdd(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleAdditionExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyDouble> createSubtraction(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyDouble> createSubtraction(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleSubtractionExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyDouble> createMul(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyDouble> createMul(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleMultiplyExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
     		
   }
 
   @Override
-  public Expression<MyDouble> createDivision(int line, int column, Expression e1, Expression e2) {
+  public Expression<MyDouble> createDivision(int line, int column, Expression<?>e1, Expression<?>e2) {
     return new DoubleDivisionExpression((Expression<MyDouble>) e1,(Expression<MyDouble>) e2);
   }
 
   @Override
-  public Expression<MyDouble> createSqrt(int line, int column, Expression e) {
+  public Expression<MyDouble> createSqrt(int line, int column, Expression<?>e) {
     return new DoubleSqrtExpression((Expression<MyDouble>) e);
   }
 
   @Override
-  public Expression<MyDouble> createSin(int line, int column, Expression e) {
+  public Expression<MyDouble> createSin(int line, int column, Expression<?>e) {
     return new DoubleSinusExpression((Expression<MyDouble>) e);
   }
 
   @Override
-  public Expression<MyDouble> createCos(int line, int column, Expression e) {
+  public Expression<MyDouble> createCos(int line, int column, Expression<?>e) {
     return new DoubleCosinusExpression((Expression<MyDouble>) e);
   }
 
@@ -247,7 +247,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Statement createFire(int line, int column, Expression yield) {
+  public Statement createFire(int line, int column, Expression<?>yield) {
     return new FireStatement((Expression<MyDouble>) yield);
   }
 
@@ -263,12 +263,12 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Statement createIf(int line, int column, Expression condition, Statement then, Statement otherwise) {
+  public Statement createIf(int line, int column, Expression<?>condition, Statement then, Statement otherwise) {
     return new IfStatement((Expression<MyBoolean>) condition,then,otherwise);
   }
 
   @Override
-  public Statement createWhile(int line, int column, Expression condition, Statement body) {
+  public Statement createWhile(int line, int column, Expression<?>condition, Statement body) {
     return new WhileStatement((Expression<MyBoolean>) condition,body);
   }
 
@@ -288,7 +288,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Statement createPrint(int line, int column, Expression e) {
+  public Statement createPrint(int line, int column, Expression<?>e) {
     return new PrintStatement(e);
   }
 
