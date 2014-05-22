@@ -8,7 +8,6 @@ import worms.gui.game.IActionHandler;
 public class Program {
 	
 	private Map<String, Type> globals;
-	//private Map<String, MyObject> variables = new HashMap<String, MyObject>();
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;

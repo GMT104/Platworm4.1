@@ -20,6 +20,7 @@ public class VariableExpression<T> extends Expression<T> {
 
 	@Override
 	public Class<? extends Type> getReturnType(Map<String, Type> globals) {
+		System.out.println("         Variable is of type: "+globals.get(variableName).getClass());
 		return globals.get(variableName).getClass(); 
 	}
 
