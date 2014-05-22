@@ -227,7 +227,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Statement createTurn(int line, int column, Expression angle) {
+  public Statement createTurn(int line, int column, Expression<?> angle) {
     return new TurnStatement((Expression<MyDouble>) angle);
   }
 
@@ -308,11 +308,10 @@ public class ProgramFactoryImpl
   }
 
 @Override
-public Expression createVariableAccess(int line, int column, String name,
+public Expression<?> createVariableAccess(int line, int column, String name,
 		Type type) {
-	return new VariableExpression<Type>(name);
+	return new VariableExpression<Type>(name,type);
 	
-	// Als we geen twee aparte hierarchien hadden con ik gewoon VariableExpression<Type> doen.
 }
 }
 

@@ -2,6 +2,7 @@ package worms.model;
 
 import java.util.Random;
 
+import worms.model.programs.ProgramFactory;
 import worms.util.Util;
 
 public class Tester {
@@ -47,10 +48,23 @@ public class Tester {
 		Expression<MyDouble> e2 = new DoubleLiteralExpression(c);
 		new BooleanOrExpression(e1, e2);
 		
+		
+		
+		new VariableExpression<Entity>("es",new Entity());
 		Expression<Entity> w;
 		new IsFoodExpression(w);
-		new FireStatement(new VariableExpression<MyDouble>("Bob"));
+		new FireStatement(new VariableExpression<MyBoolean>("Bob",new MyDouble(6)));
+		new SearchObjectExpression(w);
+	
+	//zoals ik dus al zei lijkt het mij raar dat variable Expression werkt.
+	//Maar toch
+		new VariableExpression<Entity>("es",new Entity());
+		//dat moet lukken
+		new VariableExpression<MyDouble>("es",new Entity());
+		// Dit niet
+		//Waarom het werkt snap ik niet.
 	}
 	
+
 	
 }
