@@ -149,7 +149,7 @@ public class ProgramFactoryImpl
   }
 
   @Override
-  public Expression<MyBoolean> createIsFood(int line, int column, Expression e) {
+  public Expression<MyBoolean> createIsFood(int line, int column,Expression<?> e) {
     return new IsFoodExpression((Expression<Entity>) e);
   }
 

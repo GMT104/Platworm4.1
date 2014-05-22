@@ -71,8 +71,8 @@ public class Tester {
 		//Waarom het werkt snap ik niet.
 	
 	//Maar dit zou volgens mij wel moeten werken
-	Expression<MyDouble> a = programFactory.createVariableAccess(6	, 6, "YES", new MyDouble());
-	new FireStatement(a);
+	Expression<MyDouble> a = (Expression<MyDouble>) programFactory.createVariableAccess(6	, 6, "YES", new MyDouble());
+	Expression<MyDouble> d = programFactory.createDoubleLiteral(6, 6, 6.6);
 	
 	
 	}

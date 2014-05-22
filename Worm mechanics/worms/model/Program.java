@@ -1,6 +1,5 @@
 package worms.model;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,7 +22,6 @@ public class Program {
 		this.globals = globals;
 		this.mainStatement = (Statement) statement;
 		this.handler = handler;
-		initialiseVariables();
 			
 	}
 	
@@ -72,7 +70,7 @@ public class Program {
 			try {	
 				resetCounter();
 				getMainStatement().run(activeWorm, handler);
-				initialiseVariables();
+				reInitialiseVariables();
 				restartStatements();
 			} catch (Exception exc) {
 				if (!(exc instanceof InsufficientActionPointsException || exc instanceof MaximumAmountOfStatementsException))
@@ -100,8 +98,8 @@ public class Program {
 		return this.mainStatement;
 	}
 
-	//TODO
-	private void initialiseVariables() {
+
+	private void reInitialiseVariables() {
 		for (String variableName: this.getGlobals().keySet()) {
 			addVariable(variableName, getGlobals().get(variableName).createObjectWithDefaultValue());
 		}
