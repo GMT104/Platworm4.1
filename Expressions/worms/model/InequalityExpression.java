@@ -10,7 +10,7 @@ public class InequalityExpression extends BinaryExpression<MyBoolean> {
 
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
-		return MyDoubleType.notEqualTo((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+		return MyDouble.notEqualTo((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 

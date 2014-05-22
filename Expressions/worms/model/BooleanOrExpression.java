@@ -12,7 +12,7 @@ public class BooleanOrExpression extends BinaryExpression<MyBoolean> {
 
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
-		return MyBooleanType.or((MyBoolean) getLeftExpression().getValue(activeWorm), 
+		return MyBoolean.or((MyBoolean) getLeftExpression().getValue(activeWorm), 
 				(MyBoolean) getRightExpression().getValue(activeWorm));
 	}
 

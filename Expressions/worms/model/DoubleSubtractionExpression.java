@@ -10,7 +10,7 @@ public class DoubleSubtractionExpression extends BinaryExpression<MyDouble> {
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		return MyDoubleType.subtract((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+		return MyDouble.subtract((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 

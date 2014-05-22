@@ -10,7 +10,7 @@ public class DoubleSinusExpression extends UnaryExpression<MyDouble> {
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		return MyDoubleType.sine((MyDouble) this.getExpression().getValue(activeWorm));
+		return MyDouble.sine((MyDouble) this.getExpression().getValue(activeWorm));
 	}
 
 

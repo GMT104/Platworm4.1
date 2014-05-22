@@ -10,7 +10,7 @@ public class DoubleGreaterThanExpression extends BinaryExpression<MyBoolean> {
 
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
-		return MyDoubleType.greaterThan((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+		return MyDouble.greaterThan((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 

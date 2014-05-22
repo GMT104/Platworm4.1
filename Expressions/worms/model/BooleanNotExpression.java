@@ -10,7 +10,7 @@ public class BooleanNotExpression extends UnaryExpression<MyBoolean> {
 
 	@Override
 	public MyBoolean getValue(Worm activeWorm) {
-		return MyBooleanType.not((MyBoolean) this.getExpression().getValue(activeWorm));
+		return MyBoolean.not((MyBoolean) this.getExpression().getValue(activeWorm));
 	}
 
 }

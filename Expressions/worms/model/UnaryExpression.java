@@ -2,11 +2,11 @@ package worms.model;
 
 public abstract class UnaryExpression<T> extends Expression<T> {
 
-	private Expression expression;
+	private Expression<?> expression;
 
 
 
-	public UnaryExpression(Expression e) {
+	public UnaryExpression(Expression<?> e) {
 		this.setExpression(e); 
 	}
 	
@@ -14,13 +14,13 @@ public abstract class UnaryExpression<T> extends Expression<T> {
 
 
 
-	public Expression getExpression() {
+	public Expression<?> getExpression() {
 		return expression;
 	}
 
 
 
-	public void setExpression(Expression expression) {
+	public void setExpression(Expression<?> expression) {
 		this.expression = expression;
 	}
 

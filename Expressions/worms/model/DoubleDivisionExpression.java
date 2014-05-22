@@ -10,7 +10,7 @@ public class DoubleDivisionExpression extends BinaryExpression<MyDouble> {
 
 	@Override
 	public MyDouble getValue(Worm activeWorm) {
-		return MyDoubleType.divide((MyDouble) this.getLeftExpression().getValue(activeWorm), 
+		return MyDouble.divide((MyDouble) this.getLeftExpression().getValue(activeWorm), 
 				(MyDouble) this.getRightExpression().getValue(activeWorm));
 	}
 

@@ -9,7 +9,7 @@ import worms.gui.game.IActionHandler;
 public class Program {
 	
 	private Map<String, Type> globals;
-	private Map<String, MyObject> variables = new HashMap<String, MyObject>();
+	//private Map<String, MyObject> variables = new HashMap<String, MyObject>();
 	private Statement mainStatement;
 	private Worm activeWorm;
 	private IActionHandler handler;
@@ -51,20 +51,20 @@ public class Program {
 		this.typeCheckError = error;
 	}
 	
-	protected void addVariable(String key, MyObject variable) {
-		this.variables.put(key, variable);
+	protected void addVariable(String key, Type variable) {
+		this.globals.put(key, variable);
 	}
 	
 	public void removeVariable(String key) {
-		this.variables.remove(key);
+		this.globals.remove(key);
 	}
 	
-	public void changeVariable(String key, MyObject variable) {
-		variables.put(key, variable);
+	public void changeVariable(String key, Type variable) {
+		this.globals.put(key, variable);
 	}
 	
-	public MyObject getVariable(String key) {
-		return this.variables.get(key);
+	public Type getVariable(String key) {
+		return this.globals.get(key);
 	}
 	
 	protected void run(){
@@ -100,6 +100,7 @@ public class Program {
 		return this.mainStatement;
 	}
 
+	//TODO
 	private void initialiseVariables() {
 		for (String variableName: this.getGlobals().keySet()) {
 			addVariable(variableName, getGlobals().get(variableName).createObjectWithDefaultValue());

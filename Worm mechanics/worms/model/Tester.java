@@ -49,6 +49,8 @@ public class Tester {
 		
 		Expression<Entity> w;
 		new IsFoodExpression(w);
-		new FireStatement(e1);
+		new FireStatement(new VariableExpression<MyDouble>("Bob"));
 	}
+	
+	
 }

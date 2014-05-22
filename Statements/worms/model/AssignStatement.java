@@ -10,16 +10,16 @@ import worms.model.Worm;
 public class AssignStatement extends Statement {
 
 	private String variable;
-	private Expression<MyObject> rhs;
+	private Expression<?> rhs;
 
-	public AssignStatement(String variable, Expression<MyObject> rhs){
+	public AssignStatement(String variable, Expression<?> rhs){
 		this.variable = variable;
 		this.rhs = rhs;
 	}
 
 	@Override
 	public void execute(Worm activeWorm, IActionHandler handler) {
-		activeWorm.getProgram().changeVariable(variable, rhs.getValue(activeWorm));
+		activeWorm.getProgram().changeVariable(variable, (Type) rhs.getValue(activeWorm));
 		this.setHasBeenRunAlready(true);
 	}
 

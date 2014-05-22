@@ -2,10 +2,10 @@ package worms.model;
 
 import worms.model.Worm;
 
-public class NullExpression extends Expression<MyObject> {
+public class NullExpression extends Expression<Type> {
 
 	@Override
-	public MyObject getValue(Worm activeWorm) {
+	public Type getValue(Worm activeWorm) {
 		return null;
 	}
 
