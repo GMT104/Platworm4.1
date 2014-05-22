@@ -1,8 +1,5 @@
-
-
 package worms.model;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -163,6 +160,7 @@ public class Program {
 		return (statement.getInputExpression().getReturnType(globals) == statement.getInputType(globals));
 	}
 
+	@SuppressWarnings("unchecked")
 	private boolean typeCheckExpression(Expression<?> expression, Map<String, Type> globals) {
 		boolean correct = true;
 		if (expression instanceof UnaryExpression) {

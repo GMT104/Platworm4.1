@@ -12,6 +12,7 @@ public class VariableExpression<T> extends Expression<T> {
 		this.variableName = name;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getValue(Worm activeWorm) {
 		return  (T) activeWorm.getProgram().getVariable(variableName);
