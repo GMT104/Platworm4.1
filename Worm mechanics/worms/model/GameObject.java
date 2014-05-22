@@ -366,7 +366,7 @@ public abstract class GameObject {
 	 * 			The other game object.
 	 * 
 	 * @return	Returns if the two game objects overlap.
-	 * 			| result == overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
+	 * 			| result == GameObject.overlaps(this.getCoordinateX(),this.getCoordinateY(), this.getRadius(),
 	 *			|			gameObject.getCoordinateX(),gameObject.getCoordinateY(),gameObject.getRadius())
 	 */
 	public boolean overlapsGameObject(GameObject gameObject) {

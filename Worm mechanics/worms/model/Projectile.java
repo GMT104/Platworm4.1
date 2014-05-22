@@ -142,6 +142,13 @@ public abstract class Projectile extends MovableObject {
 	}
 	
 	
+	/**
+	 * Sets the coordinates of this projectile.
+	 * 
+	 * @effect	If this projectile is not terminated, then its coordinates will be set.
+	 * 			| if (! this.isTerminated())
+	 * 			|		then super.setCoordinates(x,y)
+	 */
 	@Override
 	protected void setCoordinates(double x, double y) throws ModelException {
 		if (! isTerminated())
@@ -288,6 +295,7 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns whether the given points are positive.
 	 * 			| result == (points > 0)
 	 */
+	@Raw
 	protected static boolean isValidLostHitPoints(int points) {
 		return (points > 0);
 	}
@@ -315,6 +323,7 @@ public abstract class Projectile extends MovableObject {
 	 * @return	Returns whether the given points are positive.
 	 * 			| result == (points > 0)
 	 */
+	@Raw
 	protected static boolean isValidCostActionPoints(int points) {
 		return (points > 0);
 	}

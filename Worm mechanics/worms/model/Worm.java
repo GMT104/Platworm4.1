@@ -604,7 +604,7 @@ public class Worm extends MovableObject{
 	 * 			this worm's action points.
 	 * 			| new.getActionPoints() == this.getActionPoints() - ((int)usedActionPointsTurn(angle)+1)
 	 * @post	The direction of the worm's projectile is also updated.
-	 * 			| new.getProjectile().getDirection() == new.getDirection()
+	 * 			| (new getProjectile()).getDirection() == new.getDirection()
 	 */
 	protected void turn(double angle){
 		assert this.canTurn(angle);
@@ -821,12 +821,8 @@ public class Worm extends MovableObject{
 	 * 			| (new this.getProjectile()).getWorld() == this.getWorld()
 	 * @post	The new projectile has the same direction as this worm.
 	 * 			| (new this.getProjectile()).getDirection() == this.getDirection()
-	 * @post	The new projectile is fired from a rifle or a bazooka, according to the current waepon number.
-	 * 			| if (this.getCurrentWeaponNumber() == 0)
-	 * 			|		then this.getProjectile() instanceof Rifle
-	 * 			| else 
-	 * 			|		this.getProjectile() instanceof Bazooka
 	 */
+	@Raw
 	@Model
 	private void setProjectile() {
 		if (this.getCurrentWeaponNumber() == 0)
@@ -850,7 +846,7 @@ public class Worm extends MovableObject{
 	 * @effect	Terminates the old projectile.
 	 * 			| this.getProjectile().terminate()
 	 * @effect	Creates a new projectile for this worm, corresponding with the new current weapon number.
-	 * 			| this.setWeapon()
+	 * 			| this.setProjectile()
 	 */
 	protected void selectWeapon() {
 		this.projectile.terminate();

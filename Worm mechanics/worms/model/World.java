@@ -274,7 +274,7 @@ public class World {
 	 * 			| result == ((0 <= dimension) && (dimension <= getMaxDimension())
 	 */	
 	@Raw
-	private static boolean isValidDimension(double dimension){
+	protected static boolean isValidDimension(double dimension){
 		return 0 <= dimension && dimension <= getMaxDimension();
 	}
 	
@@ -766,7 +766,7 @@ public class World {
 	 * 			| result == (gameObject.getWorld() == this)
 	 */
 	@Raw
-	private boolean canHaveAsGameObject(GameObject gameObject) {
+	protected boolean canHaveAsGameObject(GameObject gameObject) {
 		return (gameObject.getWorld() == this);
 	}
 	
@@ -1023,7 +1023,7 @@ public class World {
 	 * 			The game has already started.
 	 * 			| getStatus()
 	 */
-	protected void addWorm(Program program){
+	protected void addWorm(Program program) throws ModelException {
 		if (getStatus())
 			throw new ModelException("Cannot place worms once game has started!");
 		double radius = 0.3;
@@ -1056,7 +1056,7 @@ public class World {
 	 * 			The game has already started.
 	 * 			| getStatus()
 	 */
-	protected void addFood(){
+	protected void addFood() throws ModelException {
 		if (getStatus())
 			throw new ModelException("Cannot place worms once game has started!");
 		try {
@@ -1206,8 +1206,8 @@ public class World {
 	 * @effect 	The action points have been set to the max and the hit points
 	 * 			been increased by 10.
 	 * 			| for each worm in this.getAllWorms()
-	 * 			| 	(new worm).setActionPoints(worm.getMaximumActionPoints())
-	 * 			|	(new worm).setHitPoints(worm.getHitPoints() + 10)
+	 * 			| 		worm.setActionPoints(worm.getMaximumActionPoints())
+	 * 			|		worm.setHitPoints(worm.getHitPoints() + 10)
 	 */
 	private void setActionPointsToMaxAndAdd10HitPoints(){
 		for(int counter  = 0;counter < getAllWorms().size(); counter = counter+1){
